@@ -59,6 +59,7 @@ export default {
     WebImporter.DOMUtils.remove(main, [
       'header',
       'footer',
+      'noscript',
     ]);
 
     // create the metadata block and append it to the main element
