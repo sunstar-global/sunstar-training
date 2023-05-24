@@ -1,5 +1,5 @@
 /* below the fold CSS goes here */
-@import "./styles.css";
+@import url("./styles.css");
 
 /* cyrillic-ext */
 @font-face {
