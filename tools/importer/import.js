@@ -42,7 +42,7 @@ function customImportLogic(doc) {
   // remove the cookies banner
   const cookieBanner = doc.querySelector('.cookies-wrapper.cookies-wrapper-js');
   if (cookieBanner) {
-    doc.querySelector('.cookies-wrapper.cookies-wrapper-js').remove();
+    cookieBanner.remove();
   }
 }
 export default {
