@@ -116,3 +116,49 @@ header nav.nav-top>ul>li>a:first-of-type {
   text-decoration: none;
 }
 
+header form.search div {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(60, 70, 80, 0.12);
+  box-sizing: border-box;
+  padding: 2px;
+  line-height: 1.5;
+  min-width: 200px;
+  position: relative;
+}
+
+header form.search input.search-text::placeholder {
+  color: rgba(60, 70, 80, 0.5);
+}
+
+header form.search input.search-text:focus {
+  outline: none;
+}
+
+header form.search input.search-text {
+  border: 0;
+  box-sizing: border-box;
+  color: var(--link-color);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m);
+  font-weight: var(--font-weight-medium);
+  height: 32px;
+  padding: 8px 18px 8px 0;
+  width: 100%;
+}
+
+header form.search .search-icon {
+  background-color: var(--background-color);
+  background-image: url(/icons/search.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  bottom: 8px;
+  right: 0;
+  height: 14px;
+  width: 14px;
+}
