@@ -119,11 +119,10 @@ header nav.nav-top>ul>li>a:first-of-type {
 header form.search div {
   border-bottom-style: solid;
   border-bottom-width: 1px;
-  border-bottom-color: rgba(60, 70, 80, 0.12);
+  border-bottom-color: var(--background-color);
   box-sizing: border-box;
   padding: 2px;
   line-height: 1.5;
-  min-width: 200px;
   position: relative;
 }
 
@@ -136,6 +135,7 @@ header form.search input.search-text:focus {
 }
 
 header form.search input.search-text {
+  display: none;
   border: 0;
   box-sizing: border-box;
   color: var(--link-color);
@@ -161,4 +161,15 @@ header form.search .search-icon {
   right: 0;
   height: 14px;
   width: 14px;
+}
+
+@media (min-width: 77rem) {
+  header form.search div {
+    min-width: 200px;
+    border-bottom-color: rgba(60, 70, 80, 0.12);
+  }
+
+  header form.search input.search-text {
+    display: block;
+  }
 }
