@@ -36,7 +36,7 @@ function getSearchWidget() {
 function insertSearchWidget() {
   // Replace the <p>Search</p> text with the search box
   const searchP = Array.from(document.querySelectorAll('p'))
-    .find(element => element.textContent === 'Search');
+    .find((element) => element.textContent === 'Search');
   const tempDiv = document.createElement('div');
   tempDiv.innerHTML = getSearchWidget();
   searchP.parentElement.replaceChild(tempDiv.firstElementChild, searchP);

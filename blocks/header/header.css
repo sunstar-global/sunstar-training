@@ -117,21 +117,11 @@ header nav.nav-top>ul>li>a:first-of-type {
 }
 
 header form.search div {
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-bottom-color: var(--background-color);
+  border-bottom: 1px solid var(--background-color);
   box-sizing: border-box;
   padding: 2px;
   line-height: 1.5;
   position: relative;
-}
-
-header form.search input.search-text::placeholder {
-  color: rgba(60, 70, 80, 0.5);
-}
-
-header form.search input.search-text:focus {
-  outline: none;
 }
 
 header form.search input.search-text {
@@ -147,9 +137,17 @@ header form.search input.search-text {
   width: 100%;
 }
 
+header form.search input.search-text:focus {
+  outline: none;
+}
+
+header form.search input.search-text::placeholder {
+  color: rgba(60 70 80 / 50%);
+}
+
 header form.search .search-icon {
   background-color: var(--background-color);
-  background-image: url(/icons/search.svg);
+  background-image: url('/icons/search.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -166,7 +164,7 @@ header form.search .search-icon {
 @media (min-width: 77rem) {
   header form.search div {
     min-width: 200px;
-    border-bottom-color: rgba(60, 70, 80, 0.12);
+    border-bottom-color: rgba(60 70 80 / 12%);
   }
 
   header form.search input.search-text {
