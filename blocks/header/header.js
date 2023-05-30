@@ -1,4 +1,5 @@
 import { getMetadata, decorateIcons } from '../../scripts/lib-franklin.js';
+import { getSearchWidget } from '../../scripts/common.js';
 
 function decorateSocial(social) {
   social.classList.add('social');
@@ -20,26 +21,11 @@ function decorateBottomNav() {
 
 }
 
-function getSearchWidget() {
-  // TODO specify the correct language in the 'lang' input
-  // TODO specify the correct language in the oninvalid property
-  return `
-    <form method="get" class="search" action="/search">
-    <div>
-      <input type="hidden" name="lang" value="en">
-      <input type="text" name="s" class="search-text" placeholder="Search" required="true" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('The Search field cannot be empty')">
-      <button class="search-icon"></button>
-    </div>
-  </form>`;
-}
-
 function insertSearchWidget() {
   // Replace the <p>Search</p> text with the search box
   const searchP = Array.from(document.querySelectorAll('p'))
     .find((element) => element.textContent === 'Search');
-  const tempDiv = document.createElement('div');
-  tempDiv.innerHTML = getSearchWidget();
-  searchP.parentElement.replaceChild(tempDiv.firstElementChild, searchP);
+  searchP.parentElement.replaceChild(getSearchWidget(), searchP);
 }
 
 const navDecorators = { 'nav-top': decorateTopNav, 'nav-middle': decorateMiddleNav, 'nav-bottom': decorateBottomNav };

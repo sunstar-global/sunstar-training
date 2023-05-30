@@ -40,6 +40,8 @@
   --overlay-background-color: #eee;
   --highlight-background-color: #ccc;
   --text-color: #000;
+  --transparent-grey-color: #3c465080;
+  --transparent-grey-light-color: #3c46501f;
 
   /* fonts */
   --body-font-family: "Noto Sans";
