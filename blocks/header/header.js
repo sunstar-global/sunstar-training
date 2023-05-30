@@ -24,10 +24,10 @@ function getSearchWidget() {
   // TODO specify the correct language in the 'lang' input
   // TODO specify the correct language in the oninvalid property
   return `
-    <form method="get" class="search" id="searchform" action="https://www.sunstar-engineering.com/">
+    <form method="get" class="search" action="/search">
     <div>
       <input type="hidden" name="lang" value="en">
-      <input type="text" id="search" name="s" class="search-text" placeholder="Search" required="true" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('The Search field cannot be empty')">
+      <input type="text" name="s" class="search-text" placeholder="Search" required="true" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('The Search field cannot be empty')">
       <button class="search-icon"></button>
     </div>
   </form>`;

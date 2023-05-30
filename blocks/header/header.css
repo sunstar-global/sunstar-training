@@ -142,7 +142,7 @@ header form.search input.search-text:focus {
 }
 
 header form.search input.search-text::placeholder {
-  color: rgba(60 70 80 / 50%);
+  color: #3c465080;
 }
 
 header form.search .search-icon {
@@ -164,7 +164,7 @@ header form.search .search-icon {
 @media (min-width: 77rem) {
   header form.search div {
     min-width: 200px;
-    border-bottom-color: rgba(60 70 80 / 12%);
+    border-bottom-color: #3c46501f;
   }
 
   header form.search input.search-text {
