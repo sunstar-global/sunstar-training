@@ -53,7 +53,7 @@
 
   /* heading sizes */
   --heading-font-size-xxl: 48px;
-  --heading-font-size-xl: 40px;
+  --heading-font-size-xl: 42px;
   --heading-font-size-l: 32px;
   --heading-font-size-m: 24px;
   --heading-font-size-s: 20px;
@@ -74,6 +74,14 @@
   --nav-middle-height: 26px;
   --nav-bottom-height: 52px;
   --nav-total-height: calc(var(--nav-top-height) + var(--nav-middle-height) + var(--nav-bottom-height));
+
+  /* button */
+  --button-background-color: #007CAD;
+  --button-background-disabled-color: #ccc;
+  --button-padding: 0 1.5em;
+  --button-text-color: white;
+  --button-font-weight: 700;
+  --button-border-radius: 0;
 
   /* Font Sizes */
   --font-size-small: 14px;
@@ -103,8 +111,8 @@ h3,
 h4,
 h5,
 h6 {
+  color: var(--primary);
   font-family: var(--heading-font-family);
-  font-weight: 600;
   line-height: 1.25;
   scroll-margin: calc(var(--nav-height) + 1em);
   margin: 0;
@@ -115,7 +123,10 @@ h1 {
 }
 
 h2 {
-  font-size: var(--heading-font-size-xl)
+  font-size: var(--heading-font-size-xl);
+  margin: 4rem 0 3rem;
+  font-weight: 500;
+  line-height: 1.3em;
 }
 
 h3 {
