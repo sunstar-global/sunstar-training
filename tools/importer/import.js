@@ -105,16 +105,78 @@ function addBreadCrumb(doc) {
   }
 }
 
-function customImportLogic(doc) {
+function removeCookiesBanner(document) {
   // remove the cookies banner
-  const cookieBanner = doc.querySelector('.cookies-wrapper.cookies-wrapper-js');
+  const cookieBanner = document.querySelector('.cookies-wrapper.cookies-wrapper-js');
   if (cookieBanner) {
     cookieBanner.remove();
   }
+}
+
+/**
+ * Extract background images from the source node and
+ * replace them with foreground images in the target node.
+ * @param {Node} sourceNode The node to extract background images from
+ * @param {Node} targetNode The node to use for inlining the images
+ */
+function convertBackgroundImgsToForegroundImgs(sourceNode, targetNode = sourceNode) {
+  const bgImgs = sourceNode.querySelectorAll('.background-image');
+  // workaround for inability of importer to handle styles
+  // with whitespace in the url
+  [...bgImgs].forEach((bgImg) => {
+    bgImg.getAttribute('style').split(';').forEach((style) => {
+      const [prop, value] = style.split(':');
+      if (prop === 'background-image') {
+        const withoutSpaces = value.replace(/\s/g, '');
+        bgImg.style.backgroundImage = withoutSpaces;
+      }
+    });
+    console.log(`inlining images for ${bgImg.outerHTML}`);
+    WebImporter.DOMUtils.replaceBackgroundByImg(bgImg, targetNode);
+  });
+}
+
+/**
+ * Creates a column block from a section if it contains two columns _only_
+ * @param {HTMLDocument} document The document
+ */
+function createColumnBlockFromSection(document) {
+  document.querySelectorAll('div.section-container').forEach((section) => {
+    const block = [['Columns']];
+    // create a column block from the section
+    // but only if it contains two columns and isn't a hero section
+    const heroParent = Array.from(section.parentElement.classList)
+      .filter((s) => /hero/.test(s)).length;
+    const contentColumns = Array.from(section.children)
+      .filter(
+        (el) => (el.tagName === 'DIV' || el.tagName === 'FIGURE' || el.tagName === 'IMG'),
+      );
+    if (!heroParent && contentColumns
+      && contentColumns.length === 2
+      && section.children.length === 2
+      && section.querySelectorAll('p').length !== 0) {
+      const columnItem = [];
+      contentColumns.forEach((column) => {
+        columnItem.push(column);
+      });
+      block.push(columnItem);
+      const table = WebImporter.DOMUtils.createTable(block, document);
+      convertBackgroundImgsToForegroundImgs(table, document);
+      section.replaceWith(table);
+    }
+  });
+}
+
+function customImportLogic(doc) {
+  removeCookiesBanner(doc);
 
   addBreadCrumb(doc);
   addCarouselItems(doc);
+
+  createColumnBlockFromSection(doc);
+  convertBackgroundImgsToForegroundImgs(doc);
 }
+
 export default {
   /**
    * Apply DOM operations to the provided document and return
