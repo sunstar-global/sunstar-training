@@ -148,9 +148,6 @@ header form.search input.search-text::placeholder {
 header form.search .search-icon {
   background-color: var(--background-color);
   background-image: url('/icons/search.svg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
   border: 0;
   margin: 0;
   padding: 0;
@@ -161,7 +158,7 @@ header form.search .search-icon {
   width: 14px;
 }
 
-@media (min-width: 77rem) {
+@media (width >= 77rem) {
   header form.search div {
     min-width: 200px;
     border-bottom-color: var(--transparent-grey-light-color);

@@ -1,5 +1,5 @@
 import { getMetadata, decorateIcons } from '../../scripts/lib-franklin.js';
-import { getSearchWidget } from '../../scripts/common.js';
+import { getSearchWidget } from '../../scripts/scripts.js';
 
 function decorateSocial(social) {
   social.classList.add('social');
@@ -23,7 +23,7 @@ function decorateBottomNav() {
 
 function insertSearchWidget() {
   // Replace the <p>Search</p> text with the search box
-  const searchP = Array.from(document.querySelectorAll('p'))
+  const searchP = Array.from(document.querySelectorAll('header nav.nav-bottom p'))
     .find((element) => element.textContent === 'Search');
   searchP.parentElement.replaceChild(getSearchWidget(), searchP);
 }

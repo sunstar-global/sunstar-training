@@ -1,4 +1,4 @@
-import { getSearchWidget } from '../../scripts/common.js';
+import { getSearchWidget } from '../../scripts/scripts.js';
 
 function getSearchParams() {
   const searchTerm = new URLSearchParams(window.location.search).get('s');
@@ -16,7 +16,7 @@ async function searchPages(term) {
   const div = document.createElement('div');
 
   const summary = document.createElement('h3');
-  summary.className = 'search-summary';
+  summary.classList.add('search-summary');
   summary.innerHTML = `${result.length} result${result.length === 1 ? '' : 's'} found for "<strong>${term}</strong>"`;
   div.appendChild(summary);
 
@@ -24,7 +24,7 @@ async function searchPages(term) {
 
   firstPage.forEach((line) => {
     const res = document.createElement('div');
-    res.className = 'search-result';
+    res.classList.add('search-result');
     const header = document.createElement('h3');
     const link = document.createElement('a');
     link.innerText = line.title;
