@@ -22,8 +22,7 @@ async function searchPages(term) {
 
   const firstPage = result.slice(0, 3);
 
-  /* eslint-disable no-restricted-syntax */ // TODO
-  for (const line of firstPage) {
+  firstPage.forEach((line) => {
     const res = document.createElement('div');
     res.className = 'search-result';
     const header = document.createElement('h3');
@@ -36,7 +35,7 @@ async function searchPages(term) {
     para.innerText = line.description;
     res.appendChild(para);
     div.appendChild(res);
-  }
+  });
 
   return div.children;
 }
