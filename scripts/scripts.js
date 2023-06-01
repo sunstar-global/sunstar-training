@@ -187,6 +187,13 @@ async function loadPage() {
   loadDelayed();
 }
 
+export function getDecodedString(htmlString) {
+  const parser = new DOMParser();
+  const decodedString = parser.parseFromString(htmlString, 'text/html')
+    .documentElement.textContent;
+  return decodedString;
+}
+
 /**
  * Convert html in text form to document element
  * @param {string} html the html to process
