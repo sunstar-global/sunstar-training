@@ -21,13 +21,6 @@ function decorateBottomNav() {
 
 }
 
-function insertSearchWidget() {
-  // Replace the <p>Search</p> text with the search box
-  const searchP = Array.from(document.querySelectorAll('header nav.nav-bottom p'))
-    .find((element) => element.textContent === 'Search');
-  searchP.parentElement.replaceChild(getSearchWidget(), searchP);
-}
-
 const navDecorators = { 'nav-top': decorateTopNav, 'nav-middle': decorateMiddleNav, 'nav-bottom': decorateBottomNav };
 /**
  * decorates the header, mainly the nav
@@ -51,10 +44,21 @@ export default async function decorate(block) {
       nav.classList.add(navClass);
       nav.innerHTML = fetchedNav.querySelectorAll(':scope>div')[idx].innerHTML;
       navDecorators[navClass](nav);
+
+      if (navClass === 'nav-bottom') {
+        nav.append(getSearchWidget());
+      }
+
       block.appendChild(nav);
     });
 
-    insertSearchWidget();
+    window.addEventListener('scroll', () => {
+      if (document.documentElement.scrollTop > document.querySelector('nav.nav-top').offsetHeight + document.querySelector('nav.nav-middle').offsetHeight) {
+        document.querySelector('header').classList.add('fixed');
+      } else {
+        document.querySelector('header').classList.remove('fixed');
+      }
+    });
 
     decorateIcons(block);
   }

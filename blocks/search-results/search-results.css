@@ -36,6 +36,7 @@
   padding: 0;
   height: 14px;
   width: 14px;
+  min-width: 14px;
 }
 
 .search-results .search-summary {

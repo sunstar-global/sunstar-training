@@ -10,7 +10,7 @@ async function searchPages(term) {
   const json = await resp.json();
 
   const result = json.data
-    .filter((entry) => (entry.description + entry.title).toLowerCase()
+    .filter((entry) => `${entry.description} ${entry.title}`.toLowerCase()
       .includes(term.toLowerCase()));
 
   const div = document.createElement('div');
@@ -20,7 +20,7 @@ async function searchPages(term) {
   summary.innerHTML = `${result.length} result${result.length === 1 ? '' : 's'} found for "<strong>${term}</strong>"`;
   div.appendChild(summary);
 
-  const firstPage = result.slice(0, 3);
+  const firstPage = result.slice(0, 10);
 
   firstPage.forEach((line) => {
     const res = document.createElement('div');
