@@ -47,7 +47,7 @@
   border-bottom: 1px solid var(--transparent-grey-light-color);
   color: var(--link-color);
   font-family: var(--body-font-family);
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: var(--font-weight-medium);
   padding-top: 32px;
   padding-bottom: 64px;
@@ -59,9 +59,24 @@
   padding-bottom: 28px;
 }
 
+.search-results .search-result h3 {
+  line-height: 1.6rem;
+  padding-bottom: 12px;
+}
+
 .search-results .search-result a {
   color: var(--secondary);
   font-family: var(--body-font-family);
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: var(--font-weight-medium);
+}
+
+@media (width >= 62rem) {
+  .search-results .search-summary {
+    font-size: 1.5rem;
+  }
+
+  .search-results .search-result a {
+    font-size: 1.5rem;
+  }
 }
