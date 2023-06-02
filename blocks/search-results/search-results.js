@@ -5,6 +5,23 @@ function getSearchParams() {
   return searchTerm;
 }
 
+/**
+ * Sets a value in a HTML Element which highlights the search term
+ * using <strong> tags.
+ * @param {HTMLElement} el The element to set it in
+ * @param {string} value The value to set in it
+ * @param {string} term The search term
+ */
+function setResultValue(el, value, term) {
+  // Put the description in as text and then read out the HTML
+  // and modify the HTML to add the strong tag. This to avoid
+  // injection of tags from the index.
+
+  el.innerText = value;
+  const txtHTML = el.innerHTML;
+  el.innerHTML = txtHTML.replaceAll(term, `<strong>${term}</strong>`);
+}
+
 async function searchPages(term) {
   const resp = await fetch(`${window.location.origin}/query-index.json`);
   const json = await resp.json();
@@ -27,12 +44,14 @@ async function searchPages(term) {
     res.classList.add('search-result');
     const header = document.createElement('h3');
     const link = document.createElement('a');
-    link.innerText = line.title;
+    setResultValue(link, line.title, term);
     link.href = line.path;
+
     header.appendChild(link);
     res.appendChild(header);
     const para = document.createElement('p');
-    para.innerText = line.description;
+    setResultValue(para, line.description, term);
+
     res.appendChild(para);
     div.appendChild(res);
   });
