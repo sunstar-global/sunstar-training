@@ -1,4 +1,5 @@
 .search-results-container h2 {
+  font-size: var(--heading-font-size-l);
   margin-bottom: 20px;
 }
 
@@ -47,7 +48,7 @@
   border-bottom: 1px solid var(--transparent-grey-light-color);
   color: var(--link-color);
   font-family: var(--body-font-family);
-  font-size: 1.25rem;
+  font-size: var(--heading-font-size-s);
   font-weight: var(--font-weight-medium);
   padding-top: 32px;
   padding-bottom: 64px;
@@ -67,16 +68,20 @@
 .search-results .search-result a {
   color: var(--secondary);
   font-family: var(--body-font-family);
-  font-size: 1.25rem;
+  font-size: var(--heading-font-size-s);
   font-weight: var(--font-weight-medium);
 }
 
 @media (width >= 62rem) {
+  .search-results-container h2 {
+    font-size: var(--heading-font-size-xl);
+  }
+
   .search-results .search-summary {
-    font-size: 1.5rem;
+    font-size: var(--heading-font-size-m);
   }
 
   .search-results .search-result a {
-    font-size: 1.5rem;
+    font-size: var(--heading-font-size-m);
   }
 }
