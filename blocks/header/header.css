@@ -156,7 +156,7 @@ header form.search input.search-text::placeholder {
   color: var(--transparent-grey-color);
 }
 
-header form.search .search-icon {
+header form.search button.search-icon {
   background-color: var(--background-color);
   background-image: url('/icons/search.svg');
   background-size: contain;

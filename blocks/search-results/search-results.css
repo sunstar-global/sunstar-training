@@ -29,7 +29,7 @@
   color: var(--transparent-grey-color);
 }
 
-.search-results .search-icon {
+.search-results button.search-icon {
   align-self: center;
   background-color: var(--background-color);
   background-image: url('/icons/search.svg');
