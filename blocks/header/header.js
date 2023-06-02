@@ -17,8 +17,8 @@ function decorateTopNav(nav) {
 function decorateMiddleNav() {
 }
 
-function decorateBottomNav() {
-
+function decorateBottomNav(nav) {
+  nav.append(getSearchWidget());
 }
 
 const navDecorators = { 'nav-top': decorateTopNav, 'nav-middle': decorateMiddleNav, 'nav-bottom': decorateBottomNav };
@@ -44,10 +44,6 @@ export default async function decorate(block) {
       nav.classList.add(navClass);
       nav.innerHTML = fetchedNav.querySelectorAll(':scope>div')[idx].innerHTML;
       navDecorators[navClass](nav);
-
-      if (navClass === 'nav-bottom') {
-        nav.append(getSearchWidget());
-      }
 
       block.appendChild(nav);
     });
