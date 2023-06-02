@@ -1,4 +1,4 @@
-import { getSearchWidget, getDecodedString } from '../../scripts/scripts.js';
+import { getSearchWidget } from '../../scripts/scripts.js';
 
 function getSearchParams() {
   const searchTerm = new URLSearchParams(window.location.search).get('s');
@@ -27,12 +27,12 @@ async function searchPages(term) {
     res.classList.add('search-result');
     const header = document.createElement('h3');
     const link = document.createElement('a');
-    link.innerText = getDecodedString(line.title);
+    link.innerText = line.title;
     link.href = line.path;
     header.appendChild(link);
     res.appendChild(header);
     const para = document.createElement('p');
-    para.innerText = getDecodedString(line.description);
+    para.innerText = line.description;
     res.appendChild(para);
     div.appendChild(res);
   });

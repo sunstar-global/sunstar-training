@@ -41,11 +41,12 @@
 
 .search-results .search-summary {
   border-bottom: 1px solid var(--transparent-grey-light-color);
+  color: var(--link-color);
   font-family: var(--body-font-family);
   font-size: 1.5rem;
   font-weight: var(--font-weight-medium);
-  padding-top: 50px;
-  padding-bottom: 60px;
+  padding-top: 32px;
+  padding-bottom: 64px;
 }
 
 .search-results .search-result {
