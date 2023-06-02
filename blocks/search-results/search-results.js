@@ -19,7 +19,9 @@ function setResultValue(el, value, term) {
 
   el.innerText = value;
   const txtHTML = el.innerHTML;
-  el.innerHTML = txtHTML.replaceAll(term, `<strong>${term}</strong>`);
+
+  const regex = new RegExp(`(${term})`, 'ig');
+  el.innerHTML = txtHTML.replaceAll(regex, '<strong>$1</strong>');
 }
 
 async function searchPages(term) {
