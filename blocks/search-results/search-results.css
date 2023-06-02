@@ -7,7 +7,6 @@
   display: flex;
   border-bottom: 1px solid var(--transparent-grey-light-color);
   padding: 0;
-  width: 476px;
 }
 
 .search-results input.search-text {
@@ -70,6 +69,12 @@
   font-family: var(--body-font-family);
   font-size: var(--heading-font-size-s);
   font-weight: var(--font-weight-medium);
+}
+
+@media (width >= 30rem) {
+  .search-results form.search > div {
+    width: 30rem;
+  }
 }
 
 @media (width >= 62rem) {
