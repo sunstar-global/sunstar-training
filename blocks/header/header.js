@@ -1,4 +1,4 @@
-import { getMetadata, decorateIcons } from '../../scripts/lib-franklin.js';
+import { getMetadata } from '../../scripts/lib-franklin.js';
 import { getSearchWidget } from '../../scripts/scripts.js';
 
 function decorateSocial(social) {
@@ -18,6 +18,10 @@ function decorateMiddleNav() {
 }
 
 function decorateBottomNav(nav) {
+  const hamburger = document.createElement('span');
+  hamburger.classList.add('mobile-icon');
+  hamburger.innerHTML = Array.from({ length: 4 }, () => '<i></i>').join(' ');
+  nav.prepend(hamburger);
   nav.append(getSearchWidget());
 }
 
@@ -55,7 +59,5 @@ export default async function decorate(block) {
         document.querySelector('header').classList.remove('fixed');
       }
     });
-
-    decorateIcons(block);
   }
 }
