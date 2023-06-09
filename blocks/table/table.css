@@ -1,0 +1,36 @@
+main .table>table {
+    /* table-layout: fixed; */
+    margin-bottom: 2rem;
+    border-collapse: collapse;
+}
+
+main .table th,
+main .table td {
+    font-size: 0.88rem;
+    line-height: 1.7em;
+    font-weight: 500;
+    padding: 0.5em 1em;
+    border: 1px solid rgba(60, 70, 80, 0.2);
+    text-align: center;
+    vertical-align: middle;
+}
+
+main .table th {
+    background: #F0F5F7;
+}
+
+main .table tbody td sup {
+    top: -0.5em;
+    position: relative;
+    font-size: 75%;
+    line-height: 0;
+    vertical-align: baseline;
+}
+
+@media (max-width: 991.98px) {
+    main .table>table {
+        margin-bottom: 1.5rem;
+        display: block;
+        overflow-x: auto;
+    }
+}
