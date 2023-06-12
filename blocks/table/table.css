@@ -3,15 +3,15 @@ main .table {
     grid-auto-flow: row;
     grid-template-columns: repeat(var(--col), auto);
     grid-template-rows: auto auto;
-    background-color: #fff;
+    background-color: var(--white);
     color: #444;
     margin-bottom: 2rem;
 }
 
 main .table div {
-    font-size: 0.88rem;
+    font-size: var(--body-font-size-s);
     line-height: 1.7em;
-    font-weight: 500;
+    font-weight: var(--font-weight-medium);
     padding: 0.5em 1em;
     border: 1px solid rgba(60, 70, 80, 0.2);
     text-align: center;
@@ -32,20 +32,20 @@ main .table sup {
 }
 
 @media (max-width: 62rem) {
-    main .table.responsive {
+    main .table:not(.fixed) {
         display: grid;
         grid-auto-flow: column;
         grid-template-columns: calc(100% - 50px) auto;
         grid-template-rows: repeat(var(--col), auto);
-        background-color: #fff;
+        background-color: var(--white);
         color: #444;
     }
 
-    main .table.responsive div {
+    main .table:not(.fixed) div {
         padding: 0.5em 0.6em;
     }
 
-    main .table.responsive .table-head {
+    main .table:not(.fixed) .table-head {
         text-align: left;
     }
 }
