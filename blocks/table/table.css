@@ -1,11 +1,14 @@
-main .table>table {
-    /* table-layout: fixed; */
+main .table {
+    display: inline-grid;
+    grid-auto-flow: row;
+    grid-template-columns: repeat(var(--col), auto);
+    grid-template-rows: auto auto;
+    background-color: #fff;
+    color: #444;
     margin-bottom: 2rem;
-    border-collapse: collapse;
 }
 
-main .table th,
-main .table td {
+main .table div {
     font-size: 0.88rem;
     line-height: 1.7em;
     font-weight: 500;
@@ -15,11 +18,12 @@ main .table td {
     vertical-align: middle;
 }
 
-main .table th {
+
+main .table .table-head {
     background: #F0F5F7;
 }
 
-main .table tbody td sup {
+main .table sup {
     top: -0.5em;
     position: relative;
     font-size: 75%;
@@ -27,10 +31,21 @@ main .table tbody td sup {
     vertical-align: baseline;
 }
 
-@media (max-width: 991.98px) {
-    main .table>table {
-        margin-bottom: 1.5rem;
-        display: block;
-        overflow-x: auto;
+@media (max-width: 62rem) {
+    main .table.responsive {
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-columns: calc(100% - 50px) auto;
+        grid-template-rows: repeat(var(--col), auto);
+        background-color: #fff;
+        color: #444;
+    }
+
+    main .table.responsive div {
+        padding: 0.5em 0.6em;
+    }
+
+    main .table.responsive .table-head {
+        text-align: left;
     }
 }
