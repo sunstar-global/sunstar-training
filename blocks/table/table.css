@@ -32,7 +32,7 @@ main .table.fixed div {
 
 main .table .table-head {
     text-align: left;
-    background: #F0F5F7;
+    background: var(--transparent-blue-light-color);
 }
 
 main .table sup {
