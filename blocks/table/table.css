@@ -1,7 +1,7 @@
 main .table {
     display: grid;
     grid-auto-flow: column;
-    grid-template-columns: calc(100% - 50px*var(--rowminus)) auto;
+    grid-template-columns: auto repeat(calc(var(--row) - 1), minmax(50px, max-content));
     grid-template-rows: repeat(var(--col), auto);
     grid-gap: 1px;
     margin-bottom: 2rem;
@@ -35,6 +35,10 @@ main .table .table-head {
     background: var(--transparent-blue-light-color);
 }
 
+main .table.fixed .table-head {
+    text-align: center;
+}
+
 main .table sup {
     top: -0.5em;
     position: relative;
@@ -54,6 +58,9 @@ main .table sup {
 
     main .table div {
         padding: 0.5em 1em;
+    }
+
+    main .table .table-head {
         text-align: center;
     }
 }
