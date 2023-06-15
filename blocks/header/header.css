@@ -254,6 +254,7 @@ header nav.nav-bottom .menu-level-2-item>a {
   margin-bottom: auto;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 header nav.nav-bottom .menu-level-3 {
@@ -491,6 +492,7 @@ header form.search button.search-icon {
 
   header nav.nav-bottom .menu-level-1-item>a:hover {
     color: var(--link-hover-color);
+    border-bottom: 0.25rem solid var(--primary);
   }
 
   header nav.nav-bottom .menu-level-1-item:hover>.dropdown-menu {
