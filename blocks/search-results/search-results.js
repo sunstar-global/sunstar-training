@@ -48,6 +48,29 @@ async function searchPages(term) {
     const link = document.createElement('a');
     setResultValue(link, line.title, term);
     link.href = line.path;
+    const path = line.path || '';
+    const parentPath = path && path.lastIndexOf('/') > -1 ? path.slice(0, path.lastIndexOf('/')) : '';
+
+    if (parentPath) {
+      const filtered = json.data.filter((x) => x.path === parentPath);
+
+      if (filtered && filtered.length && filtered[0].breadcrumbtitle) {
+        const p = document.createElement('p');
+        p.classList.add('parent-detail');
+        const span = document.createElement('span');
+        span.textContent = filtered[0].breadcrumbtitle;
+        p.appendChild(span);
+
+        if (filtered[0].newsdate) {
+          const dateSpan = document.createElement('span');
+          dateSpan.textContent = filtered[0].newsdate;
+          span.classList.add('news-date');
+          p.appendChild(dateSpan);
+        }
+
+        res.appendChild(p);
+      }
+    }
 
     header.appendChild(link);
     res.appendChild(header);
