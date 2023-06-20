@@ -378,6 +378,10 @@ main img {
   }
 }
 
+.section.centered div {
+  align-items: center;
+  text-align: center;
+}
 
 main .section-container {
   max-width: 100%;
