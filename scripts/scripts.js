@@ -67,11 +67,11 @@ export function decorateVideoLinks(element = document) {
 // Function to get the current window size
 export function getWindowSize() {
   const windowWidth = window.innerWidth
-  || document.documentElement.clientWidth
-  || document.body.clientWidth;
+    || document.documentElement.clientWidth
+    || document.body.clientWidth;
   const windowHeight = window.innerHeight
-  || document.documentElement.clientHeight
-  || document.body.clientHeight;
+    || document.documentElement.clientHeight
+    || document.body.clientHeight;
   return {
     width: windowWidth,
     height: windowHeight,
@@ -246,6 +246,18 @@ function getSearchWidgetHTML(initialVal, searchbox) {
 
 export function getSearchWidget(initialVal, searchbox) {
   return htmlToElement(getSearchWidgetHTML(initialVal, searchbox));
+}
+
+/*
+  * Returns the environment type based on the hostname.
+*/
+export function getEnvType(hostname) {
+  const fqdnToEnvType = {
+    'sunstar-engineering.com': 'live',
+    'main--sunstar-engineering--hlxsites.hlx.page': 'preview',
+    'main--sunstar-engineering--hlxsites.hlx.live': 'live',
+  };
+  return fqdnToEnvType[hostname] || 'dev';
 }
 
 export async function loadFragment(path) {
