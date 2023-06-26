@@ -554,7 +554,7 @@ header .lang-picker-item>a:hover {
 
   header nav.nav-bottom .menu-level-1-item>a:hover {
     color: var(--link-hover-color);
-    border-bottom: 0.25rem solid var(--primary);
+    border-bottom: 0.25rem solid var(--secondary);
   }
 
   header nav.nav-bottom .menu-level-1-item:hover>.dropdown-menu {
