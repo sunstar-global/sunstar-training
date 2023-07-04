@@ -70,6 +70,7 @@
   --heading-font-size-l: 32px;
   --heading-font-size-m: 24px;
   --heading-font-size-s: 20px;
+  --heading-font-size-ms: 20px;
   --heading-font-size-xs: 18px;
   --heading-font-size-xxs: 14px;
   --heading-font-size-xxxs: 12px;
@@ -163,7 +164,9 @@ h2 {
 }
 
 h3 {
-  font-size: var(--heading-font-size-l)
+  font-size: var(--heading-font-size-ms);
+  font-weight: 500;
+  line-height: 1.3em;
 }
 
 h4 {
@@ -386,6 +389,9 @@ main img {
   }
 }
 
+/* START Section Styles START */
+
+/* section - centered */
 .section.centered div {
   align-items: center;
   text-align: center;
@@ -397,12 +403,51 @@ main .section-container {
   padding-right: 0
 }
 
+/* section - full-width */
 main .section.full-width>.section-container {
   max-width: 100%;
   padding-left: 0;
   padding-right: 0;
 }
 
+/* section - spaced */
+main .section.spaced {
+  padding-top: 5rem;
+}
+
+main .section.spaced h2 {
+  font-size: 2rem;
+}
+
+main .section.spaced h3 {
+  margin: 3rem 0;
+}
+
+main .section.spaced p {
+  margin-bottom: 2rem;
+}
+
+main .section.spaced ul {
+  margin-bottom: 4rem;
+}
+
+main .section.spaced li {
+  margin-bottom: 1.5rem;
+  line-height: 1;
+}
+
+main .section.spaced a {
+  color: var(--secondary);
+  text-decoration: none;
+  background-color: transparent;
+}
+
+main .section.spaced>.section-container {
+  max-width: 100%;
+  padding: 0 1rem;
+}
+
+/* section - contact-us */
 main .section.contact-us>.section-container {
   padding: 5rem 0;
   background-color: var(--transparent-blue-light-color);
@@ -417,6 +462,9 @@ main .section.contact-us p.button-container {
   margin-top: 2rem;
 }
 
+
+/* END Section Styles END */
+
 main .section.margin-bottom>.section-container {
   margin-bottom: 5rem;
 }
@@ -424,7 +472,7 @@ main .section.margin-bottom>.section-container {
 @media (min-width:62rem) {
   h2 {
     font-size: var(--heading-font-size-xl);
-    font-weight: 300;
+    font-weight: var(--font-weight-small);
     margin: 0 auto 3rem;
   }
 
@@ -432,7 +480,7 @@ main .section.margin-bottom>.section-container {
     font-size: var(--heading-font-size-xxs);
   }
 
-
+  /* START Section Styles START */
   main .section-container {
     max-width: calc(872px + 32px);
     margin-inline: auto;
@@ -440,10 +488,24 @@ main .section.margin-bottom>.section-container {
     padding-right: 16px
   }
 
-  main .section.margin-bottom>.section-container {
-    margin-bottom: 7.5rem;
+  /* section - spaced */
+  main .section.spaced h2 {
+    font-size: var(--heading-font-size-xl);
   }
 
+
+  /* section - narrow */
+  main .section.narrow {
+    position: relative;
+    width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 54.5rem;
+  }
+
+  /* section - contact-us */
   main .section.contact-us h2 {
     margin-top: 1rem;
   }
@@ -451,6 +513,12 @@ main .section.margin-bottom>.section-container {
   main .section.contact-us p.button-container {
     margin-top: 1.5rem;
   }
+
+  /* END Section Styles END */
+  main .section.margin-bottom>.section-container {
+    margin-bottom: 7.5rem;
+  }
+
 }
 
 @media (min-width:77rem) {
