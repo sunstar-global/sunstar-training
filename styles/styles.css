@@ -410,6 +410,106 @@ main .section.full-width>.section-container {
   padding-right: 0;
 }
 
+/* START Brands Top Section START */
+main .section.brands-top {
+  padding-top: 3rem;
+}
+
+main .section.brands-top h2 {
+  margin-bottom: 2rem;
+  font-size: var(--heading-font-size-m);
+  line-height: 1.3em;
+  font-weight: var(--font-weight-medium);
+
+}
+
+main .section.brands-top h6 {
+  color: #007CADB3;
+  font-size: var(--font-size-xsmall);
+}
+
+main .section.brands-top p {
+  text-align: center;
+  max-width: 45rem;
+  display: inline-block;
+  line-height: 1.5;
+  margin-bottom: 3rem;
+  letter-spacing: 0.1px;
+}
+
+main .section.brands-top > .section-container {
+  padding: 0 1rem;
+}
+
+/* END Brands Top Section END */
+
+/* START Brand Description Section START */
+main .section.brand-description {
+  margin-bottom: 7.5rem;
+  padding: 0 1rem;
+}
+
+main .section.brand-description em {
+  font-size: var(--font-size-small);
+  color: #3C4650B3;
+  font-style: normal;
+}
+
+
+main .section.brand-description .icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-bottom: 0.3125rem;
+  margin-left: 0.3125rem;
+}
+
+main .section.brand-description img {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+}
+
+main .section.brand-description p:first-of-type img {
+  max-width: 12.5rem;
+  zoom: 1;
+}
+
+main .section.brand-description h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: var(--heading-font-size-m);
+  line-height: 1.3em;
+  font-weight: var(--font-weight-medium);
+}
+
+main .section.brand-description h3 {
+  margin-top: 3.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: var(--font-weight-bold);
+  font-size: var(--heading-font-size-m);
+  line-height: 1.3em;
+  color: var(--link-color);
+}
+
+main .section.brand-description p {
+  margin-bottom: 1.5rem;
+}
+
+main .section.brand-description .button-container {
+  margin-bottom: 1.5rem;
+}
+
+main .section.brand-description a.button.primary {
+  display: inline-block;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--body-font-size-m);
+  line-height: 1.5em;
+  background-color: unset;
+  color: var(--secondary);
+}
+
+/* END Brand Description Section END */
+
 /* section - spaced */
 main .section.spaced {
   padding-top: 5rem;
@@ -479,6 +579,46 @@ main .section.margin-bottom>.section-container {
   h6 {
     font-size: var(--heading-font-size-xxs);
   }
+
+
+  /* START Brands Top Section START */
+
+  main .section.brands-top h6 {
+    font-size: var(--font-size-small);
+  }
+
+  main .section.brands-top h2 {
+    font-weight: var(--font-weight-small);
+    font-size: 2.25rem;
+  }
+
+  /* END Brands Top Section END */
+
+  /* START Brand Description Section START */
+
+  main .section.brand-description {
+    width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 54.5rem;
+  }
+
+  main .section.brand-description img,
+  main .section.brand-description p:first-of-type img {
+    zoom: 0.5;
+    max-width: unset;
+  }
+
+
+  main .section.brand-description h2 {
+    font-weight: var(--font-weight-small);
+    font-size: 2.25rem;
+  }
+
+
+  /* END Brand Description Section END */
 
   /* START Section Styles START */
   main .section-container {
