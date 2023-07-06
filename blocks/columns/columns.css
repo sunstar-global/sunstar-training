@@ -72,6 +72,59 @@
   margin: 0 1rem;
 }
 
+.columns.top-down {
+  margin: 40px 0 0;
+}
+
+.columns.top-down > div {
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.columns.top-down.columns-2-cols {
+  max-width: 790px;
+}
+
+.columns.top-down.columns-3-cols {
+  max-width: 1200px;
+}
+
+.columns.plain-links > div > div,
+.columns.plain-links > div > div > p {
+    font-size: var(--body-font-size-s);
+    margin-left: 0;
+}
+
+.columns.plain-links > div > div > p:last-of-type {
+  margin-bottom: 0;
+}
+
+.columns.plain-links > div h6 {
+  color: var(--link-color);
+  border-bottom: 1px var(--transparent-grey-light-color) solid;
+  font-size: 1rem;
+  line-height: 1.5;
+  padding-bottom: 0.5rem;
+  text-transform: unset;
+}
+
+.columns.plain-links > div li {
+  height: 2.5rem;
+  list-style: none;
+}
+
+.columns.plain-links > div a {
+  font-size: var(--body-font-size-s);
+  color: var(--secondary);
+}
+
+.columns.plain-links a.button.primary {
+  display: inline-block;
+  font-weight: var(--font-weight-medium);
+  background-color: unset;
+  color: var(--secondary);
+}
+
 @media (min-width: 62rem) {
   .columns {
     margin-bottom: 7.5rem;
@@ -109,4 +162,8 @@
     flex-basis: 50%;
   }
 
+  .columns.plain-links > div a {
+    font-size: var(--body-font-size-m);
+    line-height: 1.2;
+  }
 }
