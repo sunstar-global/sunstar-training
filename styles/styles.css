@@ -533,6 +533,7 @@ main .section.spaced p {
 
 main .section.spaced ul {
   margin-bottom: 4rem;
+  padding-inline-start: 19px;
 }
 
 main .section.spaced li {
