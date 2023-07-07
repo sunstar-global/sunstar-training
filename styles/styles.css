@@ -299,6 +299,10 @@ button.secondary {
   color: var(--text-color)
 }
 
+main a:hover {
+  text-decoration: underline;
+}
+
 main input {
   font-size: 1.25rem;
   width: 100%;
