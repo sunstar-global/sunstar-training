@@ -42,6 +42,7 @@
   --overlay-background-color: #eee;
   --highlight-background-color: #ccc;
   --text-color: #3c4350;
+  --text-h2-underline-color: #3C46501E;
   --blue-light-color: #90BFDC;
   --blue-deep-color: #044764;
   --tab-content-color: var(--blue-light-color);
@@ -83,6 +84,7 @@
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-bold: 700;
+  --font-weight-bolder: 900;
 
   /* Font Style */
   --font-style-normal: normal;
@@ -577,7 +579,7 @@ main .section.contacts-and-links div.columns.top-down {
   margin-bottom: 2rem;
 }
 
-main .section.contacts-and-links .columns > div > div.non-singleton-img {
+main .section.contacts-and-links .columns>div>div.non-singleton-img {
   margin-bottom: 2rem;
 }
 
@@ -590,16 +592,37 @@ main .section.contact-us>.section-container {
 
 main .section.contact-us h2 {
   margin-bottom: 0.5rem;
+  color: var(--primary);
 }
 
 main .section.contact-us p.button-container {
   margin-top: 2rem;
 }
 
+main .section.contact-us .button-container a:hover {
+  text-decoration: none;
+}
+
+/* section - about-us */
+main .section.about-us>.section-container {
+  text-align: center;
+}
+
+main .section.about-us h2 {
+  color: var(--primary);
+}
+
+main .section.about-us p.button-container {
+  margin-top: 2rem;
+}
+
+main .section.about-us .button-container a:hover {
+  text-decoration: none;
+}
 
 /* END Section Styles END */
 
-main .section.margin-bottom>.section-container {
+main .section.margin-bottom {
   margin-bottom: 5rem;
 }
 
@@ -697,11 +720,15 @@ main .section.margin-bottom>.section-container {
     margin-top: 1.5rem;
   }
 
-  /* END Section Styles END */
-  main .section.margin-bottom>.section-container {
-    margin-bottom: 7.5rem;
+  /* section - about-us */
+  main .section.about-us p.button-container {
+    margin-top: 1rem;
   }
 
+  /* END Section Styles END */
+  main .section.margin-bottom {
+    margin-bottom: 7.5rem;
+  }
 }
 
 @media (min-width:77rem) {
