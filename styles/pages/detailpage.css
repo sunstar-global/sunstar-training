@@ -4,11 +4,11 @@ body.detailpage .main-content h2 {
     border-bottom: 4px solid var(--text-h2-underline-color);
     padding-bottom: 1rem;
     margin-bottom: 2rem;
+    font-size: 1.7rem;
 }
 
 body.detailpage .main-content h3 {
     margin-bottom: 1.5rem;
-    font-size: 1.25rem;
     line-height: 1.3em;
     color: var(--text-color);
     font-weight: 500;
@@ -61,6 +61,11 @@ body.detailpage .main-content .columns ul {
     body.detailpage .main-content h2 {
         padding-bottom: 1.5rem;
         margin-bottom: 3rem;
+        font-size: var(--heading-font-size-xmxl);
+    }
+
+    body.detailpage .main-content h3 {
+        margin-bottom: 2rem;
     }
 
     body.detailpage .main-content ul {
