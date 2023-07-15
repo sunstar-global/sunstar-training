@@ -358,7 +358,45 @@ function createImgVariantsBlockFromSection(document) {
   });
 }
 
+/**
+ * Change News Anchor tags textcontent and href
+ * @param {*} document
+ */
+function changeAnchorTags(document) {
+  const aTags = document.querySelectorAll('.news-details a');
+  const homepage = 'https://www.sunstar-engineering.com';
+  const basePath = '/';
+
+  aTags.forEach((aTag) => {
+    if (aTag.textContent.startsWith(basePath)) {
+      aTag.textContent = homepage + (aTag.textContent === basePath ? '' : aTag.textContent);
+    }
+
+    if (aTag.href.startsWith(basePath)) {
+      aTag.href = homepage + (aTag.href === basePath ? '' : aTag.href);
+    } else {
+      // params present in href starts with /
+      const urlObj = new URL(aTag.href);
+      const { searchParams } = urlObj;
+      const mp = {};
+
+      searchParams.forEach((value, name) => {
+        if (value.startsWith(basePath)) {
+          mp[name] = homepage + value;
+        }
+      });
+
+      Object.keys(mp).forEach((x) => {
+        urlObj.searchParams.set(x, mp[x]);
+      });
+
+      aTag.href = urlObj.href;
+    }
+  });
+}
+
 function changeNewsSocial(document) {
+  changeAnchorTags(document);
   const socialShare = document.querySelector('.social-share');
   if (socialShare) {
     const socialLinks = socialShare.querySelectorAll('a');
