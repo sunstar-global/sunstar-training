@@ -24,7 +24,6 @@
 .carousel .text {
   color: var(--white);
   display: flex;
-  height: 22.5rem;
 }
 
 .carousel img {
