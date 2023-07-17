@@ -27,8 +27,9 @@ export async function setLatestNewsArticle(block, placeholders) {
   }
 
   const article = result[0];
+  const newsTitle = article.pagename || article.title || article.breadcrumbtitle;
 
-  setNewsBanner(block, placeholders.newstext, article.path, article.title, article.lastModified);
+  setNewsBanner(block, placeholders.newstext, article.path, newsTitle, article.lastModified);
 }
 
 export default async function decorate(block) {
