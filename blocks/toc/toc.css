@@ -26,6 +26,7 @@ main .toc.block ul {
     background: var(--white);
     margin: 0;
     list-style: none;
+    line-height: 1.5rem;
 }
 
 main .toc.block ul li {
