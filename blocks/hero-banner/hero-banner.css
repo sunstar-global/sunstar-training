@@ -121,7 +121,9 @@
         position: absolute;
     }
 
-    .hero-banner video,img {
+    .hero-banner video,
+    .hero-banner img
+    {
         min-height: 100%;
     }
 
