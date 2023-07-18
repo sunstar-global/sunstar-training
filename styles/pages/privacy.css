@@ -6,13 +6,19 @@
   margin-bottom: 1.5rem;
 }
 
+.privacy main .section.spaced p {
+  line-height: 1.5rem;
+}
+
 .privacy main .section.spaced h2 {
+  font-size: 2.25rem;
   margin-top: 4rem;
 }
 
 .privacy main .section.spaced h3 {
-    margin-top: 0;
-    color: var(--primary)
+  font-size: 1.25rem;
+  margin-top: 0;
+  color: var(--primary)
 }
 
 .privacy main .section.spaced p+h3 {
@@ -50,7 +56,7 @@
 .privacy main .section.spaced li ul {
   margin-bottom: 0;
 }
-  
+
 .privacy main .section.spaced li li {
   margin-top: 0;
   margin-bottom: 1rem;
