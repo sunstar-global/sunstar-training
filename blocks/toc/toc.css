@@ -53,6 +53,7 @@ main .toc.block ul li a {
 main .toc-container .section-container .main-content {
     width: 100%;
     padding: 0 1rem;
+    box-sizing: border-box;
 }
 
 main .toc-container .section-container .toc.flat ul {

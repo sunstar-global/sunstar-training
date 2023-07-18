@@ -3,6 +3,10 @@ main .table.block h3.table-title {
     margin-bottom: 0.5rem;
 }
 
+main .table.block .table-title h4 {
+    color: var(--gray-dark);
+}
+
 main .table .table-item {
     display: grid;
     grid-auto-flow: column;
@@ -24,8 +28,58 @@ main .table .table-item div {
     background-color: var(--white);
 }
 
-main .section .table.block p {
+main .section .table.block p.table-annotation {
+    margin-bottom: 1.5rem;
+}
+
+main .section .table.inner-table img {
+    vertical-align: middle;
+    border-style: none;
+    width: 9.375rem;
+    max-width: unset;
+}
+
+main .table.inner-table table {
+    background-color: var(--white);
+    border-collapse: collapse;
+    overflow-x: auto;
+    display: block;
+    margin-bottom: 1.5rem;
+}
+
+main .table.inner-table .table-item {
+    display: unset;
+    margin-bottom: unset;
+    border: unset;
+}
+
+main .table.inner-table .table-item div {
+    padding: unset;
+}
+
+main .table.inner-table table tbody tr:first-of-type {
+    background: var(--transparent-blue-light-color);
+}
+
+main .table.inner-table table td {
+    font-size: 0.88rem;
+    line-height: 1.7em;
+    text-align: center;
+    padding: 0.5em 1em;
+    border: 1px solid var(--transparent-grey-light-color);
+    vertical-align: middle;
+}
+
+main .table.inner-table table td p {
+    font-size: 0.88rem;
+    line-height: 1.7em;
     margin-bottom: 0;
+    /* stylelint-disable-next-line property-no-vendor-prefix */
+    -webkit-text-size-adjust: none;
+}
+
+main .table.inner-table.lastline-leftalign table tr:last-of-type td {
+    text-align: left;
 }
 
 main .table.fixed .table-item {
@@ -59,7 +113,7 @@ main .table .table-item sup {
 main .multiple-table {
     display: flex;
     flex-flow: column nowrap;
-    margin-bottom: 28px;
+    margin-bottom: 1.75rem;
 }
 
 main .multiple-table .flat-table {
@@ -70,12 +124,10 @@ main .multiple-table .flat-table {
     overflow-wrap: break-word;
 }
 
-
 @media (min-width: 62rem) {
     main .multiple-table {
         display: flex;
         flex-flow: row nowrap;
-        margin-bottom: 28px;
     }
 
     main .table .table-item {
@@ -87,5 +139,9 @@ main .multiple-table .flat-table {
 
     main .table .table-item .table-head {
         text-align: center;
+    }
+
+    main .section .table.block p.table-annotation {
+        margin-bottom: 2rem;
     }
 }
