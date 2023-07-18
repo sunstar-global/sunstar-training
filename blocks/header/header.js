@@ -11,10 +11,23 @@ function decorateLangPicker(langPicker) {
   let langName = 'English'; // default to English
   langPicker.classList.add('lang-picker');
   langPicker.innerHTML = langPicker.innerHTML.replace(/\[languages\]/, '');
+
+  const currentLang = getLanguage();
+  // Get the current path without the language prefix
+  const currPath = currentLang === 'en' ? window.location.pathname : window.location.pathname.replace(`/${currentLang}/`, '/');
+
   langPicker.querySelectorAll(':scope>ul>li').forEach((li) => {
     li.classList.add('lang-picker-item');
+
+    // Update the language links to point to the current path
+    let langRoot = li.querySelector('a').getAttribute('href');
+    langRoot = langRoot.endsWith('/') ? langRoot.slice(0, -1) : langRoot;
+    const langLink = langRoot + currPath + window.location.search;
+    li.querySelector('a').setAttribute('href', langLink);
+
+    /* Remove the current language from the list */
     if (li.querySelector('a').getAttribute('href') === `/${lang}/`
-    || li.querySelector('a').getAttribute('href') === `/${lang}`) {
+      || li.querySelector('a').getAttribute('href') === `/${lang}`) {
       langName = li.querySelector('a').innerHTML;
       li.remove();
     }
