@@ -11,12 +11,14 @@
 }
 
 .privacy main .section.spaced h2 {
-  font-size: 2.25rem;
+  font-size: var(--heading-font-size-mxl);
+  font-weight: var(--font-weight-bold);
   margin-top: 4rem;
 }
 
 .privacy main .section.spaced h3 {
-  font-size: 1.25rem;
+  font-size: var(--heading-font-size-s);
+  font-weight: var(--font-weight-bold);
   margin-top: 0;
   color: var(--primary)
 }
