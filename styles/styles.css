@@ -554,7 +554,7 @@ main .section.contacts-and-links h3 {
 
 /* section - contact-us */
 main .section.contact-us>.section-container {
-  padding: 5rem 0;
+  padding: 5rem 1rem;
   background-color: var(--transparent-blue-light-color);
   text-align: center;
 }
@@ -728,6 +728,10 @@ main .section.thank-you p {
   }
 
   /* section - contact-us */
+  main .section.contact-us>.section-container {
+    padding: 5rem 0;
+  }
+
   main .section.contact-us h2 {
     margin-top: 1rem;
   }
