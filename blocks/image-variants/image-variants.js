@@ -1,8 +1,7 @@
+import { decorateRenderHints } from '../../scripts/lib-franklin.js';
+
 export default async function decorate(block) {
-  [...block.children].forEach((row) => {
-    const colCount = row.children.length;
-    row.classList.add(`image-variants-${colCount}-cols`);
-  });
+  decorateRenderHints(block);
 
   const section = block.closest('.section');
   const addClassToParent = (name, el) => {
@@ -23,17 +22,6 @@ export default async function decorate(block) {
   section.querySelectorAll('.button-container > .button').forEach((a) => {
     a.classList.remove('primary', 'secondary', 'tertiary');
     a.classList.add('tertiary');
-  });
-
-  block.querySelectorAll('.image-variants-2-cols').forEach((row) => {
-    const typeHintEl = row.querySelector('div:first-child');
-    const typeHints = typeHintEl?.textContent
-      ?.trim()?.toLowerCase()
-      ?.split(',')?.map((type) => type.trim());
-    if (typeHints?.length) {
-      row.classList.add(...typeHints);
-      typeHintEl.remove();
-    }
   });
 
   block.querySelectorAll('.background').forEach((row) => {

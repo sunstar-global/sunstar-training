@@ -24,7 +24,7 @@
 .section.image-variants-container .section-content {
   display: flex;
   flex-direction: column;
-  margin: 0 1rem;
+  margin: 0 1rem 3rem;
 }
 
 .image-variants {
@@ -57,11 +57,6 @@
 
   .image-variants .narrow {
     display: none;
-  }
-
-  .image-variants .image-variants-2-cols.wide {
-    display: flex;
-    align-items: center;
   }
 
   .image-variants .image-variants-background-container {

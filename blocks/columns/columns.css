@@ -57,6 +57,7 @@
 
 .columns.crop-image img {
   object-fit: cover;
+  height: 100%;
 }
 
 .columns > div > .columns-img-col img {

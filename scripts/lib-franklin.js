@@ -672,6 +672,23 @@ export function getFormattedDate(date, locale = 'en') {
 }
 
 /**
+ * extract type-hints from the rows in a block
+ * @param {Element} block whose rows are to be decorates with type hints
+ */
+export function decorateRenderHints(block) {
+  [...block.children].forEach((row) => {
+    const typeHintEl = row.querySelector('div:first-child');
+    const typeHints = typeHintEl?.textContent
+      ?.trim()?.toLowerCase()
+      ?.split(',')?.map((type) => type.trim());
+    if (typeHints?.length) {
+      row.classList.add(...typeHints);
+      typeHintEl.remove();
+    }
+  });
+}
+
+/**
  * Auto initializiation.
  */
 function init() {
