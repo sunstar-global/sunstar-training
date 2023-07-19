@@ -142,6 +142,14 @@ async function loadEager(doc) {
     decorateMain(main);
     document.body.classList.add('appear');
     await waitForLCP(LCP_BLOCKS);
+    // load fonts eagerly if marked as loaded in sessionStorage
+    try {
+      if (sessionStorage.getItem('fonts-loaded')) {
+        loadCSS(`${window.hlx.codeBasePath}/styles/fonts/fonts.css`);
+      }
+    } catch (e) {
+      // do nothing
+    }
   }
 }
 
@@ -178,6 +186,16 @@ async function loadLazy(doc) {
   loadFooter(doc.querySelector('footer'));
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
+
+  // load fonts lazily and store status in sessionStorage
+  loadCSS(`${window.hlx.codeBasePath}/styles/fonts/fonts.css`, () => {
+    // sessionStorage may throw an exceptions in some contexts
+    try {
+      sessionStorage.setItem('fonts-loaded', 'true');
+    } catch (e) {
+      // do nothing
+    }
+  });
   addFavIcon(`${window.hlx.codeBasePath}/icons/favicon.ico`);
   sampleRUM('lazy');
   sampleRUM.observe(main.querySelectorAll('div[data-block-name]'));
