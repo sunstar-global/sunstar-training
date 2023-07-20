@@ -10,8 +10,12 @@
   line-height: 1.5rem;
 }
 
+.privacy main .section.spaced h1 {
+  font-size: var(--heading-font-size-l);
+}
+
 .privacy main .section.spaced h2 {
-  font-size: var(--heading-font-size-mxl);
+  font-size: var(--heading-font-size-m);
   font-weight: var(--font-weight-bold);
   margin-top: 4rem;
 }
@@ -75,4 +79,14 @@
 .privacy main .section.narrow {
   max-width: 45rem;
   margin-inline: auto;
+}
+
+@media (min-width: 62rem) {
+  .privacy main .section.spaced h1 {
+    font-size: var(--heading-font-size-xxl);
+  }
+
+  .privacy main .section.spaced h2 {
+    font-size: var(--heading-font-size-mxl);
+  }
 }
