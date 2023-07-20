@@ -188,7 +188,7 @@ async function loadLazy(doc) {
   await loadBlocks(main);
 
   const { hash } = window.location;
-  const element = hash ? doc.getElementById(hash.substring(1)) : false;
+  const element = hash ? doc.getElementById(decodeURIComponent(hash.substring(1))) : null;
   if (hash && element) element.scrollIntoView();
 
   loadHeader(doc.querySelector('header'));
