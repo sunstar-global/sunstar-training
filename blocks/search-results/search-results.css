@@ -4,6 +4,7 @@
 
 .search-results-container h2 {
   font-size: var(--heading-font-size-l);
+  margin-top: 64px;
   margin-bottom: 20px;
 }
 
@@ -15,7 +16,7 @@
 
 .search-results input.search-text {
   border: 0;
-  color: var(--link-color);
+  color: var(--light-black);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
   font-weight: var(--font-weight-medium);
@@ -49,7 +50,7 @@
 
 .search-results .search-summary {
   border-bottom: 1px solid var(--transparent-grey-light-color);
-  color: var(--link-color);
+  color: var(--light-black);
   font-family: var(--body-font-family);
   font-size: var(--heading-font-size-s);
   font-weight: var(--font-weight-medium);
