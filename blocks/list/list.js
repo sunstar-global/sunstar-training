@@ -9,6 +9,7 @@ const blockJson = {
       && entry.path !== currPath
       && (entry.path.includes(currPath.toLowerCase())))
       .sort((x, y) => y.newsdate - x.newsdate),
+    resultsPerPage: 12,
   },
 };
 
@@ -27,7 +28,7 @@ async function getResults(page, block, blockType) {
   const json = await fetchIndex('query-index', sheet);
   fixExcelFilterZeroes(json.data);
 
-  const resultsPerPage = 10;
+  const { resultsPerPage } = blockJson[blockType];
   const startResult = page * resultsPerPage;
   const result = blockJson[blockType].filerResults(json.data, currPath);
   const div = document.createElement('div');

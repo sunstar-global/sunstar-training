@@ -420,6 +420,14 @@ function changeNewsSocial(document) {
   }
 }
 
+function getFomattedDate(newsDate) {
+  const date = new Date(newsDate);
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}${month}${day}`;
+}
+
 function customImportLogic(doc) {
   removeCookiesBanner(doc);
 
@@ -512,5 +520,16 @@ export default {
   generateDocumentPath: ({
     // eslint-disable-next-line no-unused-vars
     document, url, html, params,
-  }) => WebImporter.FileUtils.sanitizePath(new URL(url).pathname.replace(/\.html$/, '').replace(/\/$/, '')),
+  }) => {
+    const { pathname } = new URL(url);
+    const { preProcessMetadata } = params;
+
+    const initialReplace = new URL(url).pathname.replace(/\.html$/, '').replace(/\/$/, '');
+
+    // Custom handling for Japanese news pages
+    if (pathname.toLowerCase().indexOf('/ja/news/') !== -1 && preProcessMetadata && preProcessMetadata.NewsDate) {
+      return WebImporter.FileUtils.sanitizePath(initialReplace.replace(/\/ja\/news\/.*$/, `/ja/news/${getFomattedDate(preProcessMetadata.NewsDate)}}`));
+    }
+    return WebImporter.FileUtils.sanitizePath(initialReplace);
+  },
 };

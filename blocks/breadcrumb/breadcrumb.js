@@ -32,7 +32,7 @@ async function createAutoBreadcrumb(block, placeholders) {
       url_path: `${pathSeparator}`,
     },
     ...pathSplit.slice(1, -1).map((part, index) => ({
-      name: pageIndex.find((page) => page.path === urlForIndex(index))?.breadcrumbtitle ?? part,
+      name: pageIndex.find((page) => page.path === urlForIndex(index))?.breadcrumbtitle ?? '',
       url_path: urlForIndex(index),
     })),
     {

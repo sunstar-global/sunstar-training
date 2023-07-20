@@ -79,7 +79,8 @@
   display: flex;
   justify-content: center;
   margin-top: 50px;
-  margin-bottom: 100px
+  margin-bottom: 100px;
+  list-style: none;
 }
 
 .search-results .pagination a {
