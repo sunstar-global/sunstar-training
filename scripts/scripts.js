@@ -139,6 +139,15 @@ async function loadEager(doc) {
   decoratePageStyles();
   const main = doc.querySelector('main');
   if (main) {
+    // load fonts eagerly if marked as loaded in sessionStorage
+    try {
+      if (sessionStorage.getItem('fonts-loaded')) {
+        loadCSS(`${window.hlx.codeBasePath}/styles/fonts/fonts.css`);
+      }
+    } catch (e) {
+      // do nothing
+    }
+
     decorateMain(main);
     document.body.classList.add('appear');
     await waitForLCP(LCP_BLOCKS);
