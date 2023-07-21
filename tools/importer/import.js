@@ -59,6 +59,28 @@ function createSectionMetadata(cfg, doc) {
   return WebImporter.DOMUtils.createTable(cells, doc);
 }
 
+function addModalFragment(document) {
+  const videoLink = document.querySelector('.btn-container > a[data-link]');
+  if (videoLink.getAttribute('data-link').includes('youtu.be')) {
+    const cells = [['Modal Fragment']];
+    const table = WebImporter.DOMUtils.createTable(cells, document);
+    document.body.append(document.createElement('hr'));
+    document.body.append(table);
+    document.body.append(document.createElement('hr'));
+  }
+}
+
+function addNewsBanner(document) {
+  const newsBanner = document.querySelector('.news-section');
+  if (newsBanner) {
+    const cells = [['News Banner']];
+    const table = WebImporter.DOMUtils.createTable(cells, document);
+    newsBanner.after(document.createElement('hr'));
+    newsBanner.after(createSectionMetadata({ Style: 'Full Width ' }, document));
+    newsBanner.replaceWith(table);
+  }
+}
+
 function addHeroHorizontalTabs(doc) {
   const heroTab = doc.querySelector('.hero-tab');
   if (!heroTab) {
@@ -297,6 +319,7 @@ function createCardsBlockFromSection(document) {
       });
       const table = WebImporter.DOMUtils.createTable(block, document);
       convertBackgroundImgsToForegroundImgs(table, document);
+      section.after(document.createElement('hr'));
       section.replaceWith(headerContainer, table);
     }
   });
@@ -442,6 +465,8 @@ function customImportLogic(doc) {
   extractEmbed(doc);
   convertBackgroundImgsToForegroundImgs(doc);
   changeNewsSocial(doc);
+  addNewsBanner(doc);
+  addModalFragment(doc);
 }
 
 export default {
@@ -501,9 +526,9 @@ export default {
       'footer',
       'noscript',
     ]);
+    customImportLogic(document);
     // create the metadata block and append it to the main element
     createMetadata(main, document, params);
-    customImportLogic(document);
 
     return main;
   },
