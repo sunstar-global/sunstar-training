@@ -58,7 +58,7 @@ footer .social a::after {
 }
 
 footer .social h1 {
-  color: var(--off-white);
+  color: var(--white);
   font-weight: var(--font-weight-bold);
   font-size: 1rem;
   margin-bottom: 1rem;
@@ -104,7 +104,7 @@ footer .copyright p:first-child {
 }
 
 footer .copyright p:last-child {
-  color: var(--off-white);
+  color: var(--white);
 }
 
 footer .copyright .icon-link-white {
@@ -122,7 +122,7 @@ footer .groups img {
 }
 
 footer .groups p:not(:first-child) {
-  color: var(--off-white);
+  color: var(--white);
   margin-bottom: 1rem;
   font-size: 0.75rem;
   line-height: 1.25rem;

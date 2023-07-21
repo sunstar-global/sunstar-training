@@ -4,6 +4,18 @@ import { getLanguage, getSearchWidget, getWindowSize } from '../../scripts/scrip
 function decorateSocial(social) {
   social.classList.add('social');
   social.innerHTML = social.innerHTML.replace(/\[social\]/, '');
+  social.querySelectorAll(':scope>ul>li').forEach((li) => {
+    const a = li.querySelector('a');
+    if (a.innerHTML.includes('linkedin')) {
+      a.setAttribute('aria-label', 'LinkedIn');
+    } else if (a.innerHTML.includes('twitter')) {
+      a.setAttribute('aria-label', 'Twitter');
+    } else if (a.innerHTML.includes('facebook')) {
+      a.setAttribute('aria-label', 'Facebook');
+    } else if (a.innerHTML.includes('youtube')) {
+      a.setAttribute('aria-label', 'YouTube');
+    }
+  });
 }
 
 function decorateLangPicker(langPicker) {

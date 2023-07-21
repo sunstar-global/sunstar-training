@@ -17,7 +17,7 @@ div.news-banner {
 
 .news-banner a:link,
 .news-banner a:visited {
-  color: var(--link-hover-color);
+  color: var(--primary);
 }
 
 .news-banner a:hover {
