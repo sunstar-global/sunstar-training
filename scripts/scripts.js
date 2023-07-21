@@ -14,7 +14,17 @@ import {
   getMetadata,
 } from './lib-franklin.js';
 
-const LCP_BLOCKS = []; // add your LCP blocks to the list
+const LCP_BLOCKS = [
+  'hero',
+  'hero-banner',
+  'hero-horizontal-tabs',
+  'hero-vertical-tabs',
+  'overlapping-content',
+]; // add your LCP blocks to the list
+const SKIP_FROM_LCP = ['breadcrumb']; // add blocks that shouldn't ever be LCP candidates to the list
+// search for at least these many blocks (post-skipping-non-candidates) to find LCP candidates
+const MAX_LCP_CANDIDATE_BLOCKS = 2;
+
 const LANGUAGES = new Set(['en', 'de', 'cn', 'th', 'id', 'it', 'ja']);
 
 let language;
@@ -150,7 +160,7 @@ async function loadEager(doc) {
 
     decorateMain(main);
     document.body.classList.add('appear');
-    await waitForLCP(LCP_BLOCKS);
+    await waitForLCP(LCP_BLOCKS, SKIP_FROM_LCP, MAX_LCP_CANDIDATE_BLOCKS);
     // load fonts eagerly if marked as loaded in sessionStorage
     try {
       if (sessionStorage.getItem('fonts-loaded')) {

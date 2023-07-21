@@ -577,23 +577,33 @@ export function decorateButtons(element) {
 /**
  * Load LCP block and/or wait for LCP in default content.
  */
-export async function waitForLCP(lcpBlocks) {
-  const block = document.querySelector('.block');
-  const hasLCPBlock = (block && lcpBlocks.includes(block.dataset.blockName));
-  if (hasLCPBlock) await loadBlock(block);
+export async function waitForLCP(lcpBlocks, skipBlocks = [], maxCandidates = 1) {
+  async function setImageToLoadEagerly(lcpCandidate) {
+    await new Promise((resolve) => {
+      if (lcpCandidate && !lcpCandidate.complete) {
+        lcpCandidate.setAttribute('loading', 'eager');
+        lcpCandidate.addEventListener('load', resolve);
+        lcpCandidate.addEventListener('error', resolve);
+      } else {
+        resolve();
+      }
+    });
+  }
+
+  const blocks = document.querySelectorAll('.block');
+  [...blocks]
+    .filter((block) => !skipBlocks.includes(block?.dataset?.blockName) && lcpBlocks.includes(block?.dataset?.blockName)) // eslint-disable-line max-len
+    .slice(0, maxCandidates)
+    .forEach(async (block) => {
+      await loadBlock(block);
+      const lcpCandidateBlockImg = block.querySelector(':scope img');
+      await setImageToLoadEagerly(lcpCandidateBlockImg);
+    });
 
   document.body.style.display = null;
 
   const lcpCandidate = document.querySelector('main img');
-  await new Promise((resolve) => {
-    if (lcpCandidate && !lcpCandidate.complete) {
-      lcpCandidate.setAttribute('loading', 'eager');
-      lcpCandidate.addEventListener('load', resolve);
-      lcpCandidate.addEventListener('error', resolve);
-    } else {
-      resolve();
-    }
-  });
+  await setImageToLoadEagerly(lcpCandidate);
 }
 
 /**
