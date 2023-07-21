@@ -1,11 +1,11 @@
-import { fetchIndex } from '../../scripts/scripts.js';
+import { fetchIndex, getLanguage } from '../../scripts/scripts.js';
 import { fetchPlaceholders } from '../../scripts/lib-franklin.js';
 
 function setNewsBanner(block, text, path, title, lm) {
   let date;
   if (lm) {
     const dt = new Date(lm * 1000);
-    date = dt.toLocaleDateString('en', { year: 'numeric', month: 'long', day: 'numeric' });
+    date = dt.toLocaleDateString(getLanguage(), { year: 'numeric', month: 'long', day: 'numeric' });
   } else {
     date = '';
   }
@@ -16,11 +16,11 @@ function setNewsBanner(block, text, path, title, lm) {
 }
 
 export async function setLatestNewsArticle(block, placeholders) {
-  const json = await fetchIndex('query-index');
+  const json = await fetchIndex('query-index', `${getLanguage()}-search`);
 
   const result = json.data
-    .filter((entry) => entry.path.startsWith('/news/'))
-    .sort((x, y) => x.lastModified - y.lastModified);
+    .filter((entry) => entry.path.includes('/news/'))
+    .sort((x, y) => y.lastModified - x.lastModified);
 
   if (!result.length) {
     return;
@@ -33,7 +33,8 @@ export async function setLatestNewsArticle(block, placeholders) {
 }
 
 export default async function decorate(block) {
-  const placeholders = await fetchPlaceholders(); // TODO need to add locale in future here
+  const lang = getLanguage();
+  const placeholders = await fetchPlaceholders(lang);
 
   // Initialize the news banner with empty content
   setNewsBanner(block, placeholders.newstext, '', '', undefined);

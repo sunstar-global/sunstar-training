@@ -54,6 +54,7 @@ describe('News Block', () => {
       await scripts.default(block); // The decorate method is the default one
     } finally {
       mf.restore();
+      window.index = {}; // Reset cache
     }
 
     const spans = block.querySelectorAll('span');
@@ -97,10 +98,11 @@ describe('News Block', () => {
       expect(spans[1].innerText).to.equal('May 30, 2023');
 
       const link = block.querySelector('a');
-      expect(link.href.endsWith('/news/a/')).to.be.true;
-      expect(link.innerText).to.equal('a text');
+      expect(link.href.endsWith('/news/b/')).to.be.true;
+      expect(link.innerText).to.equal('b text');
     } finally {
       mf.restore();
+      window.index = {}; // Reset cache
     }
   });
 });
