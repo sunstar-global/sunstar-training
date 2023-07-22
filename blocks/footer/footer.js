@@ -1,9 +1,10 @@
 import {
-  readBlockConfig,
   decorateButtons,
   decorateSections,
+  getMetadata,
   updateSectionsStatus,
 } from '../../scripts/lib-franklin.js';
+import { getLanguage } from '../../scripts/scripts.js';
 
 function wrapSocialAndNavLinks(block) {
   const socialNavWrapper = document.createElement('div');
@@ -50,11 +51,11 @@ function decorateFooter(block) {
  * @param {Element} block The footer block element
  */
 export default async function decorate(block) {
-  const cfg = readBlockConfig(block);
   block.textContent = '';
 
   // fetch footer content
-  const footerPath = cfg.footer || '/footer';
+  const footerMeta = getMetadata('footer');
+  const footerPath = footerMeta || (getLanguage() === 'en' ? '/footer' : `/${getLanguage()}/footer`);
   const resp = await fetch(`${footerPath}.plain.html`, window.location.pathname.endsWith('/footer') ? { cache: 'reload' } : {});
 
   if (resp.ok) {
