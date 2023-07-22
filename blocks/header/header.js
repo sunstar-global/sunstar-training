@@ -220,7 +220,7 @@ const navDecorators = { 'nav-top': decorateTopNav, 'nav-middle': decorateMiddleN
 export default async function decorate(block) {
   // fetch nav content
   const navMeta = getMetadata('nav');
-  const navPath = navMeta || '/nav';
+  const navPath = navMeta || (getLanguage() === 'en' ? '/nav' : `/${getLanguage()}/nav`);
   const resp = await fetch(`${navPath}.plain.html`);
 
   if (resp.ok) {
