@@ -26,6 +26,7 @@ main .section.social-container .section-container {
 
 main .section.social-container p {
   margin-bottom: 1.5rem;
+  line-height: 1.5rem;
 }
 
 .section.social-container h1 {
@@ -62,9 +63,27 @@ main .section.social-container h1 + p {
   color: var(--light-grey);
 }
 
+main .section.social-container h4 {
+  color: var(--light-black);
+}
+
 main .section.social-container .section-container ul {
   margin-bottom: 1rem;
   padding-inline-start: 2.5rem;
+}
+
+div.social-container div.news-image-caption {
+  color: #6D757C;
+  font-size: var(--body-font-size-xs);
+  text-align: center;
+  margin-top: -1.5em;
+  margin-bottom: 1em;
+}
+
+div.social-container h3 {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--heading-font-size-ms);
+  margin-bottom: 1.5rem;
 }
 
 @media (min-width: 62rem) {
@@ -105,6 +124,10 @@ main .section.social-container .section-container ul {
     font-size: var(--font-size-small);
     margin-bottom: 2rem;
   }
+
+  div.social-container h3 {
+    font-size: var(--heading-font-size-m);
+  }
 }
 
 @media (min-width:77rem) {
@@ -115,18 +138,4 @@ main .section.social-container .section-container ul {
   .block.social {
     right: -10rem;
   }
-}
-
-div.social-container div.news-image-caption {
-  color: #6D757C;
-  font-size: var(--body-font-size-xs);
-  text-align: center;
-  margin-top: -1.5em;
-  margin-bottom: 1em;
-}
-
-div.social-container h3 {
-  font-weight: var(--font-weight-bold);
-  font-size: var(--body-font-size-m);
-  margin-bottom: 0.5rem;
 }
