@@ -24,6 +24,11 @@ export default function decorate(block) {
     const content = row.querySelector('div:not(.columns-img-col)');
     if (content) {
       content.classList.add('non-singleton-img');
+      const contentWrapper = document.createElement('div');
+      contentWrapper.classList.add('non-singleton-img-wrapper');
+      const contentParent = content.parentElement;
+      contentParent.insertBefore(contentWrapper, content);
+      contentWrapper.appendChild(content);
     }
   });
 

@@ -14,9 +14,19 @@
   min-width: unset;
 }
 
+.overlapping-content a.button.tertiary {
+  background-color: unset;
+}
+
 .overlapping-content > div.crop > {
   display: flex;
   align-items: stretch;
+}
+
+.overlapping-content > div > .singleton-img-container img {
+  object-fit: contain;
+  width: 100%;
+  height: 10rem;
 }
 
 .overlapping-content > div.crop > .singleton-img-container img {
@@ -48,8 +58,8 @@
 }
 
 @media (min-width: 62rem) {
-  .overlapping-content.edge-to-edge-on-narrow .overlapping-content-item {
-    margin: auto 1rem;
+  .overlapping-content .overlapping-content-item {
+    margin: auto 0;
   }
 
   .overlapping-content > div {
@@ -80,7 +90,7 @@
     width: var(--item-width);
   }
 
-  .overlapping-content > div.crop > .singleton-img-container img {
+  .overlapping-content > div > .singleton-img-container img {
     height: 28.75rem;
   }
 
