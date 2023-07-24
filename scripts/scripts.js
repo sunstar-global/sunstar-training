@@ -54,6 +54,13 @@ export function getLanguageFromPath(pathname, resetCache = false) {
 export function getLanguage(curPath = window.location.pathname, resetCache = false) {
   return getLanguageFromPath(curPath, resetCache);
 }
+
+export function getLanguangeSpecificPath(path) {
+  const lang = getLanguage();
+  if (lang === 'en') return path;
+  return `/${lang}${path}`;
+}
+
 /**
  * Builds hero block and prepends to main in a new section.
  * @param {Element} main The container element

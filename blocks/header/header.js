@@ -1,5 +1,11 @@
 import { fetchPlaceholders, getMetadata } from '../../scripts/lib-franklin.js';
-import { getLanguage, getSearchWidget, getWindowSize } from '../../scripts/scripts.js';
+import
+{
+  getLanguage,
+  getLanguangeSpecificPath,
+  getSearchWidget,
+  getWindowSize,
+} from '../../scripts/scripts.js';
 
 function decorateSocial(social) {
   social.classList.add('social');
@@ -81,7 +87,7 @@ function buildDropDownMenu(l1menuItem, placeholders) {
   dropDownHeader.classList.add('dropdown-menu-header');
   dropDownHeader.innerHTML = `
     <h2>${l1menuItem.querySelector('a').innerHTML}</h2>
-    <a href="/global-network">
+    <a href="${getLanguangeSpecificPath('/global-network')}">
       ${placeholders['learn-about-regional-availability']}
       <span class="icon icon-ang-white"></span>
     </a>
