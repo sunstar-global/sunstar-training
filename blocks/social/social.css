@@ -84,6 +84,12 @@ main .section.social-container .section-container ul {
   margin-bottom: 1.5rem;
 }
 
+.social-container div.news-image-caption a {
+  background-color: white;
+  font-weight: normal;
+  color: var(--link-color);
+}
+
 div.social-container h3 {
   font-weight: var(--font-weight-bold);
   font-size: var(--heading-font-size-ms);
@@ -98,7 +104,7 @@ div.social-container h3 {
   .social-container div.news-image-caption {
     margin-bottom: 2rem;
   }
-  
+
   main .section.social-container {
     max-width: 54.5rem;
     padding-left: 0;
