@@ -1,0 +1,12 @@
+.link.block a.button {
+  font-size: 1rem;
+  font-weight: var(--font-weight-medium);
+  align-items: center;
+}
+
+.link.block a.button::after {
+  content: url("../../icons/link.svg");
+  position: relative;
+  left: 0.3rem;
+  top: 0.05rem;
+}
