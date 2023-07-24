@@ -12,6 +12,7 @@ function decorateSocial(social) {
   social.innerHTML = social.innerHTML.replace(/\[social\]/, '');
   social.querySelectorAll(':scope>ul>li').forEach((li) => {
     const a = li.querySelector('a');
+    a.setAttribute('target', '_blank');
     if (a.innerHTML.includes('linkedin')) {
       a.setAttribute('aria-label', 'LinkedIn');
     } else if (a.innerHTML.includes('twitter')) {
@@ -169,11 +170,46 @@ function decorateTopNav(nav) {
 function decorateMiddleNav() {
 }
 
+/* Decorate the other items - which is the items pulled from top nav */
+function decorateOtherItems(otherItemsEl) {
+  otherItemsEl.classList.add('other-items');
+
+  /* Pull items from the top nav */
+  document.querySelector('nav.nav-top').querySelectorAll(':scope>ul>li').forEach((li) => {
+    otherItemsEl.appendChild(li.cloneNode(true));
+  });
+
+  /* Make a lang picker for mobile */
+  const langPicker = document.createElement('li');
+  langPicker.classList.add('mobile-lang-picker');
+  const langPickerUl = document.createElement('ul');
+  langPicker.appendChild(langPickerUl);
+  otherItemsEl.querySelector('.lang-picker').querySelectorAll(':scope>ul>li').forEach((li) => {
+    langPickerUl.appendChild(li.cloneNode(true));
+  });
+
+  langPicker.querySelectorAll(':scope>ul>li').forEach((li) => {
+    li.classList.add('mobile-lang-picker-item');
+    li.classList.remove('lang-picker-item');
+  });
+
+  otherItemsEl.querySelector('.lang-picker').replaceWith(langPicker);
+
+  /* Move the social icons to the bottom */
+  otherItemsEl.appendChild(otherItemsEl.querySelector('.social'));
+}
+
 function decorateBottomNav(nav, placeholders) {
   addLevels(nav);
   nav.querySelectorAll(':scope .menu-level-1-item').forEach((li) => {
     buildDropDownMenu(li, placeholders);
   });
+
+  /* Add the other items to bottom nav */
+  const otherItemsEl = document.createElement('li');
+  decorateOtherItems(otherItemsEl);
+  nav.querySelector(':scope .menu-level-1').append(otherItemsEl);
+
   const hamburger = document.createElement('span');
   hamburger.classList.add('mobile-icon');
   hamburger.classList.add('visible');
