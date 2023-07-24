@@ -1,4 +1,4 @@
-import { fetchIndex, fixExcelFilterZeroes } from '../../scripts/scripts.js';
+import { fetchIndex, fixExcelFilterZeroes, getLanguangeSpecificPath } from '../../scripts/scripts.js';
 import { fetchPlaceholders } from '../../scripts/lib-franklin.js';
 
 function prependSlash(path) {
@@ -29,7 +29,7 @@ async function createAutoBreadcrumb(block, placeholders) {
   const breadcrumbs = [
     {
       name: placeholders.hometext,
-      url_path: `${pathSeparator}`,
+      url_path: `${getLanguangeSpecificPath(pathSeparator)}`,
     },
     ...pathSplit.slice(1, -1).map((part, index) => ({
       name: pageIndex.find((page) => page.path === urlForIndex(index))?.breadcrumbtitle ?? '',
