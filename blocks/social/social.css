@@ -72,12 +72,16 @@ main .section.social-container .section-container ul {
   padding-inline-start: 2.5rem;
 }
 
-div.social-container div.news-image-caption {
+.social-container img {
+  width: 100%;
+}
+
+.social-container div.news-image-caption {
   color: #6D757C;
   font-size: var(--body-font-size-xs);
   text-align: center;
   margin-top: -1.5em;
-  margin-bottom: 1em;
+  margin-bottom: 1.5rem;
 }
 
 div.social-container h3 {
@@ -91,6 +95,10 @@ div.social-container h3 {
     position: relative;
   }
 
+  .social-container div.news-image-caption {
+    margin-bottom: 2rem;
+  }
+  
   main .section.social-container {
     max-width: 54.5rem;
     padding-left: 0;
