@@ -119,3 +119,8 @@ body.detailpage .main-content .columns.reverse-detailpage > div > div {
     margin: 0;
   }
 }
+
+body.detailpage a.button.primary {
+  min-width: 112px;
+  padding: 0 1.5rem;
+}
