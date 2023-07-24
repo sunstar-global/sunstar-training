@@ -61,7 +61,7 @@ function createSectionMetadata(cfg, doc) {
 
 function addModalFragment(document) {
   const videoLink = document.querySelector('.btn-container > a[data-link]');
-  if (videoLink.getAttribute('data-link').includes('youtu.be')) {
+  if (videoLink && videoLink.getAttribute('data-link').includes('youtu.be')) {
     const cells = [['Modal Fragment']];
     const table = WebImporter.DOMUtils.createTable(cells, document);
     document.body.append(document.createElement('hr'));
