@@ -469,6 +469,19 @@ export function addPagingWidget(
   div.appendChild(nav);
 }
 
+export function wrapImgsInLinks(container) {
+  const pictures = container.querySelectorAll('p picture');
+  pictures.forEach((pic) => {
+    const parent = pic.parentNode;
+    const link = parent.nextElementSibling.querySelector('a');
+    if (link && link.href) {
+      link.parentElement.remove();
+      link.innerHTML = pic.outerHTML;
+      parent.replaceWith(link);
+    }
+  });
+}
+
 /**
  * Loads the user consent manager and dispatches a `consentmanager` window event when loaded.
  * Note: that this is currently invoked in `delayed.js` and could be moved there.
