@@ -37,7 +37,6 @@ function decorateLangPicker(langPicker) {
 
   langPicker.querySelectorAll(':scope>ul>li').forEach((li) => {
     li.classList.add('lang-picker-item');
-
     // Update the language links to point to the current path
     let langRoot = li.querySelector('a').getAttribute('href');
     langRoot = langRoot.endsWith('/') ? langRoot.slice(0, -1) : langRoot;
@@ -45,8 +44,7 @@ function decorateLangPicker(langPicker) {
     li.querySelector('a').setAttribute('href', langLink);
 
     /* Remove the current language from the list */
-    if (li.querySelector('a').getAttribute('href') === `/${lang}/`
-      || li.querySelector('a').getAttribute('href') === `/${lang}`) {
+    if (langRoot === `/${lang}`) {
       langName = li.querySelector('a').innerHTML;
       li.remove();
     }

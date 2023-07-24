@@ -1,4 +1,9 @@
-import { fetchIndex, fixExcelFilterZeroes, getLanguangeSpecificPath } from '../../scripts/scripts.js';
+import {
+  fetchIndex,
+  fixExcelFilterZeroes,
+  getLanguage,
+  getLanguangeSpecificPath,
+} from '../../scripts/scripts.js';
 import { fetchPlaceholders } from '../../scripts/lib-franklin.js';
 
 function prependSlash(path) {
@@ -54,6 +59,6 @@ async function createAutoBreadcrumb(block, placeholders) {
 }
 
 export default async function decorate(block) {
-  const placeholders = await fetchPlaceholders(); // TODO need to add locale in future here
+  const placeholders = await fetchPlaceholders(getLanguage());
   createAutoBreadcrumb(block, placeholders);
 }
