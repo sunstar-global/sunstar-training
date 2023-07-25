@@ -96,6 +96,35 @@ function getCarouselControl(block, totalLength) {
   block.appendChild(heroContainer);
 }
 
+function addSwipeCapability(block) {
+  let touchStartX = 0;
+  let touchStartY = 0;
+
+  block.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
+  });
+
+  block.addEventListener('touchend', (e) => {
+    const touchEndX = e.changedTouches[0].screenX;
+    const touchEndY = e.changedTouches[0].screenY;
+    const deltaX = touchEndX - touchStartX;
+    const deltaY = touchEndY - touchStartY;
+
+    if (Math.abs(deltaY) > Math.abs(deltaX)) {
+      return;
+    }
+
+    if (deltaX > 0) {
+      const leftSwip = block.querySelector('.swip-left');
+      leftSwip.click();
+    } else if (deltaX < 0) {
+      const rightSwip = block.querySelector('.swip-right');
+      rightSwip.click();
+    }
+  });
+}
+
 export default async function decorate(block) {
   const textBlocks = document.createElement('div');
   textBlocks.classList.add('text');
@@ -137,4 +166,5 @@ export default async function decorate(block) {
   block.appendChild(container);
   getCarouselControl(block, totalLength);
   startTimer(block, totalLength);
+  addSwipeCapability(block);
 }

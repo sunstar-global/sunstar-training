@@ -2,6 +2,7 @@
   background-color: var(--primary);
   display: block;
   overflow: hidden;
+  touch-action: manipulation;
 }
 
 .carousel .image-item {
