@@ -1,7 +1,7 @@
 import {
   fetchIndex, fixExcelFilterZeroes, getLanguage, addPagingWidget,
 } from '../../scripts/scripts.js';
-import { getFormattedDate } from '../../scripts/lib-franklin.js';
+import { getFormattedDate, fetchPlaceholders } from '../../scripts/lib-franklin.js';
 
 const blockJson = {
   news: {
@@ -10,6 +10,7 @@ const blockJson = {
       && (entry.path.includes(currPath.toLowerCase())))
       .sort((x, y) => y.newsdate - x.newsdate),
     resultsPerPage: 12,
+    titlePlaceHolderKey: 'news-page-title-text',
   },
 };
 
@@ -22,13 +23,13 @@ function setResultValue(el, value) {
   el.innerText = value;
 }
 
-async function getResults(page, block, blockType) {
+async function getResults(page, block, blockType, placeholders) {
   const currPath = window.location.pathname;
   const sheet = `${getLanguage()}-search`;
   const json = await fetchIndex('query-index', sheet);
   fixExcelFilterZeroes(json.data);
 
-  const { resultsPerPage } = blockJson[blockType];
+  const { resultsPerPage, titlePlaceHolderKey } = blockJson[blockType];
   const startResult = page * resultsPerPage;
   const result = blockJson[blockType].filerResults(json.data, currPath);
   const div = document.createElement('div');
@@ -72,12 +73,10 @@ async function getResults(page, block, blockType) {
 
   addPagingWidget(div, page, totalPages);
 
-  const title = json.data.filter((entry) => entry.path === currPath)
-    .map((x) => x.pagename || x.breadcrumbtitle || x.title);
-  if (title && title[0]) {
+  const title = placeholders[titlePlaceHolderKey];
+  if (title) {
     const h2 = document.createElement('h2');
-    const [first] = title;
-    h2.textContent = first;
+    h2.textContent = title;
     block.append(h2);
   }
 
@@ -88,6 +87,7 @@ export default async function decorate(block, curLocation = window.location) {
   const { curPage } = getParams(curLocation.search);
   const blockType = Array.from(block.classList).filter((x) => ['list', 'block'].indexOf(x) === -1)[0];
   block.innerHTML = '';
-  const results = await getResults(curPage, block, blockType);
+  const placeholders = await fetchPlaceholders(getLanguage());
+  const results = await getResults(curPage, block, blockType, placeholders);
   block.append(...results);
 }
