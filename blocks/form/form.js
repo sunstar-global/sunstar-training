@@ -338,6 +338,15 @@ async function createForm(formURL) {
   // eslint-disable-next-line no-restricted-syntax
   for (const fd of json.data) {
     fd.Type = fd.Type || 'text';
+    if (fd.Type === 'hidden') {
+      const hidden = document.createElement('input');
+      hidden.type = 'hidden';
+      hidden.id = fd.Field;
+      hidden.value = fd.Values;
+      form.append(hidden);
+      // eslint-disable-next-line no-continue
+      continue;
+    }
     const fieldWrapper = document.createElement('div');
     const style = fd.Style ? ` form-${fd.Style}` : '';
     fieldWrapper.className = `form-${fd.Type}-wrapper${style}`;
