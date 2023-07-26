@@ -1,0 +1,14 @@
+body.news main .block.table .table-item div {
+  background: var(--white);
+  text-align: unset;
+}
+
+@media (min-width: 36rem) {
+  body.news main .table .table-item div {
+    font-size: var(--body-font-size-m)
+  }
+
+  body.news main .block.table .table-item {
+    width: 100%;
+  }
+}
