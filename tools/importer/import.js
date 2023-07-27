@@ -81,6 +81,51 @@ function addNewsBanner(document) {
   }
 }
 
+function addTOC(doc) {
+  const TOC = doc.querySelector('.detail-content-sidebar');
+  if (TOC) {
+    const cells = [['TOC']];
+    const TOCList = doc.createElement('ul');
+    TOC.querySelectorAll('ul li a').forEach((a) => {
+      const li = doc.createElement('li');
+      li.textContent = a.textContent;
+      TOCList.appendChild(li);
+    });
+    cells.push([TOCList]);
+    const table = WebImporter.DOMUtils.createTable(cells, doc);
+    TOC.replaceWith(table);
+  }
+}
+
+function addHeroVerticalTabs(doc) {
+  const hero = doc.querySelector('.autoDetails-hero-section');
+  if (hero) {
+    const cells = [['Hero-Vertical-Tabs']];
+    const heroMenu = doc.createElement('ul');
+    hero.querySelectorAll('.auto-hero-menu li a').forEach((a) => {
+      a.href = 'https://main--sunstar-engineering--hlxsites.hlx.live'.concat(a.href).replace(/\/$/, '');
+      const li = doc.createElement('li');
+      if (a.classList.contains('active')) {
+        const strong = doc.createElement('strong');
+        strong.appendChild(a);
+        li.appendChild(strong);
+      } else {
+        li.appendChild(a);
+      }
+      heroMenu.appendChild(li);
+    });
+    const bgImage = hero.querySelector('.background-image.hero-bg-right');
+    const bgTitles = hero.querySelector('.auto-hero-content');
+    cells.push(['Tabs', heroMenu]);
+    cells.push(['Image', bgImage]);
+    cells.push(['Contents', bgTitles]);
+    const table = WebImporter.DOMUtils.createTable(cells, doc);
+    hero.after(doc.createElement('hr'));
+    hero.after(createSectionMetadata({ Style: 'Full-width' }, doc));
+    hero.replaceWith(table);
+  }
+}
+
 function addHeroHorizontalTabs(doc) {
   const heroTab = doc.querySelector('.hero-tab');
   if (!heroTab) {
@@ -458,6 +503,8 @@ function customImportLogic(doc) {
   addListBlock(doc);
   addCarouselItems(doc);
   addHeroHorizontalTabs(doc);
+  addHeroVerticalTabs(doc);
+  addTOC(doc);
 
   createCardsBlockFromSection(doc);
   createColumnBlockFromSection(doc);
