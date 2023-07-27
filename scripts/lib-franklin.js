@@ -667,7 +667,14 @@ export function getFormattedDate(date, locale = 'en') {
     ja: { locale: 'ja-JP', options: defaultLocaleOption },
     cn: { locale: 'zh-CN', options: defaultLocaleOption },
     id: { locale: 'id-ID', options: default2DigitDayLocaleOption },
-    de: { locale: 'de-DE', options: default2DigitDayLocaleOption },
+    de: {
+      locale: 'de-DE',
+      options: { year: 'numeric', month: 'short', day: '2-digit' },
+      format: (formattedDate) => {
+        const [day, month, year] = formattedDate.split(' ');
+        return `${day} ${month.substring(0, 3)} ${year}`;
+      },
+    },
     it: { locale: 'it-IT', options: { year: 'numeric', month: 'short', day: '2-digit' } },
     th: { locale: 'th-TH', options: default2DigitDayLocaleOption },
   };
