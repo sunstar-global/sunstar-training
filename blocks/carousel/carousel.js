@@ -103,7 +103,7 @@ function addSwipeCapability(block) {
   block.addEventListener('touchstart', (e) => {
     touchStartX = e.changedTouches[0].screenX;
     touchStartY = e.changedTouches[0].screenY;
-  });
+  }, { passive: true });
 
   block.addEventListener('touchend', (e) => {
     const touchEndX = e.changedTouches[0].screenX;
@@ -122,7 +122,7 @@ function addSwipeCapability(block) {
       const rightSwip = block.querySelector('.swip-right');
       rightSwip.click();
     }
-  });
+  }, { passive: true });
 }
 
 export default async function decorate(block) {
