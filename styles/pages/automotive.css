@@ -120,7 +120,7 @@ body.automotive .search-by-parts h2 {
     margin: 0 0 1rem;
 }
 
-body.automotive .search-by-parts .columns > div > div.non-singleton-img {
+body.automotive .search-by-parts .columns > div  div.non-singleton-img {
     margin: 2rem 1rem;
     padding: 0 1rem;
 }
