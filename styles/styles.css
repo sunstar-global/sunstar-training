@@ -264,7 +264,10 @@ a:any-link {
 /* buttons */
 a.button:any-link,
 button {
-  min-width: 160px;
+  box-sizing: border-box;
+  min-width: 10rem;
+  text-decoration: none;
+  padding: var(--button-padding);
   height: 48px;
   border: none;
   font-weight: 700;
