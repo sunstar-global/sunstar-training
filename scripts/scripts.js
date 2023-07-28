@@ -27,6 +27,9 @@ const MAX_LCP_CANDIDATE_BLOCKS = 2;
 
 const LANGUAGES = new Set(['en', 'de', 'cn', 'th', 'id', 'it', 'ja']);
 
+const MODAL_FRAGMENTS_PATH_SEGMENT = '/fragments/modals/';
+export const MODAL_FRAGMENTS_ANCHOR_SELECTOR = `a[href*="${MODAL_FRAGMENTS_PATH_SEGMENT}"]`;
+
 let language;
 
 export function getLanguageFromPath(pathname, resetCache = false) {
@@ -76,6 +79,17 @@ function buildHeroBlock(main) {
   }
 }
 
+function buildModalFragmentBlock(main) {
+  const MODAL_FRAGMENT_BLOCK_NAME = 'modal-fragment';
+  if (main.querySelector(MODAL_FRAGMENTS_ANCHOR_SELECTOR)
+  && !main.querySelector(MODAL_FRAGMENT_BLOCK_NAME)) {
+    const section = document.createElement('div');
+    const blockEl = buildBlock(MODAL_FRAGMENT_BLOCK_NAME, { elems: [] });
+    section.append(blockEl);
+    main.prepend(section);
+  }
+}
+
 /**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
@@ -83,6 +97,7 @@ function buildHeroBlock(main) {
 function buildAutoBlocks(main) {
   try {
     buildHeroBlock(main);
+    buildModalFragmentBlock(main);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);

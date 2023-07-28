@@ -1,5 +1,6 @@
 import {
   loadFragment,
+  MODAL_FRAGMENTS_ANCHOR_SELECTOR,
 } from '../../scripts/scripts.js';
 
 // This variable contains the copy of already generated wrapper
@@ -60,21 +61,17 @@ const openModal = async (a, url, block, hasSearchParam = false) => {
 };
 
 export default async function decorate(block) {
-  if (block.innerHTML === '') {
-    document.querySelectorAll('a').forEach((a) => {
-      if (a.href.includes('/fragments/modals/')) {
-        const path = new URL(a.href).pathname;
-        a.dataset.path = path;
-        const modalId = getModalId(path);
-        a.dataset.modal = modalId;
-        const url = a.href;
-        a.href = '#';
-        if (path.includes('videos')) {
-          a.classList.add('video-link');
-        }
-        const hasSearchParam = new URL(url).search.length > 0;
-        openModal(a, url, block, hasSearchParam);
-      }
-    });
-  }
+  document.querySelectorAll(MODAL_FRAGMENTS_ANCHOR_SELECTOR).forEach((a) => {
+    const path = new URL(a.href).pathname;
+    a.dataset.path = path;
+    const modalId = getModalId(path);
+    a.dataset.modal = modalId;
+    const url = a.href;
+    a.href = '#';
+    if (path.includes('videos')) {
+      a.classList.add('video-link');
+    }
+    const hasSearchParam = new URL(url).search.length > 0;
+    openModal(a, url, block, hasSearchParam);
+  });
 }
