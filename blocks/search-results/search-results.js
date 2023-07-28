@@ -85,11 +85,17 @@ async function searchPages(placeholders, term, page) {
     let childSpan;
 
     if (parentPath) {
-      const parentfiltered = json.data.filter((x) => x.path === parentPath);
-
-      if (parentfiltered && parentfiltered.length && parentfiltered[0].breadcrumbtitle) {
+      if (line.path.indexOf('/news/') !== -1) {
+        // We are directly showing placeholder text for news pages.
         parentSpan = document.createElement('span');
-        parentSpan.textContent = parentfiltered[0].breadcrumbtitle;
+        parentSpan.textContent = placeholders['news-page-title-text'];
+      } else {
+        const parentfiltered = json.data.filter((x) => x.path === parentPath);
+
+        if (parentfiltered && parentfiltered.length && parentfiltered[0].breadcrumbtitle) {
+          parentSpan = document.createElement('span');
+          parentSpan.textContent = parentfiltered[0].breadcrumbtitle;
+        }
       }
     }
 
@@ -98,8 +104,8 @@ async function searchPages(placeholders, term, page) {
 
       if (selfFiltered && selfFiltered.length && selfFiltered[0].newsdate) {
         childSpan = document.createElement('span');
-        // TODO handle localization here
-        childSpan.textContent = getFormattedDate(new Date(Number(selfFiltered[0].newsdate)));
+        // eslint-disable-next-line max-len
+        childSpan.textContent = getFormattedDate(new Date(Number(selfFiltered[0].newsdate)), getLanguage());
       }
     }
 

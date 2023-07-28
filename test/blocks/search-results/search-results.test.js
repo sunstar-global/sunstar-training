@@ -34,6 +34,7 @@ describe('Search Results', () => {
   it('Page generation', async () => {
     const placeholders = {
       resultstext_postfix: 'matches for',
+      'news-page-title-text': 'News & Articles',
     };
     window.placeholders = {
       'translation-loaded': {},
@@ -88,7 +89,7 @@ describe('Search Results', () => {
     const res1 = block.children[2];
     expect(res1.nodeName).to.equal('DIV');
     expect(res1.classList.toString()).to.equal('search-result');
-    const res1h3 = res1.children[0];
+    const res1h3 = res1.children[1];
     expect(res1h3.nodeName).to.equal('H3');
     const res1h3a = res1h3.children[0];
     expect(res1h3a.nodeName).to.equal('A');
@@ -97,7 +98,7 @@ describe('Search Results', () => {
     const res2 = block.children[3];
     expect(res2.nodeName).to.equal('DIV');
     expect(res2.classList.toString()).to.equal('search-result');
-    const res2h3 = res2.children[0];
+    const res2h3 = res2.children[1];
     expect(res2h3.nodeName).to.equal('H3');
     const res2h3a = res2h3.children[0];
     expect(res2h3a.nodeName).to.equal('A');
@@ -106,7 +107,7 @@ describe('Search Results', () => {
     const res3 = block.children[4];
     expect(res3.nodeName).to.equal('DIV');
     expect(res3.classList.toString()).to.equal('search-result');
-    const res3h3 = res3.children[0];
+    const res3h3 = res3.children[1];
     expect(res3h3.nodeName).to.equal('H3');
     const res3h3a = res3h3.children[0];
     expect(res3h3a.nodeName).to.equal('A');
@@ -121,6 +122,7 @@ describe('Search Results', () => {
       resultstext_prefix: 'の検索結果',
       resultstext_postfix: '件',
       searchtext: '検索',
+      'news-page-title-text': 'News & Articles',
     };
     window.placeholders = {
       'translation-loaded': {},
@@ -174,7 +176,7 @@ describe('Search Results', () => {
     const res1 = block.children[2];
     expect(res1.nodeName).to.equal('DIV');
     expect(res1.classList.toString()).to.equal('search-result');
-    const res1h3 = res1.children[0];
+    const res1h3 = res1.children[1];
     expect(res1h3.nodeName).to.equal('H3');
     const res1h3a = res1h3.children[0];
     expect(res1h3a.nodeName).to.equal('A');
