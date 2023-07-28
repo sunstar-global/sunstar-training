@@ -59,17 +59,6 @@ function createSectionMetadata(cfg, doc) {
   return WebImporter.DOMUtils.createTable(cells, doc);
 }
 
-function addModalFragment(document) {
-  const videoLink = document.querySelector('.btn-container > a[data-link]');
-  if (videoLink && videoLink.getAttribute('data-link').includes('youtu.be')) {
-    const cells = [['Modal Fragment']];
-    const table = WebImporter.DOMUtils.createTable(cells, document);
-    document.body.append(document.createElement('hr'));
-    document.body.append(table);
-    document.body.append(document.createElement('hr'));
-  }
-}
-
 function addNewsBanner(document) {
   const newsBanner = document.querySelector('.news-section');
   if (newsBanner) {
@@ -544,7 +533,6 @@ function customImportLogic(doc) {
   convertBackgroundImgsToForegroundImgs(doc);
   changeNewsSocial(doc);
   addNewsBanner(doc);
-  addModalFragment(doc);
 }
 
 export default {
