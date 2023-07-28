@@ -48,6 +48,7 @@
   --tab-content-color: var(--blue-light-color);
   --tab-default-color: var(--blue-deep-color);
   --transparent-grey-color: #3c465080;
+  --transparent-grey-color-2: #3C4650B2;
   --transparent-grey-light-color: #3c46501f;
   --transparent-blue-light-color: #F0F5F7FF;
   --transparent-white-color: #ffffff1e;
@@ -226,6 +227,10 @@ pre {
 
 header {
   height: var(--nav-total-height);
+}
+
+.desktop {
+  display: none;
 }
 
 .backdrop {
@@ -618,6 +623,11 @@ main .section.margin-bottom {
   margin-bottom: 5rem;
 }
 
+/* section - no margin-bottom */
+main .section.no-margin-bottom {
+  margin-bottom: 0;
+}
+
 /* section - highlight */
 main .section .section-container.highlight {
   background-color: var(--highlight-background-color);
@@ -646,8 +656,12 @@ main .section.thank-you p {
   font-weight: var(--font-weight-medium);
 }
 
-/* END Section Styles END */
+/* section - light-blue */
+main .section.light-blue {
+  background-color: var(--transparent-blue-light-color);
+}
 
+/* END Section Styles END */
 
 @media (min-width:62rem) {
   h2 {
@@ -804,6 +818,14 @@ main .section.thank-you p {
 
   body.no-scroll {
     overflow-y: auto;
+  }
+
+  .desktop {
+    display: block;
+  }
+
+  .mobile {
+    display: none;
   }
 
   .icon.icon-sunstar-logo {

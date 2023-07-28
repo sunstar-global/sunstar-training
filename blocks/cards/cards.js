@@ -1,4 +1,4 @@
-import { createOptimizedPicture } from '../../scripts/lib-franklin.js';
+import { createOptimizedPicture, decorateIcons } from '../../scripts/lib-franklin.js';
 
 export default function decorate(block) {
   /* change to ul, li */
@@ -6,9 +6,6 @@ export default function decorate(block) {
   [...block.children].forEach((row) => {
     const li = document.createElement('li');
     li.innerHTML = row.innerHTML;
-
-    // find the first <a> deep in the <li>
-    const a = li.querySelector('a');
 
     const addCardChildrenClasses = (div) => {
       if (div.children.length === 1 && (div.querySelector(':scope>picture') || div.querySelector(':scope>.icon'))) {
@@ -18,7 +15,10 @@ export default function decorate(block) {
       }
     };
 
-    if (a) {
+    // find the first <a> deep in the <li>
+    const a = li.querySelector('a');
+
+    if (a && !block.classList.contains('nolink')) {
       // if there is an <a> tag, extract it as top level so that it contains the whole card
       // this is so that the link is clickable anywhere in the card
       // we will end up with a structure like this:
@@ -55,4 +55,5 @@ export default function decorate(block) {
   }
   block.textContent = '';
   block.append(ul);
+  decorateIcons(block);
 }

@@ -162,16 +162,20 @@
   .columns.plain-links.collapse:not(.continuation) > div > div:first-child {
     margin-top: 3rem;
   }
-  
+
+  .columns.plain-links.collapse.collapse-without-top-margin:not(.continuation) > div > div:first-child {
+    margin-top: 0;
+  }
+
   .columns.plain-links.collapse > div h6::after {
-    content: '';
+    content: "";
     position: absolute;
     height: 20px;
     width: 10px;
     top: 50%;
     right: 0;
     transform: translateY(-50%) rotate(0deg);
-    background-image: url('/icons/arrow-down.svg');
+    background-image: url("/icons/arrow-down.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -260,5 +264,51 @@
 
   .columns.plain-links.collapse ul {
     display: block;
+  }
+
+  /* Column styles - Machine parts */
+  main .block.columns.machine-parts > div {
+    align-items: flex-start;
+  }
+
+  main .block.columns.machine-parts .columns-img-col {
+    flex: auto;
+    flex-basis: auto;
+  }
+
+  main .block.columns.machine-parts .non-singleton-img h1,
+  main .block.columns.machine-parts .non-singleton-img h2,
+  main .block.columns.machine-parts .non-singleton-img h3,
+  main .block.columns.machine-parts .non-singleton-img h4,
+  main .block.columns.machine-parts .non-singleton-img h5,
+  main .block.columns.machine-parts .non-singleton-img h6 {
+    text-align: left;
+    text-transform: none;
+  }
+
+  main .block.columns.machine-parts .non-singleton-img p {
+    margin-bottom: 1.5rem;
+  }
+
+  main .block.columns.machine-parts .non-singleton-img h6 {
+    font-size: var(--heading-font-size-xs);
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+    color: var(--light-black);
+  }
+
+  main .block.columns.machine-parts .non-singleton-img a {
+    margin-bottom: 14px;
+    line-height: 1;
+    display: inline-block;
+    width: 100%;
+    font-weight: 500;
+    font-size: var(--body-font-size-m);
+    text-decoration: none;
+  }
+
+  main .block.columns.machine-parts .non-singleton-img a > strong {
+    color: var(--light-black);
+    margin-right: 1rem;
   }
 }
