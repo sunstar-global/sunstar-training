@@ -82,7 +82,7 @@ function buildHeroBlock(main) {
 function buildModalFragmentBlock(main) {
   const MODAL_FRAGMENT_BLOCK_NAME = 'modal-fragment';
   if (main.querySelector(MODAL_FRAGMENTS_ANCHOR_SELECTOR)
-  && !main.querySelector(MODAL_FRAGMENT_BLOCK_NAME)) {
+    && !main.querySelector(MODAL_FRAGMENT_BLOCK_NAME)) {
     const section = document.createElement('div');
     const blockEl = buildBlock(MODAL_FRAGMENT_BLOCK_NAME, { elems: [] });
     section.append(blockEl);
@@ -162,6 +162,18 @@ function decoratePageStyles() {
 }
 
 /**
+ * load fonts.css and set a session storage flag
+ */
+async function loadFonts() {
+  await loadCSS(`${window.hlx.codeBasePath}/styles/fonts.css`);
+  try {
+    if (!window.location.hostname.includes('localhost')) sessionStorage.setItem('fonts-loaded', 'true');
+  } catch (e) {
+    // do nothing
+  }
+}
+
+/**
  * Loads everything needed to get to LCP.
  * @param {Element} doc The container element
  */
@@ -171,22 +183,13 @@ async function loadEager(doc) {
   decoratePageStyles();
   const main = doc.querySelector('main');
   if (main) {
-    // load fonts eagerly if marked as loaded in sessionStorage
-    try {
-      if (sessionStorage.getItem('fonts-loaded')) {
-        loadCSS(`${window.hlx.codeBasePath}/styles/fonts/fonts.css`);
-      }
-    } catch (e) {
-      // do nothing
-    }
-
     decorateMain(main);
     document.body.classList.add('appear');
     await waitForLCP(LCP_BLOCKS, SKIP_FROM_LCP, MAX_LCP_CANDIDATE_BLOCKS);
-    // load fonts eagerly if marked as loaded in sessionStorage
     try {
-      if (sessionStorage.getItem('fonts-loaded')) {
-        loadCSS(`${window.hlx.codeBasePath}/styles/fonts/fonts.css`);
+      /* if desktop (proxy for fast connection) or fonts already loaded, load fonts.css */
+      if (window.innerWidth >= 900 || sessionStorage.getItem('fonts-loaded')) {
+        loadFonts();
       }
     } catch (e) {
       // do nothing
@@ -227,16 +230,7 @@ async function loadLazy(doc) {
   loadFooter(doc.querySelector('footer'));
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
-
-  // load fonts lazily and store status in sessionStorage
-  loadCSS(`${window.hlx.codeBasePath}/styles/fonts/fonts.css`, () => {
-    // sessionStorage may throw an exceptions in some contexts
-    try {
-      sessionStorage.setItem('fonts-loaded', 'true');
-    } catch (e) {
-      // do nothing
-    }
-  });
+  loadFonts();
   addFavIcon(`${window.hlx.codeBasePath}/icons/favicon.ico`);
   sampleRUM('lazy');
   sampleRUM.observe(main.querySelectorAll('div[data-block-name]'));
