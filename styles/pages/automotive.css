@@ -261,7 +261,7 @@ ol > li::marker {
         box-shadow: 0 0.125rem 0.5rem 0 var(--transparent-grey-color);
     }
 
-    body.automotive .search-by-process .columns > div > div.non-singleton-img {
+    body.automotive .search-by-process .columns > div div.non-singleton-img-wrapper {
         flex: unset;
     }
 
