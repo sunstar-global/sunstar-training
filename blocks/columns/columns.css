@@ -85,6 +85,7 @@
   align-items: stretch;
 }
 
+.columns > div div.non-singleton-img.text-only,
 .columns.collapse > div div.non-singleton-img {
   margin: 0;
 }

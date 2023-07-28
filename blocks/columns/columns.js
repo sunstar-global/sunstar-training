@@ -3,17 +3,20 @@ import { wrapImgsInLinks } from '../../scripts/scripts.js';
 export default function decorate(block) {
   const cols = [...block.firstElementChild.children];
   block.classList.add(`columns-${cols.length}-cols`);
+  const textOnlyColBlock = !block.querySelector('picture');
 
   // setup image columns
   [...block.children].forEach((row) => {
     [...row.children].forEach((col) => {
       wrapImgsInLinks(col);
-      const pic = col.querySelector('picture');
-      if (pic) {
-        const picWrapper = pic.closest('div');
-        if (picWrapper && picWrapper.children.length === 1) {
-          // picture is only content in column
-          picWrapper.classList.add('columns-img-col');
+      if (!textOnlyColBlock) {
+        const pic = col.querySelector('picture');
+        if (pic) {
+          const picWrapper = pic.closest('div');
+          if (picWrapper && picWrapper.children.length === 1) {
+            // picture is only content in column
+            picWrapper.classList.add('columns-img-col');
+          }
         }
       }
     });
@@ -21,14 +24,19 @@ export default function decorate(block) {
 
   // decorate columns with non-singleton-image content
   [...block.children].forEach((row) => {
-    const content = row.querySelector('div:not(.columns-img-col)');
-    if (content) {
-      content.classList.add('non-singleton-img');
-      const contentWrapper = document.createElement('div');
-      contentWrapper.classList.add('non-singleton-img-wrapper');
-      const contentParent = content.parentElement;
-      contentParent.insertBefore(contentWrapper, content);
-      contentWrapper.appendChild(content);
+    const cells = row.querySelectorAll('div:not(.columns-img-col)');
+    if (cells.length) {
+      [...cells].forEach((content) => {
+        content.classList.add('non-singleton-img');
+        const contentWrapper = document.createElement('div');
+        contentWrapper.classList.add('non-singleton-img-wrapper');
+        const contentParent = content.parentElement;
+        contentParent.insertBefore(contentWrapper, content);
+        contentWrapper.appendChild(content);
+        if (textOnlyColBlock) {
+          content.classList.add('text-only');
+        }
+      });
     }
   });
 
