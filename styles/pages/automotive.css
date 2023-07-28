@@ -313,7 +313,7 @@ ol > li::marker {
         font-weight: var(--font-weight-bold);
     }
 
-    body.automotive .columns.plain-links.collapse.columns-1-cols div {
+    body.automotive .columns.plain-links.collapse.columns-1-cols > div {
         width: calc(25%);
     }
 }
