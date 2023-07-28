@@ -37,6 +37,14 @@ main .image-collage * {
   color: #6D757C;
 }
 
+main .image-collage .image-caption {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  color: var(--steel-blue);
+  font-size: var(--body-font-size-xs);
+  text-align: center;
+}
+
 @media (min-width: 62rem) {
   main .image-collage {
     columns: 2;
