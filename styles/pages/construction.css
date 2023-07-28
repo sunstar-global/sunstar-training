@@ -53,11 +53,6 @@ body.construction .arc-solution h2 {
     font-weight: var(--font-weight-small);
 }
 
-body.construction .arc-solution.black h2,
-body.construction .features-detail.black h3 {
-    color: var(--text-color);
-}
-
 body.construction .features h2 {
     width: auto;
     text-align: left;
@@ -65,6 +60,10 @@ body.construction .features h2 {
     color: var(--primary);
 }
 
+body.construction .arc-solution.black h2,
+body.construction .features-detail.black h3 {
+    color: var(--text-color);
+}
 
 body.construction main .block.cards.horizontal-content>ul>li,
 body.construction main .block.cards.horizontal-content>ul>li>a {
