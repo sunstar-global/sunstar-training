@@ -675,7 +675,6 @@ header .lang-picker {
   header nav.nav-bottom .menu-level-2 {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     width: 75rem;
     margin: 0 auto;
   }

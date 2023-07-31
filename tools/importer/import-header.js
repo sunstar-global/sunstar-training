@@ -92,10 +92,7 @@ function addBottomNav(document) {
       megaSubMenu.forEach((item) => {
         const level2Li = document.createElement('li');
         level2Li.append(item.querySelector(':scope > h6 > a'));
-        const angWhite = document.createElement('a');
-        angWhite.innerHTML = ':ang-white:';
-        angWhite.href = level2Li.querySelector('a').href;
-        level2Li.append(angWhite);
+        level2Li.querySelector('a').textContent += ':ang-white:';
         level2UL.append(level2Li);
 
         const level3UL = document.createElement('ul');
