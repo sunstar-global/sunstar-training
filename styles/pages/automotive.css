@@ -134,6 +134,11 @@ body.automotive .columns.plain-links > div a {
     font-size: var(--heading-font-size-mxs);
 }
 
+body.automotive .search-by-material.section.contacts-and-links a {
+    height: auto;
+    min-height: 1.5rem;
+}
+
 body.automotive .columns.non-button.block.columns-2-cols a {
     color: var(--secondary);
     background-color: transparent;
@@ -171,6 +176,12 @@ body.automotive .columns.plain-links.collapse:not(.continuation) > div > div:fir
 body.automotive .search-by-material.section.contacts-and-links {
     padding-bottom: 0;
     margin-bottom: 5rem;
+}
+
+body.automotive .search-by-material.section.contacts-and-links li {
+    margin-bottom: 0.75rem;
+    height: auto;
+    min-height: 1.5rem;
 }
 
 body.automotive .columns.plain-links.collapse h6 {

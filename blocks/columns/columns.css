@@ -213,6 +213,10 @@
   display: block;
 }
 
+.columns-container.backgroundimage .backgroundimage {
+  display: none;
+}
+
 @media (min-width: 62rem) {
   .columns {
     margin-bottom: 7.5rem;
@@ -267,6 +271,25 @@
     display: block;
   }
 
+  .columns-container.backgroundimage {
+    position: relative;
+  }
+  
+  .columns-container.backgroundimage .section-container {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .columns-container.backgroundimage .backgroundimage {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 30rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  
   /* Column styles - Machine parts */
   main .block.columns.machine-parts > div {
     align-items: flex-start;

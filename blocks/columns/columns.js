@@ -1,6 +1,21 @@
 import { wrapImgsInLinks } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
+  const background = block.classList.contains('backgroundimage');
+  if (background) {
+    // remove first column if background is enabled and use the image
+    // as background for the section
+    const imageRef = block.firstElementChild.querySelector('img');
+    if (imageRef != null) {
+      block.firstElementChild.remove();
+      const backgroundDiv = document.createElement('div');
+      backgroundDiv.classList.add('backgroundimage');
+      backgroundDiv.style.backgroundImage = `url(${imageRef.src})`;
+      const section = block.parentElement.parentElement.parentElement;
+      section.classList.add('backgroundimage');
+      section.insertBefore(backgroundDiv, section.firstChild);
+    }
+  }
   const cols = [...block.firstElementChild.children];
   block.classList.add(`columns-${cols.length}-cols`);
   const textOnlyColBlock = !block.querySelector('picture');

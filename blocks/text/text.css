@@ -29,3 +29,24 @@ main .block.text.black h6,
 main .block.text.black p {
   color: var(--light-black);
 }
+
+main .block.text.highlight {
+  margin-top: 5rem;
+}
+
+
+main .block.text.highlight h2 {
+  margin-bottom: .5rem;
+  text-align: center;
+}
+
+main .block.text.highlight a.button.primary {
+  color: var(--secondary);
+  background: none;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--body-font-size-m);
+  line-height: 1.5em;
+  text-decoration: none;
+  padding: 0;
+  height: auto;
+}
