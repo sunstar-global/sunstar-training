@@ -25,6 +25,8 @@ footer .social a.button.primary {
   font-weight: var(--font-weight-medium);
   font-size: var(--body-font-size-m);
   margin-bottom: 1rem;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 footer .primary a, .nav-links li a, .social p>a, .groups p>a.button.primary {
@@ -39,6 +41,8 @@ footer .primary a, .nav-links li a, .social p>a, .groups p>a.button.primary {
 
 footer .groups p>a.button.primary {
   font-weight: var(--font-weight-medium);
+  padding-left: 0;
+  padding-right: 0;
 }
 
 footer .social {
