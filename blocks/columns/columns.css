@@ -270,6 +270,7 @@
   /* Column styles - Machine parts */
   main .block.columns.machine-parts > div {
     align-items: flex-start;
+    gap: 1rem;
   }
 
   main .block.columns.machine-parts .columns-img-col {

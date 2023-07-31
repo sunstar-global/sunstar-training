@@ -229,8 +229,16 @@ header {
   height: var(--nav-total-height);
 }
 
+.tablet {
+  display: none;
+}
+
 .desktop {
   display: none;
+}
+
+.mobile {
+  display: block;
 }
 
 .backdrop {
@@ -681,6 +689,20 @@ main .section.light-blue {
     font-size: var(--heading-font-size-xxs);
   }
 
+  .mobile {
+    display: none;
+  }
+
+  .desktop {
+    display: none;
+  }
+
+  .tablet {
+    display: block;
+  }
+
+
+
 
   /* START Section Styles START */
 
@@ -823,12 +845,16 @@ main .section.light-blue {
     overflow-y: auto;
   }
 
-  .desktop {
-    display: block;
-  }
-
   .mobile {
     display: none;
+  }
+
+  .tablet {
+    display: none;
+  }
+
+  .desktop {
+    display: block;
   }
 
   .icon.icon-sunstar-logo {
