@@ -19,28 +19,33 @@ function buildTOCSide(ul, block) {
   });
 
   const h2 = mainContent.querySelectorAll('h2');
-  [...ul.children].forEach((liItem, i) => {
-    const h2Id = h2[i] !== null ? h2[i].id : '';
-    const aLink = document.createElement('a');
-    aLink.href = `#${h2Id}`;
-    aLink.innerText = liItem.innerText;
-    liItem.innerText = '';
-    liItem.append(aLink);
-  });
+  if (ul) {
+    [...ul.children].forEach((liItem, i) => {
+      const h2Id = h2[i] !== null ? h2[i].id : '';
+      const aLink = document.createElement('a');
+      aLink.href = `#${h2Id}`;
+      aLink.innerText = liItem.innerText;
+      liItem.innerText = '';
+      liItem.append(aLink);
+    });
+  }
+
   sectionContainer.replaceChildren(tocWrapper);
   sectionContainer.append(mainContent);
 
   window.addEventListener('scroll', () => {
-    if (document.documentElement.scrollTop > outerHeight(document.querySelector('main > .hero-vertical-tabs-container .hero-vertical-tabs.block')) - 45
-      && document.documentElement.scrollTop < document.querySelector('body').offsetHeight
-      - outerHeight(document.querySelector('main .toc-container ul'))
-      - outerHeight(document.querySelector('main > .contact-us'))
-      - outerHeight(document.querySelector('main > .about-us'))
-      - outerHeight(document.querySelector('footer'))
-      - 80) {
-      ul.classList.add('fixed');
-    } else {
-      ul.classList.remove('fixed');
+    if (ul) {
+      if (document.documentElement.scrollTop > outerHeight(document.querySelector('main > .hero-vertical-tabs-container .hero-vertical-tabs.block')) - 45
+        && document.documentElement.scrollTop < document.querySelector('body').offsetHeight
+        - outerHeight(document.querySelector('main .toc-container ul'))
+        - outerHeight(document.querySelector('main > .contact-us'))
+        - outerHeight(document.querySelector('main > .about-us'))
+        - outerHeight(document.querySelector('footer'))
+        - 80) {
+        ul.classList.add('fixed');
+      } else {
+        ul.classList.remove('fixed');
+      }
     }
   });
 }
@@ -69,7 +74,10 @@ function buildTOCTop(ul, block) {
 
 export default async function decorate(block) {
   const ul = block.querySelector('ul');
-  block.replaceChildren(ul);
+
+  if (ul) {
+    block.replaceChildren(ul);
+  }
   if (block.classList.contains('flat')) {
     buildTOCTop(ul, block);
   } else {
