@@ -16,6 +16,7 @@
 
 .overlapping-content a.button.tertiary {
   background-color: unset;
+  padding: 0;
 }
 
 .overlapping-content > div.crop > {
