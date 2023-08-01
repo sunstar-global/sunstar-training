@@ -22,6 +22,10 @@ body.about main a.button.tertiary {
   font-size: var(--heading-font-size-xxs);
 }
 
+body.about main .columns p.button-container {
+  width: unset;
+}
+
 @media (min-width: 62rem) {
   body.about main .block.columns > div {
     gap: 0;
