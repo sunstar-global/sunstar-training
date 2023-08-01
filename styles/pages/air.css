@@ -30,6 +30,13 @@ body.air main .section.full-width.contact-us > .section-container > .default-con
   box-sizing: border-box;
 }
 
+body.air main .section.centered.ja-air-links p:last-child > a.button {
+  background-color: inherit;
+  color: var(--tertiary);
+  justify-content: flex-start;
+  font-weight: var(--font-weight-medium);
+}
+
 @media (min-width: 62rem) {
   body.air main .block.columns {
     margin: 3rem auto;
