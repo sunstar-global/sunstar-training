@@ -80,6 +80,10 @@ header nav.nav-top > ul > li {
   align-items: center;
 }
 
+header nav.nav-top > ul > li > a {
+  color: var(--light-black);
+}
+
 header nav.nav-top > ul > li > a:first-of-type {
   font-size: var(--body-font-size-s);
   line-height: 1;
