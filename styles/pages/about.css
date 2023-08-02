@@ -7,7 +7,7 @@ body.about main .overlapping-content.edge-to-edge-on-narrow .overlapping-content
 }
 
 body.about main .section:not(.full-width) .block.columns img {
-  height: 12rem;
+  height: 14.25rem;
 }
 
 body.about main .section:not(.full-width) .block.columns:not(.crop-image) img {
@@ -15,7 +15,7 @@ body.about main .section:not(.full-width) .block.columns:not(.crop-image) img {
 }
 
 body.about main .section:not(.full-width) .block.columns.crop-image img {
-  object-position: top 40% right 0;
+  object-position: top 49% right 0;
 }
 
 body.about main a.button.tertiary {
