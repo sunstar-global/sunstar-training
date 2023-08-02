@@ -156,9 +156,17 @@ export async function decorateIcons(element) {
           return;
         }
         // Styled icons don't play nice with the sprite approach because of shadow dom isolation
+        // and same for internal references
         const svg = await response.text();
-        if (svg.match(/(<style | class=)/)) {
-          ICONS_CACHE[iconName] = { styled: true, html: svg };
+        if (svg.match(/(<style | class=|url\(#| xlink:href="#)/)) {
+          ICONS_CACHE[iconName] = {
+            styled: true,
+            html: svg
+              // rescope ids and references to avoid clashes across icons;
+              .replaceAll(/ id="([^"]+)"/g, (_, id) => ` id="${iconName}-${id}"`)
+              .replaceAll(/="url\(#([^)]+)\)"/g, (_, id) => `="url(#${iconName}-${id})"`)
+              .replaceAll(/ xlink:href="#([^"]+)"/g, (_, id) => ` xlink:href="#${iconName}-${id}"`),
+          };
         } else {
           ICONS_CACHE[iconName] = {
             html: svg
@@ -176,7 +184,12 @@ export async function decorateIcons(element) {
     }
   }));
 
-  const symbols = Object.values(ICONS_CACHE).filter((v) => !v.styled).map((v) => v.html).join('\n');
+  const symbols = Object
+    .keys(ICONS_CACHE).filter((k) => !svgSprite.querySelector(`#icons-sprite-${k}`))
+    .map((k) => ICONS_CACHE[k])
+    .filter((v) => !v.styled)
+    .map((v) => v.html)
+    .join('\n');
   svgSprite.innerHTML += symbols;
 
   icons.forEach((span) => {

@@ -1,4 +1,4 @@
-import { createOptimizedPicture, decorateIcons } from '../../scripts/lib-franklin.js';
+import { createOptimizedPicture } from '../../scripts/lib-franklin.js';
 
 export default function decorate(block) {
   /* change to ul, li */
@@ -55,5 +55,4 @@ export default function decorate(block) {
   }
   block.textContent = '';
   block.append(ul);
-  decorateIcons(block);
 }
