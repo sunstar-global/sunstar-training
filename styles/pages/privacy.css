@@ -52,6 +52,8 @@
 
 .privacy p.button-container a {
   height: auto;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .privacy main .section.spaced li {
