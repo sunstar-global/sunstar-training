@@ -1,4 +1,4 @@
-import { loadScript } from '../../scripts/scripts.js';
+import { getLanguage, loadScript } from '../../scripts/scripts.js';
 
 function ensureParagraph(el) {
   // add <p> if missing
@@ -319,7 +319,9 @@ function createCaptcha(fd) {
   };
 
   window.addEventListener('consentmanager', () => {
-    loadScript('https://www.google.com/recaptcha/api.js?onload=captchaRenderCallback&render=explicit', {
+    const url = new URL('https://www.google.com/recaptcha/api.js?onload=captchaRenderCallback&render=explicit');
+    url.searchParams.append('hl', getLanguage());
+    loadScript(url, {
       async: 'async',
       defer: 'defer',
     });
