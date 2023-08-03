@@ -72,9 +72,24 @@ describe('News Block', () => {
           ok: true,
           json: () => ({
             data: [
-              { path: '/news/b/', title: 'b text', lastModified: 1685443972 },
-              { path: '/news/a/', title: 'a text', lastModified: 1685443971 },
-              { path: '/c/news/', title: 'c text', lastModified: 1685443970 },
+              {
+                path: '/news/b/',
+                title: 'b text',
+                lastModified: 1685443972,
+                newsdate: 1685443972000,
+              },
+              {
+                path: '/news/a/',
+                title: 'a text',
+                lastModified: 1685443971,
+                newsdate: 1685443971000,
+              },
+              {
+                path: '/c/news/',
+                title: 'c text',
+                lastModified: 1685443970,
+                newsdate: 1685443970000,
+              },
             ],
           }),
         };

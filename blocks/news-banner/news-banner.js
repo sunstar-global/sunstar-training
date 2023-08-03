@@ -1,11 +1,10 @@
 import { fetchIndex, getLanguage } from '../../scripts/scripts.js';
-import { fetchPlaceholders } from '../../scripts/lib-franklin.js';
+import { fetchPlaceholders, getFormattedDate } from '../../scripts/lib-franklin.js';
 
 function setNewsBanner(block, text, path, title, lm) {
   let date;
   if (lm) {
-    const dt = new Date(lm * 1000);
-    date = dt.toLocaleDateString(getLanguage(), { year: 'numeric', month: 'long', day: 'numeric' });
+    date = getFormattedDate(new Date(Number(lm)), getLanguage());
   } else {
     date = '';
   }
@@ -20,7 +19,7 @@ export async function setLatestNewsArticle(block, placeholders) {
 
   const result = json.data
     .filter((entry) => entry.path.includes('/news/'))
-    .sort((x, y) => y.lastModified - x.lastModified);
+    .sort((x, y) => y.newsdate - x.newsdate);
 
   if (!result.length) {
     return;
@@ -29,7 +28,7 @@ export async function setLatestNewsArticle(block, placeholders) {
   const article = result[0];
   const newsTitle = article.pagename || article.title || article.breadcrumbtitle;
 
-  setNewsBanner(block, placeholders.newstext, article.path, newsTitle, article.lastModified);
+  setNewsBanner(block, placeholders.newstext, article.path, newsTitle, article.newsdate);
 }
 
 export default async function decorate(block) {
