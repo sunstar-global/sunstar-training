@@ -1,9 +1,8 @@
 body.construction-examples main .section.image-collage-container .button-container a {
     background: unset;
     color: var(--link-color);
-    font-weight: var(--font-weight-medium);
 }
 
-body.construction-examples main .section.image-collage-container p {
+body.construction-examples main .section.image-collage-container .button-container {
     text-align: center;
 }
