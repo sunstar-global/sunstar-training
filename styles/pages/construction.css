@@ -9,7 +9,6 @@ body.construction .section.cards-container.centered.narrow {
 body.construction main .cards p {
   margin: 0 auto;
   font-size: var(--body-font-size-s);
-  color: #3c465090;
 }
 
 body.construction .cards .cards-card-body p {
