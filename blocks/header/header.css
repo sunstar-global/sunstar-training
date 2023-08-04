@@ -122,6 +122,7 @@ header nav.nav-bottom {
   justify-content: space-between;
   border-top: 1px solid var(--transparent-grey-light-color);
   border-bottom: 1px solid var(--transparent-grey-light-color);
+  box-sizing: border-box;
 }
 
 header nav.nav-bottom.open {
