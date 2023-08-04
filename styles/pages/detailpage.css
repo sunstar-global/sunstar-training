@@ -120,11 +120,6 @@ body.detailpage .main-content .columns.reverse-detailpage > div > div {
   }
 }
 
-body.detailpage a.button.primary {
-  min-width: 112px;
-  padding: 0 1.5rem;
-}
-
 body.detailpage pre {
   background-color: var(--background-color);
   padding-bottom: 2rem;
