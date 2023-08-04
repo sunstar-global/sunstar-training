@@ -57,8 +57,9 @@ main .hero-horiz-tabs-img picture > img {
 
 main .hero-horizontal-tabs nav {
   position: absolute;
-  bottom: 0.5rem;
+  bottom: 0;
   left: 1rem;
+  display: flex;
 }
 
 main .hero-horizontal-tabs nav a {
@@ -68,6 +69,12 @@ main .hero-horizontal-tabs nav a {
   border-left: 1px solid #d9dfe2;
   font-size: var(--body-font-size-s);
   font-weight: var(--font-weight-bold);
+}
+
+main .hero-horizontal-tabs nav a:hover {
+  text-decoration: none;
+  background-color: white;
+  color: var(--primary);
 }
 
 main .hero-horizontal-tabs nav a.current {
@@ -102,7 +109,7 @@ main .hero-horizontal-tabs nav a.current {
 
   main .hero-horizontal-tabs nav {
     position: absolute;
-    bottom: 15px;
+    bottom: 0;
     left: 0;
   }
 
