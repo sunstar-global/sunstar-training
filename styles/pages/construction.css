@@ -120,10 +120,6 @@ body.construction main .block.text.left h2 {
     color: #3c4650;
   }
 
-  body.construction main .block.cards:not(.features-items) > ul > li {
-    margin: 0;
-  }
-
   body.construction main .block.cards .cards-card-image {
     margin: 0;
     height: 7.5rem;
