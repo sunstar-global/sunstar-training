@@ -17,7 +17,7 @@ body.construction .cards .cards-card-body p {
 }
 
 body.construction main .cards.features-items p {
-    color: var(--transparent-grey-color-2);
+    color: var(--light-black);
 }
 
 body.construction main .cards ul > li {
