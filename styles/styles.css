@@ -801,7 +801,7 @@ main .section.light-blue {
   /* secton - contacts-and-links */
   main .section.contacts-and-links div.columns.top-down {
     margin-top: 0;
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
   }
 
   main .section.contacts-and-links .columns>div>div.non-singleton-img {
