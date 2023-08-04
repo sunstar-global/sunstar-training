@@ -26,7 +26,6 @@ body.automotive main .cards ul>li {
 body.automotive main .cards p {
     margin: 0 auto;
     font-size: var(--body-font-size-s);
-    color: #3C465090;
 }
 
 body.automotive .cards .cards-card-body p {
