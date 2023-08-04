@@ -68,6 +68,15 @@ body.construction .features-detail.black h3 {
   color: var(--text-color);
 }
 
+body.construction main .block.link .button-container {
+  text-align: center;
+}
+
+body.construction main .block.link .button-container a {
+  background: unset;
+  color: var(--link-color);
+}
+
 body.construction main .block.cards.horizontal-content > ul > li,
 body.construction main .block.cards.horizontal-content > ul > li > a {
   display: flex;

@@ -1,8 +1,8 @@
-body.construction-examples main .section.image-collage-container .button-container a {
-    background: unset;
-    color: var(--link-color);
+body.construction-examples main .block.link .button-container {
+  text-align: center;
 }
-
-body.construction-examples main .section.image-collage-container .button-container {
-    text-align: center;
+  
+body.construction-examples main .block.link .button-container a {
+  background: unset;
+  color: var(--link-color);
 }
