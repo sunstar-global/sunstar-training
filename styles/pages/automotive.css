@@ -238,6 +238,10 @@ body.automotive main .block.text.left h2 {
         line-height: 1.3em;
     }
 
+    body.automotive .nolink .cards .cards-card-image {
+        margin: 0;
+    }
+
     body.automotive .cards .cards-card-body p {
         text-align: center;
     }
