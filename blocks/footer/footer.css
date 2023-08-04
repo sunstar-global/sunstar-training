@@ -58,7 +58,8 @@ footer .social a::after {
   background-image: url("../../icons/right-white.svg");
   background-size: contain;
   margin-left: 0.5rem;
-  margin-top: 0.15rem;
+  margin-top: 0.25rem;
+  background-repeat: no-repeat;
 }
 
 footer .social h1 {
