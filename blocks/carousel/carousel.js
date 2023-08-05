@@ -1,9 +1,11 @@
 function startTimer(block) {
-  setInterval(() => {
+  return setInterval(() => {
     const rightSwip = block.querySelector('.swip-right');
     rightSwip.click();
   }, 5000);
 }
+
+let timer;
 
 function commonOnClick(block, newIndex) {
   const activeEles = block.querySelectorAll('.active');
@@ -56,6 +58,8 @@ function getPrevOrNextSwip(swipType, block, totalLength) {
         newIndex = ((index - 1) < 0 ? (totalLength - 1) : (index - 1));
       }
       commonOnClick(block, newIndex);
+      clearInterval(timer);
+      timer = startTimer(block);
     }
   };
 
@@ -74,8 +78,11 @@ function getCarouselControl(block, totalLength) {
     innerSpan.classList.add('swiper-pagination-bullet');
     innerSpan.setAttribute('index', index);
 
+    // eslint-disable-next-line no-loop-func
     innerSpan.onclick = () => {
       commonOnClick(block, Number(innerSpan.getAttribute('index')));
+      clearInterval(timer);
+      timer = startTimer(block);
     };
 
     if (index === 0) {
@@ -165,6 +172,6 @@ export default async function decorate(block) {
 
   block.appendChild(container);
   getCarouselControl(block, totalLength);
-  startTimer(block, totalLength);
+  timer = startTimer(block);
   addSwipeCapability(block);
 }
