@@ -5,6 +5,19 @@ indices:
       - '/**'
     exclude:
       - '/_drafts/**'
+      - '/_tools/**'
+      - '/sidekick/**'
+      - '/fragments/**'
+      - '/**/fragments/**'
+      - '/nav'
+      - '/**/nav'
+      - '/footer'
+      - '/**/footer'
+      - '/thankyou'
+      - '/**/thankyou'
+      - '/search'
+      - '/**/search'
+
     target: /query-index.json
     properties:
       lastModified:
