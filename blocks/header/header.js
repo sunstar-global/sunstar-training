@@ -47,6 +47,10 @@ function decorateLangPicker(langPicker) {
     if (langRoot === `/${lang}`) {
       langName = li.querySelector('a').innerHTML;
       li.remove();
+    } else if (lang === 'en' && langRoot === '') {
+      // Special Check added to remove english language from the list
+      // if selected language is english
+      li.remove();
     }
   });
   const a = document.createElement('a');
