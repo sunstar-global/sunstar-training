@@ -111,6 +111,10 @@ body.construction main .block.text.left h2 {
   margin-left: 0;
 }
 
+body.construction .columns.plain-links.collapse:not(.continuation) > div > div:first-child {
+  margin-top: 0;
+} 
+
 @media (min-width: 62rem) {
   body.construction main .cards h6 {
     margin-bottom: 1rem;
