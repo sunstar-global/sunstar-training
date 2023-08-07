@@ -432,7 +432,7 @@ header form.search div {
 header form.search input.search-text {
   border: 0;
   box-sizing: border-box;
-  color: var(--link-color);
+  color: var(--light-black);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
   font-weight: var(--font-weight-medium);
@@ -564,6 +564,10 @@ header .lang-picker {
 
   header nav.nav-middle {
     padding: 0;
+  }
+
+  header nav.nav-middle > h4 {
+    font-size: var(--heading-font-size-m);
   }
 
   header nav.nav-bottom {
