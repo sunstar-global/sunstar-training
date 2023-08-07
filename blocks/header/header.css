@@ -120,7 +120,7 @@ header nav.nav-middle > h4 {
 header nav.nav-bottom {
   height: var(--nav-bottom-height);
   justify-content: space-between;
-  border-top: 1px solid var(--transparent-grey-light-color);
+  border-top: 0;
   border-bottom: 1px solid var(--transparent-grey-light-color);
   box-sizing: border-box;
 }
@@ -567,7 +567,6 @@ header .lang-picker {
   }
 
   header nav.nav-bottom {
-    border-top: unset;
     border-bottom: unset;
   }
 
