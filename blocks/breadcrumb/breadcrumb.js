@@ -37,7 +37,11 @@ async function createAutoBreadcrumb(block, placeholders) {
       url_path: `${getLanguangeSpecificPath(pathSeparator)}`,
     },
     ...pathSplit.slice(1, -1).map((part, index) => ({
-      name: pageIndex.find((page) => page.path === urlForIndex(index))?.breadcrumbtitle ?? '',
+      // get the breadcrumb title from the index; if the index does not contain it,
+      // use the placeholders by appending '-title' to the part
+      // if no breadcrumb title is found, skip the part (empty string)
+      // eslint-disable-next-line max-len
+      name: pageIndex.find((page) => page.path === urlForIndex(index))?.breadcrumbtitle ?? (placeholders[`${part}-title`] ?? ''),
       url_path: urlForIndex(index),
     })),
     {
