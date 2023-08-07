@@ -30,6 +30,7 @@ async function createAutoBreadcrumb(block, placeholders) {
   // eslint-disable-next-line max-len
   const urlForIndex = (index) => prependSlash(pathname.split(pathSeparator).slice(1, index + 2).join(pathSeparator));
   const pathSplit = pathname.split(pathSeparator);
+  const lastEle = pathSplit[pathSplit.length - 1];
 
   const breadcrumbs = [
     {
@@ -46,7 +47,7 @@ async function createAutoBreadcrumb(block, placeholders) {
     })),
     {
       // eslint-disable-next-line max-len
-      name: pageIndex.find((page) => page.path === urlForIndex(pathSplit.length - 1))?.breadcrumbtitle ?? pathSplit[pathSplit.length - 1],
+      name: pageIndex.find((page) => page.path === urlForIndex(pathSplit.length - 1))?.breadcrumbtitle ?? (placeholders[`${lastEle}-title`] ?? lastEle),
     },
   ];
   breadcrumbs.forEach((crumb) => {
