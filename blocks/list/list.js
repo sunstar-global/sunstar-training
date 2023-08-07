@@ -7,7 +7,7 @@ const blockJson = {
   news: {
     filerResults: (data, currPath) => data.filter((entry) => entry.newsdate
       && entry.path !== currPath
-      && (entry.path.includes(currPath.toLowerCase())))
+      && (entry.path.includes('/news/')))
       .sort((x, y) => y.newsdate - x.newsdate),
     resultsPerPage: 12,
     titlePlaceHolderKey: 'news-page-title-text',
