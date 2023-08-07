@@ -120,15 +120,20 @@ header nav.nav-middle > h4 {
 header nav.nav-bottom {
   height: var(--nav-bottom-height);
   justify-content: space-between;
-  border-top: 0;
+  border-top: 1px solid var(--transparent-grey-light-color);
   border-bottom: 1px solid var(--transparent-grey-light-color);
   box-sizing: border-box;
+}
+
+header.fixed nav.nav-bottom {
+  border-top: 0;
 }
 
 header nav.nav-bottom.open {
   position: absolute;
   top: 0;
   width: 100%;
+  border-top: 0;
   background-color: var(--background-color);
   opacity: 1;
   z-index: 100;
@@ -571,6 +576,7 @@ header .lang-picker {
   }
 
   header nav.nav-bottom {
+    border-top: unset;
     border-bottom: unset;
   }
 
