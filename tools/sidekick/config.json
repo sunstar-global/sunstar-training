@@ -1,0 +1,13 @@
+{
+  "project": "Sunstar engineering",
+  "host": "main--sunstar-engineering--hlxsites.hlx.live",
+  "plugins": [
+    {
+      "id": "library",
+      "title": "Library",
+      "environments": [ "edit" ],
+      "url": "/tools/sidekick/library.html",
+      "includePaths": [ "**.docx**" ]
+    }
+  ]
+}

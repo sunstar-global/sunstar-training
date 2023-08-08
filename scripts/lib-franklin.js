@@ -459,6 +459,28 @@ export async function loadBlock(block) {
 }
 
 /**
+ * Returns the true origin of the current page in the browser.
+ * If the page is running in a iframe with srcdoc, the ancestor origin is returned.
+ * @returns {String} The true origin
+ */
+export function getOrigin() {
+  return window.location.href === 'about:srcdoc' ? window.parent.location.origin : window.location.origin;
+}
+
+/**
+ * Returns the true of the current page in the browser.
+ * If the page is running in a iframe with srcdoc,
+ * the ancestor origin + the path query param is returned.
+ * @returns {String} The href of the current page or the href of the block running in the library
+ */
+export function getHref() {
+  if (window.location.href !== 'about:srcdoc') return window.location.href;
+
+  const urlParams = new URLSearchParams(window.parent.location.search);
+  return `${window.parent.location.origin}${urlParams.get('path')}`;
+}
+
+/**
  * Loads JS and CSS for all blocks in a container element.
  * @param {Element} main The container element
  */
@@ -481,7 +503,7 @@ export async function loadBlocks(main) {
  * @returns {Element} The picture element
  */
 export function createOptimizedPicture(src, alt = '', eager = false, breakpoints = [{ media: '(min-width: 600px)', width: '2000' }, { width: '750' }]) {
-  const url = new URL(src, window.location.href);
+  const url = new URL(src, getHref());
   const picture = document.createElement('picture');
   const { pathname } = url;
   const ext = pathname.substring(pathname.lastIndexOf('.') + 1);
@@ -606,6 +628,7 @@ export async function waitForLCP(lcpBlocks, skipBlocks = [], maxCandidates = 1) 
   }
 
   const blocks = document.querySelectorAll('.block');
+  const main = document.querySelector('main');
   [...blocks]
     .filter((block) => !skipBlocks.includes(block?.dataset?.blockName) && lcpBlocks.includes(block?.dataset?.blockName)) // eslint-disable-line max-len
     .slice(0, maxCandidates)
@@ -613,6 +636,7 @@ export async function waitForLCP(lcpBlocks, skipBlocks = [], maxCandidates = 1) 
       await loadBlock(block);
       const lcpCandidateBlockImg = block.querySelector(':scope img');
       await setImageToLoadEagerly(lcpCandidateBlockImg);
+      updateSectionsStatus(main);
     });
 
   document.body.style.display = null;
@@ -720,23 +744,30 @@ export function decorateRenderHints(block) {
   });
 }
 
+export function isSidekickLibPage() {
+  return getHref().indexOf('/sidekick/blocks/') > 0;
+}
 /**
  * Auto initializiation.
  */
 function init() {
-  document.body.style.display = 'none';
-  setup();
-  sampleRUM('top');
+  if (isSidekickLibPage()) {
+    setup();
+  } else {
+    document.body.style.display = 'none';
+    setup();
+    sampleRUM('top');
 
-  window.addEventListener('load', () => sampleRUM('load'));
+    window.addEventListener('load', () => sampleRUM('load'));
 
-  window.addEventListener('unhandledrejection', (event) => {
-    sampleRUM('error', { source: event.reason.sourceURL, target: event.reason.line });
-  });
+    window.addEventListener('unhandledrejection', (event) => {
+      sampleRUM('error', { source: event.reason.sourceURL, target: event.reason.line });
+    });
 
-  window.addEventListener('error', (event) => {
-    sampleRUM('error', { source: event.filename, target: event.lineno });
-  });
+    window.addEventListener('error', (event) => {
+      sampleRUM('error', { source: event.filename, target: event.lineno });
+    });
+  }
 }
 
 init();
