@@ -30,7 +30,6 @@ async function createAutoBreadcrumb(block, placeholders) {
   // eslint-disable-next-line max-len
   const urlForIndex = (index) => prependSlash(pathname.split(pathSeparator).slice(1, index + 2).join(pathSeparator));
   const pathSplit = pathname.split(pathSeparator);
-  const lastEle = pathSplit[pathSplit.length - 1];
   const currentTitle = getMetadata('breadcrumbtitle');
 
   const breadcrumbs = [
@@ -48,10 +47,8 @@ async function createAutoBreadcrumb(block, placeholders) {
     })),
     {
       // get the breadcrumb title from the metadata; if the metadata does not contain it,
-      // get it from the index. If the index does not contain it, the last part of the path
-      // is used as the breadcrumb title
-      // eslint-disable-next-line max-len
-      name: (currentTitle.length > 0) ? currentTitle : pageIndex.find((page) => page.path === urlForIndex(pathSplit.length - 1))?.breadcrumbtitle ?? lastEle,
+      // the last part of the path is used as the breadcrumb title
+      name: currentTitle || pathSplit[pathSplit.length - 1],
     },
   ];
   breadcrumbs.forEach((crumb) => {
