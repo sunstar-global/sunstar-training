@@ -4,7 +4,7 @@ import {
   getLanguage,
   getLanguangeSpecificPath,
 } from '../../scripts/scripts.js';
-import { fetchPlaceholders } from '../../scripts/lib-franklin.js';
+import { fetchPlaceholders, getMetadata } from '../../scripts/lib-franklin.js';
 
 function prependSlash(path) {
   return path.startsWith('/') ? path : `/${path}`;
@@ -31,6 +31,7 @@ async function createAutoBreadcrumb(block, placeholders) {
   const urlForIndex = (index) => prependSlash(pathname.split(pathSeparator).slice(1, index + 2).join(pathSeparator));
   const pathSplit = pathname.split(pathSeparator);
   const lastEle = pathSplit[pathSplit.length - 1];
+  const currentTitle = getMetadata('breadcrumbtitle');
 
   const breadcrumbs = [
     {
@@ -46,8 +47,11 @@ async function createAutoBreadcrumb(block, placeholders) {
       url_path: urlForIndex(index),
     })),
     {
+      // get the breadcrumb title from the metadata; if the metadata does not contain it,
+      // get it from the index. If the index does not contain it, the last part of the path
+      // is used as the breadcrumb title
       // eslint-disable-next-line max-len
-      name: pageIndex.find((page) => page.path === urlForIndex(pathSplit.length - 1))?.breadcrumbtitle ?? (placeholders[`${lastEle}-title`] ?? lastEle),
+      name: (currentTitle.length > 0) ? currentTitle : pageIndex.find((page) => page.path === urlForIndex(pathSplit.length - 1))?.breadcrumbtitle ?? lastEle,
     },
   ];
   breadcrumbs.forEach((crumb) => {
