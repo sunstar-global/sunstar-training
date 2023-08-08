@@ -741,6 +741,10 @@ main .section.light-blue {
     max-width: 54.5rem;
   }
 
+  main .section.brands-top .section-container {
+    box-sizing: border-box;
+  }
+
   main .section.brand-description img,
   main .section.brand-description p:first-of-type img {
     zoom: 0.5;
