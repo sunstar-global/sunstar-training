@@ -294,7 +294,7 @@ header nav.nav-bottom .menu-level-3-item {
 header nav.nav-bottom .menu-level-3-item > a {
   font-size: var(--body-font-size-s);
   text-decoration: none;
-  padding: 0 1rem;
+  padding: 0.5rem 1rem;
   display: inline-flex;
   align-content: center;
   word-break: break-word;
@@ -730,7 +730,8 @@ header .lang-picker {
 
   header nav.nav-bottom .menu-level-3-item {
     border-bottom: unset;
-    height: 2.55rem;
+    box-sizing: border-box;
+    height: unset;
   }
 
   header nav.nav-bottom .menu-level-3-item > a:hover {
