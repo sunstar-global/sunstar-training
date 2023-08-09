@@ -295,4 +295,6 @@ export default async function decorate(block) {
     backdrop.classList.add('backdrop');
     document.body.appendChild(backdrop);
   }
+
+  block.parentElement.classList.add('appear');
 }

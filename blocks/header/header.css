@@ -6,6 +6,10 @@ header {
   z-index: 100;
 }
 
+header.appear {
+  visibility: visible;
+}
+
 header.header-wrapper.fixed {
   position: fixed;
   top: 0;

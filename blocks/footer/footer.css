@@ -5,6 +5,10 @@ footer {
   overflow: hidden;
 }
 
+footer.appear {
+  visibility: visible;
+}
+
 footer a:hover {
   text-decoration: underline;
 }

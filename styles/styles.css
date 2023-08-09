@@ -135,6 +135,10 @@ body.appear {
   display: unset;
 }
 
+header, footer {
+  visibility: hidden;
+}
+
 body.no-scroll {
   overflow-y: hidden;
 }

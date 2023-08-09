@@ -44,6 +44,8 @@ function decorateFooter(block) {
   itemsList.forEach((item) => {
     primaryFooter.appendChild(item);
   });
+
+  block.parentElement.classList.add('appear');
 }
 
 /**
