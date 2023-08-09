@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { fetchIndex } from '../../scripts/scripts.js';
 
 const cachedResponses = {};
@@ -55,15 +56,58 @@ async function fetchHtml(url) {
   return html;
 }
 
+async function checkURLValidity(url) {
+  try {
+    const response = await fetch(url, {
+      method: 'HEAD',
+    });
+    return response.status;
+  } catch (error) {
+    console.error(`Error while checking validity of ${url}: ${error}`);
+  }
+  return 0;
+}
+
 async function searchForElement(url, selector) {
   const html = await fetchHtml(url);
   const element = document.createElement('div');
   element.innerHTML = html;
 
   // Modify the selector and condition based on your requirements
-  const desiredSelector = element.querySelector(selector);
+  const matchingElements = element.querySelectorAll(selector);
+  if (matchingElements && matchingElements.length > 0) {
+    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
+    console.log('Found element for url:', url);
+    matchingElements.forEach(async (el) => {
+      if (el.tagName === 'A' && el.href
+      && !el.href.includes('twitter.com')
+      && !el.href.includes('facebook.com')
+      && !el.href.includes('linkedin.com')
+      && !el.href.includes('youtube.com')
+      && !el.href.includes('mailto')
+      && !el.href.includes('tel')
+      && !el.href.includes('javascript')
+      && !el.href.includes('amazon.com')
+      && !el.href.includes('instagram.com')
+      && !el.href.includes('pinterest.com')
+      && !el.href.includes('google.com')
+      && !el.href.includes('www.invest-in-bavaria.com')
+      && !el.href.includes('www.sunstarqais.com')
+      && !el.href.includes('www.u-vix.com')
+      && !el.href.includes('www.tsubamex.co.jp')
+      && !el.href.includes('sunstar.com')
+      && !el.href.includes('kukanjizai.com')
+      && !el.href.includes('www.rinya.maff.go.jp')
+      && !el.href.includes('www.sunstar-kc.jp')
+      && !el.href.includes('www.sho-han.com')
+      && !el.href.includes('sunstar-braking.com')
+      ) {
+        console.log(`${el.href}----${await checkURLValidity(el.href)}`);
+      }
+    });
+  }
 
-  return !!desiredSelector;
+  return !!matchingElements && matchingElements.length > 0;
 }
 
 async function filterUrlsWithElement(urls, selector) {
