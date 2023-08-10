@@ -94,7 +94,14 @@ function excludeDomain(url) {
     'www.sunstar-kc.jp',
     'www.sho-han.com',
     'www.braking.com',
-    'sunstar-braking.com'];
+    'sunstar-braking.com',
+    'www.sunstarmoto.com',
+    'corp.sunstar-engineering.com',
+    'jp.sunstar-engineering.com',
+    'store.sunstarqais.com',
+    'www.daytona.co.jp',
+    'bit.ly',
+    'www.risesearch.it'];
 
   // eslint-disable-next-line no-restricted-syntax
   for (const excludedDomain of excludedDomains) {
@@ -112,7 +119,7 @@ async function checkBrokenLink(link, page) {
     if (respcode !== 200) {
       brokenLinks.push({ url: link, respcode });
       console.log(`Broken link: ${link}, ${respcode}`);
-      document.getElementById('invalidLinksCount').textContent = parseInt(document.getElementById('invalidLinksCount').textContent, 10) + 1;
+      document.getElementById('invalid-links-count').textContent = parseInt(document.getElementById('invalid-links-count').textContent, 10) + 1;
       const brokenLinkRow = document.createElement('tr');
 
       const brokenLinkUrl = document.createElement('td');
@@ -130,7 +137,7 @@ async function checkBrokenLink(link, page) {
       document.getElementById('brokenLinksTable').appendChild(brokenLinkRow);
     } else {
       console.log(`Valid link: ${link}, ${respcode}`);
-      document.getElementById('validLinksCount').textContent = parseInt(document.getElementById('validLinksCount').textContent, 10) + 1;
+      document.getElementById('valid-links-count').textContent = parseInt(document.getElementById('valid-links-count').textContent, 10) + 1;
     }
   }
 }
@@ -188,7 +195,7 @@ async function handleFormSubmit(event, urlList) {
   const validLinksHeader = document.createElement('h5');
   validLinksHeader.textContent = 'Valid Links Count:';
   const validLinksCount = document.createElement('span');
-  validLinksCount.id = 'validLinksCount';
+  validLinksCount.id = 'valid-links-count';
   validLinksCount.textContent = 0;
   validLinksHeader.appendChild(validLinksCount);
   brokenLinksContainer.appendChild(validLinksHeader);
@@ -196,7 +203,7 @@ async function handleFormSubmit(event, urlList) {
   const invalidLinksHeader = document.createElement('h5');
   invalidLinksHeader.textContent = 'Invalid Links Count:';
   const invalidLinksCount = document.createElement('span');
-  invalidLinksCount.id = 'invalidLinksCount';
+  invalidLinksCount.id = 'invalid-links-count';
   invalidLinksCount.textContent = 0;
   invalidLinksHeader.appendChild(invalidLinksCount);
   brokenLinksContainer.appendChild(invalidLinksHeader);
