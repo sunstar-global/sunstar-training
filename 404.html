@@ -21,21 +21,39 @@
   <meta property="og:title" content="Page not found">
   <script src="/scripts/scripts.js" type="module" crossorigin="use-credentials"></script>
   <script type="module">
-    import { sampleRUM } from '/scripts/lib-franklin.js';
+    import { sampleRUM, fetchPlaceholders } from '/scripts/lib-franklin.js';
+    import { getLanguage } from '/scripts/scripts.js';
 
-    window.addEventListener('load', () => {
-      if (document.referrer) {
-        const { origin, pathname } = new URL(document.referrer);
-        if (origin === window.location.origin) {
-          const backBtn = document.createElement('a');
-          backBtn.classList.add('button', 'error-button-back');
-          backBtn.href = pathname;
-          backBtn.textContent = 'Go back';
-          backBtn.title = 'Go back';
-          const btnContainer = document.querySelector('.button-container');
-          btnContainer.append(backBtn);
-        }
+    window.addEventListener('load', async () => {
+      const lang = getLanguage();
+      const placeholders = await fetchPlaceholders(lang);
+
+      const heading = document.querySelector('main.error h1');
+      if (heading) {
+        heading.innerHTML = placeholders['page-not-found-heading'];
       }
+
+      const subHeading = document.querySelector('main.error h4');
+      if (subHeading) {
+        subHeading.innerHTML = placeholders['page-not-found-subheading'];
+      }
+
+      const button = document.querySelector('main.error .button');
+      if (button) {
+        button.href = `/${lang === `en` ? '' : lang}`;
+        button.innerHTML = placeholders['page-not-found-button-text'];
+      }
+
+      const title = document.querySelector('head title');
+      if (title) {
+        title.innerHTML =  `${placeholders['page-not-found-title-prefix'] + ' – Sunstar Engineering'}`
+      }
+
+      const metaTitle = document.querySelector('meta[property="og:title"]');
+      if (metaTitle) {
+        metaTitle.content = document.querySelector('head title').textContent;
+      }
+
       sampleRUM('404', { source: document.referrer, target: window.location.href });
     });
   </script>
@@ -43,16 +61,45 @@
   <style>
     main.error {
       min-height: calc(100vh - var(--nav-height));
-      display: flex;
       align-items: center;
+      background: var(--transparent-blue-light-color);
+      text-align: center;
     }
 
-    main.error .error-number {
-      width: 100%;
+    main.error .section {
+      padding-top: 5rem;
+      padding-bottom: 10rem;
     }
 
-    main.error .error-number text {
-      font-family: var(--fixed-font-family);
+    main.error h1 {
+      font-size: 3.25rem;
+      line-height: 3rem;
+      padding-bottom: 2rem;
+    }
+
+    main.error h4 {
+      color: var(--light-black);
+      margin-bottom: 2rem;
+      line-height: 1;
+    }
+
+    main.error .button.secondary {
+      background: var(--button-background-color);
+      color: var(--white);
+      border: none;
+    }
+
+    main.error .button.secondary:focus {
+      box-shadow: 0 0 0 0.2rem #26579080;
+    }
+    main.error .button.secondary:hover {
+      background: var(--link-sky-color);
+    }
+
+    main.error .button.secondary:active {
+      color: var(--white);
+      background-color: #003449;
+      border-color: #002b3c;
     }
   </style>
   <link rel="stylesheet" href="/styles/lazy-styles.css">
@@ -62,16 +109,13 @@
   <header></header>
   <main class="error">
     <div class="section">
-      <svg viewBox="1 0 38 18" class="error-number">
-        <text x="0" y="17">404</text>
-      </svg>
-      <h2 class="error-message">Page Not Found</h2>
+      <h1 class="error-message"></h1>
+      <h4></h4>
       <p class="button-container">
-        <a href="/" class="button secondary error-button-home">Go home</a>
+        <a class="button secondary error-button-home"></a>
       </p>
     </div>
   </main>
   <footer></footer>
 </body>
-
 </html>
