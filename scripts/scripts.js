@@ -12,7 +12,7 @@ import {
   loadBlocks,
   loadCSS,
   getMetadata,
-  isSidekickLibPage,
+  isInternalPage,
 } from './lib-franklin.js';
 
 const LCP_BLOCKS = [
@@ -226,7 +226,7 @@ async function loadLazy(doc) {
   const { hash } = window.location;
   const element = hash ? doc.getElementById(decodeURIComponent(hash.substring(1))) : null;
   if (hash && element) element.scrollIntoView();
-  if (!isSidekickLibPage()) {
+  if (!isInternalPage()) {
     loadHeader(doc.querySelector('header'));
     loadFooter(doc.querySelector('footer'));
 

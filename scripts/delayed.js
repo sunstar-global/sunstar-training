@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-cycle
-import { sampleRUM, isSidekickLibPage } from './lib-franklin.js';
+import { sampleRUM, isInternalPage } from './lib-franklin.js';
 // eslint-disable-next-line import/no-cycle
 import { getEnvType, loadConsentManager, loadScript } from './scripts.js';
 
@@ -22,7 +22,7 @@ window.addEventListener('consentmanager', () => {
   }
 });
 
-if (!isSidekickLibPage()) {
+if (!isInternalPage()) {
   await loadAdobeLaunch();
   await loadConsentManager();
 }

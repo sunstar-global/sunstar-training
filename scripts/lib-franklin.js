@@ -764,14 +764,14 @@ export function decorateRenderHints(block) {
   });
 }
 
-export function isSidekickLibPage() {
-  return getHref().indexOf('/sidekick/blocks/') > 0;
+export function isInternalPage() {
+  return getHref().indexOf('/sidekick/blocks/') > 0 || getHref().indexOf('/_tools/') > 0;
 }
 /**
  * Auto initializiation.
  */
 function init() {
-  if (isSidekickLibPage()) {
+  if (isInternalPage()) {
     setup();
   } else {
     document.body.style.display = 'none';
