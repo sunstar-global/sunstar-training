@@ -718,6 +718,10 @@ header .lang-picker {
     margin-bottom: unset;
   }
 
+  header nav.nav-bottom .menu-level-2-item > a:hover {
+    color: var(--muted-text);
+  }
+
   header nav.nav-bottom .menu-level-2-item-header,
   header nav.nav-bottom .menu-level-3-item-header {
     display: none;
