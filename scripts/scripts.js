@@ -72,6 +72,12 @@ export function getLanguangeSpecificPath(path) {
 function buildHeroBlock(main) {
   const h1 = main.querySelector('h1');
   const picture = main.querySelector('picture');
+  const hasHeroBlockVariant = main.querySelector('[class^="hero-"]');
+  // omit to build hero block here for other hero blocks variants like hero-banner,
+  // hero-horizontal-tabs and hero-vertical-tabs
+  if (hasHeroBlockVariant) {
+    return;
+  }
   // eslint-disable-next-line no-bitwise
   if (h1 && picture && (h1.compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_PRECEDING)) {
     const section = document.createElement('div');
