@@ -38,10 +38,6 @@ body.air main .section.centered.ja-air-links p:last-child > a.button {
 }
 
 @media (min-width: 62rem) {
-  body.air main .block.columns {
-    margin: 3rem auto;
-  }
-
   body.air main .block.text.black {
     max-width: unset;
   }
