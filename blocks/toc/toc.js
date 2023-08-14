@@ -57,13 +57,15 @@ function buildTOCTop(ul, block) {
   [...document.querySelector('main').children].forEach((section, i) => {
     if (others) {
       const liItem = ul.querySelectorAll('li')[i - tocIndex - 1];
-      const liVar = liItem.innerText.toLowerCase();
-      section.id = liVar;
-      const aLink = document.createElement('a');
-      aLink.href = `#${liVar}`;
-      aLink.innerText = liItem.innerText;
-      liItem.innerText = '';
-      liItem.append(aLink);
+      if (liItem) {
+        const liVar = liItem.innerText.toLowerCase();
+        section.id = liVar;
+        const aLink = document.createElement('a');
+        aLink.href = `#${liVar}`;
+        aLink.innerText = liItem.innerText;
+        liItem.innerText = '';
+        liItem.append(aLink);
+      }
     }
     if (section.classList.contains('toc-container')) {
       others = true;

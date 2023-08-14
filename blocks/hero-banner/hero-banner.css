@@ -61,7 +61,8 @@
     font-size: var(--heading-font-size-xxxs);
 }
 
-.hero-banner-text-wrapper h2 {
+.hero-banner-text-wrapper h2,
+.hero-banner-text-wrapper h1 {
     font-weight: var(--font-weight-small);
     font-size: var(--heading-font-size-m);
     line-height: 2rem;
@@ -163,7 +164,8 @@
         font-size: var(--heading-font-size-xxs);
     }
 
-    .hero-banner-text-wrapper h2 {
+    .hero-banner-text-wrapper h2,
+    .hero-banner-text-wrapper h1 {
         font-size: 2.25rem;
         line-height: 1.3em;
     }
