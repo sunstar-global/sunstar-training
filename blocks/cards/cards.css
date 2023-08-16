@@ -394,10 +394,12 @@ main .nolink .cards > ul > li > .cards-card-body > h6 {
     width: auto;
     height: 12.1875rem;
     flex: 1;
+    margin: 0;
   }
 
   main .block.cards.machine-parts > ul > li .cards-card-image {
     height: 100%;
+    min-width: 50%;
   }
 
   main .block.cards.machine-parts > ul > li > div {
