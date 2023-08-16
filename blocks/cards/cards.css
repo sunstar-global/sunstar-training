@@ -347,26 +347,12 @@ main .nolink .cards > ul > li > .cards-card-body > h6 {
   }
 
   main .block.cards.machine-parts > ul > li {
-    display: flex;
-    width: auto;
-    height: 12.1875rem;
-    flex: 1;
-  }
-
-  main .block.cards.machine-parts > ul > li > div {
+    width: inherit;
     flex: 1;
   }
 
   main .block.cards.machine-parts > ul > li .cards-card-image {
-    height: 100%;
-  }
-
-  main .block.cards.machine-parts > ul > li .cards-card-body p,
-  main .block.cards.machine-parts > ul > li .cards-card-body a {
-    width: 100%;
-    font-size: 14px;
-    line-height: 1.5;
-    align-self: flex-start;
+    height: 17.1875rem;
   }
 }
 
@@ -402,4 +388,28 @@ main .nolink .cards > ul > li > .cards-card-body > h6 {
   .nolink .cards > ul > li {
     width: 16.5rem;
   }
+
+  main .block.cards.machine-parts > ul > li {
+    display: flex;
+    width: auto;
+    height: 12.1875rem;
+    flex: 1;
+  }
+
+  main .block.cards.machine-parts > ul > li .cards-card-image {
+    height: 100%;
+  }
+
+  main .block.cards.machine-parts > ul > li > div {
+    flex: 1;
+  }
+
+  main .block.cards.machine-parts > ul > li .cards-card-body p,
+  main .block.cards.machine-parts > ul > li .cards-card-body a {
+    width: 100%;
+    font-size: 14px;
+    line-height: 1.5;
+    align-self: flex-start;
+  }
+
 }
