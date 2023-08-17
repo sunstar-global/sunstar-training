@@ -5,6 +5,7 @@ import
   getLanguangeSpecificPath,
   getSearchWidget,
   getWindowSize,
+  fetchIndex,
 } from '../../scripts/scripts.js';
 
 function decorateSocial(social) {
@@ -25,7 +26,7 @@ function decorateSocial(social) {
   });
 }
 
-function decorateLangPicker(langPicker) {
+async function decorateLangPicker(langPicker) {
   const lang = getLanguage() || '';
   let langName = 'English'; // default to English
   langPicker.classList.add('lang-picker');
@@ -34,6 +35,7 @@ function decorateLangPicker(langPicker) {
   const currentLang = getLanguage();
   // Get the current path without the language prefix
   const currPath = currentLang === 'en' ? window.location.pathname : window.location.pathname.replace(`/${currentLang}/`, '/');
+  const json = await fetchIndex('query-index');
 
   langPicker.querySelectorAll(':scope>ul>li').forEach((li) => {
     li.classList.add('lang-picker-item');
@@ -51,12 +53,25 @@ function decorateLangPicker(langPicker) {
       // Special Check added to remove english language from the list
       // if selected language is english
       li.remove();
+    } else {
+      const newUrl = langRoot === '' ? `${currPath}` : `${langRoot}${currPath}`;
+      const urlExcludingSlash = newUrl.endsWith('/') ? newUrl.slice(0, -1) : newUrl;
+      const data = json.data.find((page) => [newUrl, urlExcludingSlash].includes(page.path));
+
+      if (!data) {
+        li.remove();
+      }
     }
   });
+
   const a = document.createElement('a');
   a.setAttribute('href', '#');
   a.textContent = langName;
   langPicker.prepend(a);
+
+  if (langPicker.querySelectorAll(':scope>ul>li').length === 0 && langPicker.querySelector('ul')) {
+    langPicker.querySelector('ul').remove();
+  }
 }
 
 /* Add levels to the menu items */
