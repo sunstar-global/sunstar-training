@@ -23,6 +23,6 @@ window.addEventListener('consentmanager', () => {
 });
 
 if (!isInternalPage()) {
-  await loadAdobeLaunch();
   await loadConsentManager();
+  await loadAdobeLaunch();
 }
