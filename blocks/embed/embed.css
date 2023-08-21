@@ -2,6 +2,7 @@ main .embed {
   width: unset;
   text-align: center;
   margin: 2rem auto;
+  min-height: 12rem;
 }
   
 main .embed > div {
@@ -66,4 +67,10 @@ main .embed .caption {
   line-height: 1.7em;
   margin-bottom: 1em;
   color: var(--gray);
+}
+
+@media (min-width: 48rem) {
+  main .embed {
+    min-height: 25.3rem;
+  }
 }
