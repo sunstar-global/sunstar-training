@@ -6,6 +6,7 @@ import
   getSearchWidget,
   getWindowSize,
   fetchIndex,
+  decorateAnchors,
 } from '../../scripts/scripts.js';
 
 function decorateSocial(social) {
@@ -309,6 +310,8 @@ export default async function decorate(block) {
     const backdrop = document.createElement('div');
     backdrop.classList.add('backdrop');
     document.body.appendChild(backdrop);
+
+    decorateAnchors(block);
   }
 
   block.parentElement.classList.add('appear');

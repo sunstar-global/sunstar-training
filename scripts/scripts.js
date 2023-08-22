@@ -115,22 +115,47 @@ function buildAutoBlocks(main) {
 /**
  * decorates anchors with video links
  * for styling updates via CSS
- * @param {Element} element The element to decorate
+ * @param {Element}s anchor elements to decorate
  * @returns {void}
  */
-export function decorateVideoLinks(element = document) {
-  const anchors = element.getElementsByTagName('a');
+export function decorateVideoLinks(youTubeAnchors) {
   // currently only youtube links are supported
-  const youTubeAnchors = Array.from(anchors).filter(
-    (a) => a.href.includes('youtu'),
-  );
-
   if (youTubeAnchors.length) {
     youTubeAnchors.forEach((a) => {
       a.classList.add('video-link');
       a.classList.add('youtube');
     });
   }
+}
+
+/**
+ * decorates external links to open in new window
+ * for styling updates via CSS
+ * @param {Element}s element The element to decorate
+ * @returns {void}
+ */
+export function decorateExternalAnchors(externalAnchors) {
+  if (externalAnchors.length) {
+    externalAnchors.forEach((a) => {
+      a.target = '_blank';
+    });
+  }
+}
+
+/**
+ * decorates anchors
+ * for styling updates via CSS
+ * @param {Element} element The element to decorate
+ * @returns {void}
+ */
+export function decorateAnchors(element = document) {
+  const anchors = element.getElementsByTagName('a');
+  decorateVideoLinks(Array.from(anchors).filter(
+    (a) => a.href.includes('youtu'),
+  ));
+  decorateExternalAnchors(Array.from(anchors).filter(
+    (a) => !a.href.match(`^http[s]*://${window.location.host}/`),
+  ));
 }
 
 // Function to get the current window size
@@ -154,7 +179,7 @@ export function getWindowSize() {
 export function decorateMain(main) {
   // hopefully forward compatible button decoration
   decorateButtons(main);
-  decorateVideoLinks(main);
+  decorateAnchors(main);
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);

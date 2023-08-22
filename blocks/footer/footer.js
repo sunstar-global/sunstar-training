@@ -4,7 +4,10 @@ import {
   getMetadata,
   updateSectionsStatus,
 } from '../../scripts/lib-franklin.js';
-import { getLanguage } from '../../scripts/scripts.js';
+import {
+  getLanguage,
+  decorateAnchors,
+} from '../../scripts/scripts.js';
 
 function wrapSocialAndNavLinks(block) {
   const socialNavWrapper = document.createElement('div');
@@ -72,5 +75,7 @@ export default async function decorate(block) {
     block.append(footer);
     decorateButtons(block);
     decorateFooter(block);
+
+    decorateAnchors(block);
   }
 }
