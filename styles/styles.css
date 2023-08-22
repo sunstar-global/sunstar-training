@@ -400,8 +400,8 @@ main img {
 .icon.icon-link-black {
   background-image: url('/icons/link-black.svg');
   display: inline-flex;
-  height: 20px;
-  width: 20px;
+  height: 18px;
+  width: 12px;
 }
 
 /* START Section Styles START */

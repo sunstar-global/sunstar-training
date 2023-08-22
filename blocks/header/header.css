@@ -86,6 +86,7 @@ header nav.nav-top > ul > li {
 
 header nav.nav-top > ul > li > a {
   color: var(--light-black);
+  display: flex;
 }
 
 header nav.nav-top > ul > li > a:first-of-type {
@@ -397,7 +398,7 @@ header .nav-bottom .other-items {
 }
 
 header .nav-bottom .other-items .icon-link-black {
-  margin-top: 0.125rem;
+  margin-top: 0.3rem;
   margin-left: 0.1875rem;
   height: 1.0625rem;
   width: 0.875rem;
