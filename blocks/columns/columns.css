@@ -30,7 +30,7 @@
   flex-direction: column;
 }
 
-.columns img {
+.columns:not(.native-image-sizes) img {
   width: 100%;
 }
 

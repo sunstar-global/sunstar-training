@@ -25,11 +25,12 @@ export default function decorate(block) {
     [...row.children].forEach((col) => {
       wrapImgsInLinks(col);
       if (!textOnlyColBlock) {
-        const pic = col.querySelector('picture');
-        if (pic) {
-          const picWrapper = pic.closest('div');
-          if (picWrapper && picWrapper.children.length === 1) {
-            // picture is only content in column
+        const pics = col.querySelectorAll('picture');
+        if (pics.length) {
+          const picWrapper = pics[0].closest('div');
+          if (picWrapper && picWrapper.children.length === pics.length) {
+            // pictures (either wrapped in achors, or otherwise)
+            // are only content in the column
             picWrapper.classList.add('columns-img-col');
           }
         }
