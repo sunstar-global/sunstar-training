@@ -627,6 +627,10 @@ header .lang-picker {
   }
 
   header nav.nav-bottom .menu-level-1-item > .dropdown-menu {
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    top: -1000px;
     height: 30rem;
   }
 
@@ -651,7 +655,10 @@ header .lang-picker {
   }
 
   header nav.nav-bottom .menu-level-1-item:hover > .dropdown-menu {
-    display: block;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.15s ease-in-out;
+    height: 30rem;
     top: var(--nav-total-height);
   }
 
