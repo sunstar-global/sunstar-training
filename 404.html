@@ -16,6 +16,14 @@
       const newLoc = window.location.href.slice(0, -1);
       window.location.replace(newLoc);
     }
+
+    // If the URL requested is /en/... redirect to /...
+    if (window.location.href.includes('/en')) {
+      window.stop(); // Stop processing this page, make sure no 404 rendering is done
+      const newLoc = window.location.href.replace('/en', '');
+      window.location.replace(newLoc);
+    }
+
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta property="og:title" content="Page not found">
