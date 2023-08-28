@@ -154,7 +154,7 @@ export function decorateAnchors(element = document) {
     (a) => a.href.includes('youtu'),
   ));
   decorateExternalAnchors(Array.from(anchors).filter(
-    (a) => !a.href.match(`^http[s]*://${window.location.host}/`),
+    (a) => a.href && !a.href.match(`^http[s]*://${window.location.host}/`),
   ));
 }
 
