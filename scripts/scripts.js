@@ -405,6 +405,7 @@ export function getSearchWidget(placeholders, initialVal, searchbox, lang = getL
 export function getEnvType(hostname = window.location.hostname) {
   const fqdnToEnvType = {
     'sunstar-engineering.com': 'live',
+    'www.sunstar-engineering.com': 'live',
     'main--sunstar-engineering--hlxsites.hlx.page': 'preview',
     'main--sunstar-engineering--hlxsites.hlx.live': 'live',
   };
