@@ -1,4 +1,5 @@
 import { getLanguage, loadScript } from '../../scripts/scripts.js';
+import { sampleRUM } from '../../scripts/lib-franklin.js';
 
 function ensureParagraph(el) {
   // add <p> if missing
@@ -43,8 +44,12 @@ function createSelect(fd) {
   return select;
 }
 
+function generateUnique() {
+  return new Date().valueOf() + Math.random();
+}
+
 function constructPayload(form) {
-  const payload = {};
+  const payload = { __id__: generateUnique() };
   [...form.elements].forEach((fe) => {
     if (fe.type === 'checkbox') {
       if (fe.checked) payload[fe.id] = fe.value;
@@ -66,6 +71,7 @@ async function submitForm(form) {
     body: JSON.stringify({ data: payload }),
   });
   await resp.text();
+  sampleRUM('form:submit');
   return true;
 }
 
