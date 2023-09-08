@@ -1,4 +1,4 @@
-# Sunstar-Engineering Website
+# Sunstar Website
 Franklin project for https://www.sunstar.com/
 
 ## Environments
