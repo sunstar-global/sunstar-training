@@ -1,10 +1,10 @@
 # Sunstar-Engineering Website
-Franklin project for https://www.sunstar-engineering.com/
+Franklin project for https://www.sunstar.com/
 
 ## Environments
-- Preview: https://main--sunstar-engineering--hlxsites.hlx.page/
-- Live: https://main--sunstar-engineering--hlxsites.hlx.live/
-- Edit: https://adobe.sharepoint.com/:f:/r/sites/HelixProjects/Shared%20Documents/sites/sunstar/sunstar-engineering
+- Preview: https://main--sunstar--hlxsites.hlx.page/
+- Live: https://main--sunstar--hlxsites.hlx.live/
+- Edit: https://adobe.sharepoint.com/:f:/r/sites/HelixProjects/Shared%20Documents/sites/sunstar/sunstar
 
 ## Installation
 
