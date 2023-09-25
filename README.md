@@ -26,6 +26,18 @@ npm run lint
 1. Start Franklin Proxy: `hlx up` (opens your browser at `http://localhost:3000`)
 1. Open the `{repo}` directory in your favorite IDE and start coding :)
 
+## Adding Visual Tests
+Visual testing is integrated as a [Github workflow][https://github.com/hlxsites/sunstar/blob/main/.github/workflows/visual-tests.yaml] which executes on any PR submission or modification. The testing framwork does a screenshot diff betwen the `main` and PR `branch`. The screenshots are taken from the following places:
+- [Block library](https://main--sunstar--hlxsites.hlx.page/tools/sidekick/library.html?plugin=blocks&path=/sidekick/blocks/&index=0)
+- [Test paths](https://github.com/hlxsites/sunstar/blob/b4dff52eb2c126c54655829bf110719d77cafe92/.github/workflows/visual-tests.yaml#L8) (Space seperated list of paths to test)
+    For e.g. if your change is on a page like `/brands`, you can add it to the list as below
+      ```
+      env:
+      TEST_PATHS: "/ /career/yuya-yoshisue /brands"
+      ```     
+
+⚠️  While proposing a PR with visual changes, please ensure that it has adequate visual testing coverage by adding impacted places at one or both places mentioned above.
+
 ## Adding external JS libraries
 
 You can add external JS libraries to your project but you need to make sure to copy over the files to be used in front end code in browser to the [ext-libs](./ext-libs/) folder. This would make them available for execution in the client browser.
