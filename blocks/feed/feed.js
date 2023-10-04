@@ -1,5 +1,5 @@
 import {
-  buildBlock, createOptimizedPicture, decorateBlock, loadBlock, readBlockConfig,
+  buildBlock, createOptimizedPicture, decorateBlock, getFormattedDate, loadBlock, readBlockConfig,
 } from '../../scripts/lib-franklin.js';
 import { queryIndex } from '../../scripts/scripts.js';
 
@@ -12,16 +12,36 @@ const resultParsers = {
     results.forEach((result) => {
       const fields = blockCfg.fields.split(',');
       const row = [];
+      let cardImage;
+      const cardBody = document.createElement('div');
       fields.forEach((field) => {
-        const div = document.createElement('div');
         const fieldName = field.trim().toLowerCase();
         if (fieldName === 'image') {
-          div.append(createOptimizedPicture(result[fieldName]));
+          cardImage = createOptimizedPicture(result[fieldName]);
         } else {
-          div.textContent = result[fieldName];
+          const div = document.createElement('div');
+          if (fieldName === 'publisheddate') {
+            div.classList.add('date');
+            div.textContent = getFormattedDate(new Date(parseInt(result[fieldName] * 1000, 10)));
+          } else if (fieldName === 'title') {
+            div.classList.add('title');
+            div.textContent = result[fieldName];
+          } else {
+            div.textContent = result[fieldName];
+          }
+          cardBody.appendChild(div);
         }
-        row.push(div);
       });
+      if (cardImage) {
+        row.push(cardImage);
+      }
+
+      if (cardBody) {
+        const path = document.createElement('a');
+        path.href = result.path;
+        cardBody.prepend(path);
+        row.push(cardBody);
+      }
       blockContents.push(row);
     });
     return blockContents;
@@ -44,7 +64,10 @@ export default async function decorate(block) {
   block.innerHTML = '';
   const blockContents = resultParsers[blockType](results, blockCfg);
   const builtBlock = buildBlock(blockType, blockContents);
-  block.parentNode.replaceChild(builtBlock, block);
+  if (block.parentNode) {
+    block.parentNode.replaceChild(builtBlock, block);
+  }
+
   decorateBlock(builtBlock);
   await loadBlock(builtBlock);
   return builtBlock;
