@@ -673,5 +673,4 @@ export async function loadConsentManager() {
   ]);
   window.dispatchEvent(new CustomEvent('consentmanager'));
 }
-
 loadPage();
