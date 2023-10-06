@@ -1,5 +1,6 @@
 import {
-  buildBlock, createOptimizedPicture, decorateBlock, getFormattedDate, loadBlock, readBlockConfig,
+  buildBlock, createOptimizedPicture, decorateBlock,
+  getFormattedDate, getMetadata, loadBlock, readBlockConfig,
 } from '../../scripts/lib-franklin.js';
 import { queryIndex } from '../../scripts/scripts.js';
 
@@ -53,13 +54,22 @@ const resultParsers = {
  */
 export default async function decorate(block) {
   const blockCfg = readBlockConfig(block);
-  const blockType = blockCfg['block-type'].trim().toLowerCase();
+  const blockType = (blockCfg['block-type'] ?? 'cards').trim().toLowerCase();
   const queryObj = await queryIndex();
 
-  const results = queryObj.where((el) => (!blockCfg.type || blockCfg.type === el.type)
-    && (!blockCfg.category || blockCfg.category === el.category)
-    && (!blockCfg.modifier || el.modifier === blockCfg.modifier))
-    .orderByDescending((el) => (blockCfg.sort ? el[blockCfg.sort] : el.path)).take(blockCfg.count)
+  const type = (blockCfg.type ?? getMetadata('type'))?.trim().toLowerCase();
+  const category = (blockCfg.category ?? getMetadata('category'))?.trim().toLowerCase();
+  // eslint-disable-next-line prefer-arrow-callback
+  const results = queryObj.where(function filterElements(el) {
+    const elType = (el.type ?? '').trim().toLowerCase();
+    const elCategory = (el.category ?? '').trim().toLowerCase();
+    const elFeatured = (el.featured ?? '').trim().toLowerCase();
+    return (!type || type === elType)
+      && (!category || category === elCategory)
+      && (!blockCfg.featured || elFeatured === blockCfg.featured.trim().toLowerCase());
+  })
+    .orderByDescending((el) => (blockCfg.sort ? el[blockCfg.sort.trim().toLowerCase()] : el.path))
+    .take(blockCfg.count ? parseInt(blockCfg.count, 10) : 4)
     .toList();
   block.innerHTML = '';
   const blockContents = resultParsers[blockType](results, blockCfg);
