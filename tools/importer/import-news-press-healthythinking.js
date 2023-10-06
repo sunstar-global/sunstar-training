@@ -62,7 +62,6 @@ const createFragmentBlockFromSection = (document) => {
   if (section) {
     const table = WebImporter.DOMUtils.createTable(block, document);
     section.before(document.createElement('hr'));
-    section.before(document.querySelector('.slider-title'));
     section.after(document.createElement('hr'));
     section.replaceWith(table);
   }
@@ -160,9 +159,10 @@ const removeRedundantTag = (document) => {
 
   const initialH6 = document.querySelector('h6.rabel');
   if (initialH6) {
+    const h4 = document.createElement('h4');
     const textContent = initialH6.querySelector('a')?.textContent;
-    initialH6.innerHTML = '';
-    initialH6.textContent = textContent;
+    h4.textContent = textContent;
+    initialH6.replaceWith(h4);
   }
 };
 
