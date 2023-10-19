@@ -10,7 +10,6 @@
  * governing permissions and limitations under the License.
  */
 
-
 :root {
   /* colors */
   --black: #000;
@@ -467,6 +466,10 @@ main .section .section-container {
   max-width: 100%;
   padding-left: 0;
   padding-right: 0;
+}
+
+main .section.auto-top-spacing .section-container {
+  margin-top: 3rem;
 }
 
 /* section - bold headings */

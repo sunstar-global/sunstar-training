@@ -35,6 +35,10 @@ export const MODAL_FRAGMENTS_ANCHOR_SELECTOR = `a[href*="${MODAL_FRAGMENTS_PATH_
 
 let language;
 
+// search for at most these many sections to find the first one that can have top spacing
+// ideally the first section would get the top spacing, but breadcrumb, hero etc do not get spacing
+const LAST_POSSIBLE_TOP_SPACING_SECTION = 3;
+
 export function getLanguageFromPath(pathname, resetCache = false) {
   if (resetCache) {
     language = undefined;
@@ -310,6 +314,33 @@ export function getWindowSize() {
     height: windowHeight,
   };
 }
+
+/**
+ * We look for the first section that does not contain any of the excluded classes
+ * and add the auto-top-spacing class to it.
+ *
+ * Once we find this section, OR we reach the LAST_POSSIBLE_TOP_SPACING_SECTION (=== 3)
+ * we break out of the loop to not add spacing to other sections as well.
+ */
+export function addTopSpacingStyleToFirstMatchingSection(main) {
+  const excludedClasses = ['static', 'spacer-container', 'feed-container', 'modal-fragment-container', 'hero-banner-container', 'hero-career-container', 'breadcrumb-container', 'hero-horizontal-tabs-container', 'carousel-container'];
+  const sections = [...main.querySelectorAll(':scope > div')];
+  let added = false;
+
+  sections.every((section) => {
+    if (added || sections.indexOf(section) === LAST_POSSIBLE_TOP_SPACING_SECTION) return false;
+    const sectionClasses = [...section.classList];
+    const matchesExcluded = excludedClasses.filter((excluded) => sectionClasses.includes(excluded));
+    const incompatible = matchesExcluded.length > 0;
+    if (!incompatible) {
+      section.classList.add('auto-top-spacing');
+      added = true;
+      return false;
+    }
+    return true;
+  });
+}
+
 /**
  * Decorates the main element.
  * @param {Element} main The main element
@@ -323,6 +354,7 @@ export function decorateMain(main) {
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
+  addTopSpacingStyleToFirstMatchingSection(main);
 }
 
 function decoratePageStyles() {
