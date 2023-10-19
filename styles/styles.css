@@ -75,6 +75,7 @@
   --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace;
 
   /* body sizes */
+  --body-font-size-xl: 20px;
   --body-font-size-l: 18px;
   --body-font-size-m: 16px;
   --body-font-size-s: 14px;
@@ -151,6 +152,10 @@ header, footer {
 
 body.no-scroll {
   overflow-y: hidden;
+}
+
+body.fixed {
+  position: fixed;
 }
 
 h1,
