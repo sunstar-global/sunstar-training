@@ -685,7 +685,7 @@ main .section.spaced li {
 
 main .section.spaced>.section-container {
   max-width: 100%;
-  padding: 0 1rem;
+  padding: 0;
 }
 
 /* section - contacts and links from global-network */
@@ -1111,6 +1111,10 @@ main .section.padded .section-container {
   main .section.social-media .embed {
     margin: unset;
     min-height: unset;
+  }
+
+  main .section.spaced>.section-container {
+    padding: 0 1rem;
   }
 
   /* section - padded */
