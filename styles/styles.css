@@ -499,6 +499,10 @@ main .block {
   margin-right: auto;
 }
 
+main .block.border {
+  border: 1px solid;
+}
+
 main img {
   max-width: 100%;
   width: auto;
