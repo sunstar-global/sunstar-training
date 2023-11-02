@@ -264,6 +264,10 @@
   margin: 0 auto 2rem;
 }
 
+div.img-col > video {
+  width: 100%;
+}
+
 @media (min-width: 62rem) {
   .columns.top-down.collapse > div {
     gap: 1.5rem;
@@ -480,5 +484,17 @@
   main .columns.history.invert-image-order-in-narrow-view > div,
   main .columns.invert-even-col-in-narrow-view > div:nth-child(even) {
     flex-direction: row;
+  }
+
+  div.img-col > video {
+    height: 337px;
+    width: 337px;
+  }
+}
+
+@media (min-width: 77rem) {
+  div.img-col > video {
+    height: 469px;
+    width: 469px;
   }
 }
