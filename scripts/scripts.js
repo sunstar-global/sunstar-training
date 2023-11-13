@@ -80,7 +80,7 @@ export function getLanguangeSpecificPath(path) {
 function buildHeroBlock(main) {
   const h1 = main.querySelector('h1');
   const picture = main.querySelector('picture');
-  const hasHeroBlockVariant = main.querySelector('[class^="hero-"]');
+  const hasHeroBlockVariant = main.querySelector('[class*="hero-"]');
   // omit to build hero block here for other hero blocks variants like hero-banner,
   // hero-horizontal-tabs and hero-vertical-tabs
   if (hasHeroBlockVariant) {
@@ -195,7 +195,6 @@ export function buildBreadcrumbBlock(main) {
     main.prepend(section);
   }
 }
-
 /**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
@@ -274,7 +273,7 @@ export function decorateAnchors(element = document) {
   ));
   decorateExternalAnchors(Array.from(anchors).filter(
     (a) => a.href && (!a.href.match(`^http[s]*://${window.location.host}/`)
-    || ['pdf'].includes(getUrlExtension(a.href).toLowerCase())),
+      || ['pdf'].includes(getUrlExtension(a.href).toLowerCase())),
   ));
 }
 
