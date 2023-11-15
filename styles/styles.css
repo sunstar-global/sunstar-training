@@ -554,6 +554,11 @@ main .section .section-container {
 }
 
 
+/* section - no-padding-top for h1 */
+.header-no-top-padding h1 {
+  padding-top: 0 !important;
+}
+
 /* section - bold headings */
 
 main .section.bold-headings h1,
@@ -593,6 +598,7 @@ main .section.brands-top h2 {
   line-height: 1.3em;
   font-weight: var(--font-weight-medium);
 }
+
 
 main .section.brands-top h6 {
   color: #007cadb3;
@@ -878,6 +884,11 @@ main .section.no-margin-bottom {
   margin-bottom: 0;
 }
 
+/* section - no margin-top */
+main .section.no-margin-top {
+  margin-top: 0;
+}
+
 /* section - highlight */
 main .section .section-container.highlight {
   background-color: var(--highlight-background-color);
@@ -906,6 +917,7 @@ main .section.thank-you p {
   font-weight: var(--font-weight-medium);
 }
 
+
 /* section - dark-blue */
 main .section.dark {
   background-color: var(--primary);
@@ -933,6 +945,10 @@ main .section.bg-primary h6 {
   color: var(--white);
   padding-top: 3rem;
   margin-bottom: 0;
+}
+
+main .section.newsroom h4 {
+  color: #89d1e1;
 }
 
 main .section.bg-primary p {
