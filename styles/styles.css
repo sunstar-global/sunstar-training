@@ -301,9 +301,30 @@ a {
 .dark h5,
 .dark h6,
 .dark p,
-.white {
+.white,
+.white h1,
+.white h2,
+.white h3,
+.white h4,
+.white h5,
+.white h6,
+.white p {
   color: var(--white);
 }
+
+
+/* Mixins carry !important to override the default styles */
+.no-borders * {
+  border: none!important;
+  box-shadow: none!important;
+}
+
+.no-margins,
+.no-margins  * {
+  margin: 0!important;
+}
+
+
 
 .dark h6 {
   color: var(--hero-strong-color);
@@ -553,6 +574,9 @@ main .section .section-container {
   padding-right: 0;
 }
 
+main .section.auto-top-spacing .section-container {
+  margin-top: 3rem;
+}
 
 /* section - no-padding-top for h1 */
 .header-no-top-padding h1 {
@@ -1031,12 +1055,11 @@ main .block.centered > div {
   left: unset;
 }
 
-/* stylelint-disable-next-line no-descending-specificity */
-main .section.auto-top-spacing .section-container {
-  margin-top: 3rem;
+.section.with-background-image.align-center > .section-container {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-
-
 
 /* END Section Styles END */
 
