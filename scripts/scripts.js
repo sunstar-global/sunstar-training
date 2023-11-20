@@ -379,6 +379,26 @@ function decorateSectionsWithBackgrounds(element) {
 }
 
 /**
+ * Enclose all text content of direct div children in p tags (for specified blocks)
+ * @param {*} element
+ */
+function wrapDirectDivTextInParagraphs(element) {
+  const classNamesToWrapText = ['.block.text div', '.block.columns div'];
+  const combinedSelector = classNamesToWrapText.join(', ');
+  const divs = element.querySelectorAll(combinedSelector);
+  Array.from(divs).forEach((div) => {
+    const textNodes = Array.from(div.childNodes)
+      .filter((node) => node.nodeType === Node.TEXT_NODE && node.textContent.trim() !== '');
+
+    textNodes.forEach((textNode) => {
+      const pElement = document.createElement('p');
+      pElement.appendChild(textNode.cloneNode(true));
+      div.replaceChild(pElement, textNode);
+    });
+  });
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -512,6 +532,7 @@ function setMetaTags(main) {
 async function loadLazy(doc) {
   const main = doc.querySelector('main');
   await loadBlocks(main);
+  wrapDirectDivTextInParagraphs(main);
 
   const { hash } = window.location;
   const element = hash ? doc.getElementById(decodeURIComponent(hash.substring(1))) : null;
