@@ -373,6 +373,7 @@ function decorateSectionsWithBackgrounds(element) {
     if (background) {
       section.classList.add('with-background-image');
       const backgroundPic = createOptimizedPicture(background);
+      backgroundPic.classList.add('background-image');
       section.append(backgroundPic);
     }
   });

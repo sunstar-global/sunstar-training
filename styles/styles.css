@@ -764,6 +764,14 @@ main .section.narrower > .tab-item.active > .section-container {
   max-width: 45rem;
 }
 
+/* section - narrow/narrower with background image compatibility */
+main .section.narrow.section.with-background-image > .section-container,
+main .section.narrower.section.with-background-image > .section-container {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
 /* section - static */
 main .section.static {
   margin-bottom: 7.5rem;
@@ -927,6 +935,13 @@ main .block.download a::after {
   transform: translate(-50%, -50%);
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
+.section.with-background-image.align-bottom > .section-container {
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 /* END Section Styles END */
 
 /* START Keyframes START */
@@ -1023,6 +1038,15 @@ main .block.download a::after {
     margin-left: auto;
     max-width: 45rem;
     margin-block-end: 3rem;
+  }
+
+  /* section - narrow/narrower with background image compatibility */
+  main .section.narrow.section.with-background-image > .section-container,
+  main .section.narrower.section.with-background-image > .section-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
   /* section - text align left */
