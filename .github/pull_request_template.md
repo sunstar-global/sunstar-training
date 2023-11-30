@@ -9,8 +9,8 @@ _Please enter each change as a new bullet point_
 
 ## Test URLs:
 - Original: https://www.sunstar.com/<path>
-- Before: https://main--sunstar--hlxsites.hlx.live/<path>
-- After: https://$branch--sunstar--hlxsites.hlx.live/<path>
+- Before: https://main--sunstar--sunstar-global.hlx.live/<path>
+- After: https://$branch--sunstar--sunstar-global.hlx.live/<path>
 
 ## Library
 

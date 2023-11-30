@@ -791,29 +791,6 @@ main .section.narrower > .tab-item.active > .section-container {
   max-width: 45rem;
 }
 
-/* section - narrow/narrower with background image compatibility */
-main .section.narrow.section.with-background-image > .section-container,
-main .section.narrower.section.with-background-image > .section-container {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, 0);
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: space-evenly;
-  box-sizing: border-box;
-}
-
-main .section.narrower.section.with-background-image > picture {
-  margin: auto;
-  margin-block-end: 3rem;
-  max-width: 45rem;
-}
-
-main .section.narrower.section.with-background-image > .section-container > .link-wrapper {
-  width: 100%;
-}
-
 /* section - static */
 main .section.static {
   margin-bottom: 7.5rem;
@@ -862,6 +839,29 @@ main .section.three-columns-layout .section-container > div  {
 main .section.three-columns-layout.with-background-image > picture, main .section.three-columns-layout.with-static-background-image > picture {
   position: absolute;
   bottom: 0;
+}
+
+/* section - narrow/narrower with background image compatibility */
+main .section.narrow.section.with-background-image > .section-container,
+main .section.narrower.section.with-background-image > .section-container {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-evenly;
+  box-sizing: border-box;
+}
+
+main .section.narrower.section.with-background-image > picture {
+  margin: auto;
+  margin-block-end: 3rem;
+  max-width: 45rem;
+}
+
+main .section.narrower.section.with-background-image > .section-container > .link-wrapper {
+  width: 100%;
 }
 
 /* section - margin-bottom */
