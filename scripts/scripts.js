@@ -699,8 +699,8 @@ export function getEnvType(hostname = window.location.hostname) {
   const fqdnToEnvType = {
     'sunstar.com': 'live',
     'www.sunstar.com': 'live',
-    'main--sunstar--hlxsites.hlx.page': 'preview',
-    'main--sunstar--hlxsites.hlx.live': 'live',
+    'main--sunstar--sunstar-global.hlx.page': 'preview',
+    'main--sunstar--sunstar-global.hlx.live': 'live',
   };
   return fqdnToEnvType[hostname] || 'dev';
 }
