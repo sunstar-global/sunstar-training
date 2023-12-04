@@ -934,10 +934,6 @@ main .section.bg-primary h6 {
   margin-bottom: 0;
 }
 
-main .section.newsroom h4 {
-  color: #89d1e1;
-}
-
 main .section.bg-primary p {
   color: var(--white);
   margin-top: 0.5rem;
@@ -1223,7 +1219,7 @@ main .section.float-image-right picture {
   main .section.padded-inline > .tab-item.active > .section-container {
     padding-inline: 0;
   }
-
+  
   /* END Section Styles END */
 }
 
