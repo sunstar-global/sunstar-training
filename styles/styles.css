@@ -1049,6 +1049,14 @@ main .section.float-image-right picture {
   transform: translate(-50%, -50%);
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
+.section.with-background-image.align-top > .section-container {
+  margin-top: 1.5rem;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+
 /* END Section Styles END */
 
 /* START Keyframes START */
