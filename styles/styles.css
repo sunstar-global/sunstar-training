@@ -843,7 +843,6 @@ main .section.narrow.section.with-background-image > .section-container,
 main .section.narrower.section.with-background-image > .section-container {
   position: absolute;
   left: 50%;
-  transform: translate(-50%, 0);
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -1082,8 +1081,7 @@ main .section.float-image-right picture {
 /* stylelint-disable-next-line no-descending-specificity */
 .section.with-background-image.align-right > .section-container,
 .section.with-background-image.align-right > .tab-item.active > .section-container {
-  right: 0;
-  left: unset;
+  right: -50%;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
