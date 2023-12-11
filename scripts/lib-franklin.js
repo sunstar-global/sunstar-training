@@ -775,6 +775,54 @@ export function decorateRenderHints(block) {
 export function isInternalPage() {
   return getHref().indexOf('/sidekick/blocks/') > 0 || getHref().indexOf('/_tools/') > 0;
 }
+
+const Viewport = (function initializeViewport() {
+  let deviceType;
+
+  const breakpoints = {
+    mobile: window.matchMedia('(max-width: 61.99rem)'),
+    tablet: window.matchMedia('(min-width: 62rem) and (max-width: 76.99rem)'),
+    desktop: window.matchMedia('(min-width: 77rem)'),
+  };
+
+  function sendResizeEvent() {
+    if (breakpoints.mobile.matches) {
+      deviceType = 'Mobile';
+    } else if (breakpoints.tablet.matches) {
+      deviceType = 'Tablet';
+    } else {
+      deviceType = 'Desktop';
+    }
+
+    const resizeEvent = new CustomEvent('viewportResize', {
+      detail: { deviceType },
+    });
+
+    window.dispatchEvent(resizeEvent);
+  }
+
+  function getDeviceType() {
+    return deviceType;
+  }
+
+  Object.values(breakpoints).forEach((breakpoint) => {
+    breakpoint.addEventListener('change', sendResizeEvent);
+  });
+
+  sendResizeEvent();
+
+  return {
+    getDeviceType,
+  };
+}());
+
+// for initial page load
+window.deviceType = Viewport.getDeviceType();
+
+window.addEventListener('viewportResize', (event) => {
+  window.deviceType = event.detail.deviceType;
+});
+
 /**
  * Auto initializiation.
  */
