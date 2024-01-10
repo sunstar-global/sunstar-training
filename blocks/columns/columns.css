@@ -40,7 +40,8 @@
   margin-bottom: 0;
 }
 
-.columns:not(.native-image-sizes) img {
+.columns:not(.native-image-sizes) img,
+.columns:not(.native-image-sizes) div.image-collage.autoblocked {
   width: 100%;
 }
 
@@ -319,6 +320,13 @@
   font-size: var(--body-font-size-s);
   margin: 1rem 0;
   text-align: center;
+}
+
+
+.columns div.image-collage.autoblocked picture ~ *.image-caption {
+  color: var(--steel-blue);
+  font-size: var(--body-font-size-s);
+  margin: 1rem 0;
 }
 
 
