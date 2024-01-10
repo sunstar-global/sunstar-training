@@ -105,7 +105,7 @@ function buildModalFragmentBlock(main) {
 }
 
 function buildImageCollageForPicture(picture, caption, buildBlockFunction) {
-  const captionText = caption.textContent;
+  const captionText = caption.innerHTML;
   const captionP = document.createElement('p');
   captionP.innerHTML = captionText;
   captionP.classList.add('image-caption');
