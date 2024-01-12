@@ -1,5 +1,5 @@
 // media query match that indicates mobile/tablet width
-const isDesktop = window.matchMedia('(min-width: 900px)');
+const isDesktop = window.deviceType;
 
 export default function decorate(block) {
   [...block.children].forEach((row, r) => {
@@ -12,8 +12,8 @@ export default function decorate(block) {
       nexticondiv.addEventListener('click', () => {
         if (!isDesktop.matches) {
           const isOnClick = nexticondiv.classList.contains('onclick');
-          if (document.querySelector('.hotspot .onclick')) document.querySelector('.hotspot .onclick').classList.remove('onclick');
-          if (!isOnClick) nexticondiv.classList.add('onclick');
+          if (document.querySelector('.hotspot .onclick')) { document.querySelector('.hotspot .onclick').classList.remove('onclick'); }
+          if (!isOnClick) { nexticondiv.classList.add('onclick'); }
         }
       });
       row.after(nexticondiv);
