@@ -1,6 +1,4 @@
 // media query match that indicates mobile/tablet width
-const isDesktop = window.deviceType;
-
 export default function decorate(block) {
   [...block.children].forEach((row, r) => {
     if (r > 0) {
@@ -10,11 +8,8 @@ export default function decorate(block) {
       nexticondiv.setAttribute('data', [...row.children][0].textContent.split(':')[1]);
       nexticondiv.setAttribute('data-city', [...row.children][0].textContent.split('\n')[2].split(':')[0]);
       nexticondiv.addEventListener('click', () => {
-        if (!isDesktop.matches) {
-          const isOnClick = nexticondiv.classList.contains('onclick');
-          if (document.querySelector('.hotspot .onclick')) { document.querySelector('.hotspot .onclick').classList.remove('onclick'); }
-          if (!isOnClick) { nexticondiv.classList.add('onclick'); }
-        }
+        nexticondiv.classList.toggle('onclick');
+        nexticondiv.classList.toggle('onclick');
       });
       row.after(nexticondiv);
       row.remove();
