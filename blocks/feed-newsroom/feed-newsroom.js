@@ -229,5 +229,5 @@ export default async function decorate(block) {
       }
     }
   });
-  loadResults(block, blockType, results, blockCfg, chunk, filterDiv, locale);
+  await loadResults(block, blockType, results, blockCfg, chunk, filterDiv, locale);
 }
