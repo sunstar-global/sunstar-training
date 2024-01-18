@@ -91,6 +91,22 @@ main .section.social-container p {
   background-image: url("../../icons/facebook.svg");
 }
 
+.block.social .icon-general-linkedin {
+  background-image: url("../../icons/general-linkedin.svg");
+}
+
+.block.social .icon-general-facebook {
+  background-image: url("../../icons/general-facebook.svg");
+}
+
+.block.social .icon-general-twitter {
+  background-image: url("../../icons/general-twitter.svg");
+}
+
+.block.social .icon-general-instagram {
+  background-image: url("../../icons/general-instagram.svg");
+}
+
 .block.social .icon {
   height: 1.5rem;
   width: 1.5rem;
@@ -194,7 +210,7 @@ main .section.social-container a.category-title {
     font-size: var(--heading-font-size-mxl);
   }
 
-  main .section.narrow .block.social {
+  main .section.narrow .block.social:not(.general) {
     flex-direction: column;
     gap: 1rem;
     top: 2.5rem;
@@ -235,7 +251,7 @@ main .section.social-container a.category-title {
 }
 
 @media (min-width:77rem) {
-  main .section.narrow .block.social {
+  main .section.narrow .block.social:not(.general) {
     right: -10rem;
   }
 }
