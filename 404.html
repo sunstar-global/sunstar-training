@@ -16,6 +16,16 @@
       window.location.replace(newLoc);
     }
 
+    const lastSlashIdx = window.location.href.lastIndexOf('/');
+    if (window.location.href.slice(lastSlashIdx, lastSlashIdx + 2) === '/#') {
+      window.stop();
+
+      var temp = window.location.href.split('');
+      temp.splice(lastSlashIdx, 1);
+      const newLoc = temp.join('');
+      window.location.replace(newLoc);
+    }
+
     // If the URL requested is /en/... redirect to /...
     if (window.location.href.includes('/en/') || window.location.href.endsWith('/en')) {
       window.stop(); // Stop processing this page, make sure no 404 rendering is done
