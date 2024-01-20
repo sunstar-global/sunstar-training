@@ -10,7 +10,7 @@ main .tabs {
 
 main div.tab-item:not(.active) {
     animation: fade-out 0ms linear forwards;
-
+    display: none;
 }
   
 main div.tab-item.active {
