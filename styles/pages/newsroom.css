@@ -22,15 +22,6 @@ main .newsroom.section .cards-card-body .title {
   }
 
   @media (min-width: 62rem) {
-    main .newsroom.section .cards-card-image {
-        height: 10rem;
-        aspect-ratio: 16/9;
-    }
-    
-      main .newsroom.section .cards-card-image img {
-        object-position: 50% 50%;
-    }
-
     main .newsroom.section .cards > ul {
         gap: 0;
       }
