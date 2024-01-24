@@ -698,10 +698,6 @@ export function getEnvType(hostname = window.location.hostname) {
     'www.sunstar.com': 'live',
     'main--sunstar--sunstar-global.hlx.page': 'preview',
     'main--sunstar--sunstar-global.hlx.live': 'live',
-
-    // TODO: Temporary fix for preview. Remove before merging to main
-    'gtm--sunstar--sunstar-global.hlx.page': 'preview',
-    'gtm--sunstar--sunstar-global.hlx.live': 'live',
   };
   return fqdnToEnvType[hostname] || 'dev';
 }
