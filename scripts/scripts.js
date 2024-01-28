@@ -105,13 +105,31 @@ function buildModalFragmentBlock(main) {
 }
 
 function buildImageCollageForPicture(picture, caption, buildBlockFunction) {
-  const captionText = caption.textContent;
+  const captionText = caption.innerHTML;
   const captionP = document.createElement('p');
   captionP.innerHTML = captionText;
+  captionP.classList.add('image-caption');
   caption.remove();
   const newBlock = buildBlockFunction('image-collage', { elems: [picture, captionP] });
   newBlock.classList.add('boxy-col-1');
   return newBlock;
+}
+
+function formatAutoblockedImageCaptionsForColumns(block, enclosingDiv) {
+  const picture = block.querySelector('picture');
+  const caption = block.querySelector('p');
+  const blockClassList = block.classList;
+  const columnDiv = document.createElement('div');
+
+  if (enclosingDiv.parentElement?.classList?.contains('columns') || enclosingDiv.parentElement?.parentElement?.classList?.contains('columns')) {
+    columnDiv.classList = blockClassList;
+    columnDiv.classList.add('img-col');
+    columnDiv.appendChild(picture);
+    columnDiv.appendChild(caption);
+
+    enclosingDiv.classList.add('img-col-wrapper');
+    enclosingDiv.replaceChild(columnDiv, block);
+  }
 }
 
 function buildImageWithCaptionForPicture(parentP, picture, buildBlockFunction) {
@@ -143,6 +161,7 @@ function buildImageWithCaptionForPicture(parentP, picture, buildBlockFunction) {
         }
         // insert the new block at the position the old image was at
         enclosingDiv.replaceChild(newBlock, parentP);
+        formatAutoblockedImageCaptionsForColumns(newBlock, enclosingDiv);
         return;
       }
 
@@ -160,6 +179,7 @@ function buildImageWithCaptionForPicture(parentP, picture, buildBlockFunction) {
         const newBlock = buildImageCollageForPicture(picture, cp, buildBlockFunction);
         newBlock.classList.add('autoblocked');
         enclosingDiv.replaceChild(newBlock, parentP);
+        formatAutoblockedImageCaptionsForColumns(newBlock, enclosingDiv);
         return;
       }
     }
@@ -698,6 +718,7 @@ export function getEnvType(hostname = window.location.hostname) {
     'www.sunstar.com': 'live',
     'main--sunstar--sunstar-global.hlx.page': 'preview',
     'main--sunstar--sunstar-global.hlx.live': 'live',
+    'ga-integration--sunstar--sunstar-global.hlx.live': 'live',
   };
   return fqdnToEnvType[hostname] || 'dev';
 }
@@ -930,12 +951,16 @@ export function cropString(inputString, maxLength) {
     return false;
   });
 
+  // If currentLength + word.length + 1 > maxLength means croppedString will be null hence
+  if (croppedString === '') {
+    croppedString = words[0].substring(0, maxLength);
+  }
+
   // Remove trailing space and add an ellipsis if needed
   croppedString = croppedString.trim();
   if (croppedString.length < inputString.length) {
     croppedString += '...';
   }
-
   return croppedString;
 }
 
