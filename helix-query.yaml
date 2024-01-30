@@ -6,6 +6,8 @@ indices:
     exclude:
       - '/_drafts/**'
       - '/_tools/**'
+      - '/drafts/**'
+      - '/tools/**'
       - '/sidekick/**'
       - '/fragments/**'
       - '/**/fragments/**'
@@ -17,7 +19,21 @@ indices:
       - '/**/thankyou'
       - '/search'
       - '/**/search'
-
+      - '/jp/_drafts/**'
+      - '/jp/_tools/**'
+      - '/jp/drafts/**'
+      - '/jp/tools/**'      
+      - '/jp/sidekick/**'
+      - '/jp/fragments/**'
+      - '/jp/**/fragments/**'
+      - '/jp/nav'
+      - '/jp/**/nav'
+      - '/jp/footer'
+      - '/jp/**/footer'
+      - '/jp/thankyou'
+      - '/jp/**/thankyou'
+      - '/jp/search'
+      - '/jp/**/search'
     target: /query-index.json
     properties:
       lastModified:
