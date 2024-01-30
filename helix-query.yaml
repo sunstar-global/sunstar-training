@@ -6,6 +6,8 @@ indices:
     exclude:
       - '/_drafts/**'
       - '/_tools/**'
+      - '/drafts/**'
+      - '/tools/**'
       - '/sidekick/**'
       - '/fragments/**'
       - '/**/fragments/**'
@@ -19,6 +21,8 @@ indices:
       - '/**/search'
       - '/jp/_drafts/**'
       - '/jp/_tools/**'
+      - '/jp/drafts/**'
+      - '/jp/tools/**'      
       - '/jp/sidekick/**'
       - '/jp/fragments/**'
       - '/jp/**/fragments/**'
