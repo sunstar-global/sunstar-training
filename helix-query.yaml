@@ -17,7 +17,19 @@ indices:
       - '/**/thankyou'
       - '/search'
       - '/**/search'
-
+      - '/jp/_drafts/**'
+      - '/jp/_tools/**'
+      - '/jp/sidekick/**'
+      - '/jp/fragments/**'
+      - '/jp/**/fragments/**'
+      - '/jp/nav'
+      - '/jp/**/nav'
+      - '/jp/footer'
+      - '/jp/**/footer'
+      - '/jp/thankyou'
+      - '/jp/**/thankyou'
+      - '/jp/search'
+      - '/jp/**/search'
     target: /query-index.json
     properties:
       lastModified:
