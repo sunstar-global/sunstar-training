@@ -75,12 +75,25 @@ main .block.cards {
   box-sizing: border-box;
 }
 
+.cards .cards-card-body *:last-of-type {
+  margin-bottom: 0;
+}
+
 .cards.hide-body .cards-card-body {
   display: none;
 }
 
 .cards.info-points .cards-card-body {
   text-align: center;
+}
+
+.cards h2,
+.cards h3,
+.cards h4 {
+  font-size: var(--h1-font-size-mobile);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.3em;
+  margin: 0 auto 1rem;
 }
 
 .cards .cards-card-body .title {
