@@ -140,9 +140,14 @@ main .block.cards.light-background ul > li{
 }
 
 .cards .cards-card-image {
-  height: 12.5rem;
+  aspect-ratio: 4/3;
   margin: 0;
   padding: 0;
+}
+
+.cards.sixteen-nine .cards-card-image {
+  aspect-ratio: 16/9;
+  height: unset;
 }
 
 .cards .cards-card-body div {
