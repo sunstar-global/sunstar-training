@@ -75,7 +75,7 @@ main .block.cards {
   box-sizing: border-box;
 }
 
-.cards .cards-card-body *:last-of-type {
+.cards .cards-card-body:last-of-type {
   margin-bottom: 0;
 }
 
@@ -87,13 +87,11 @@ main .block.cards {
   text-align: center;
 }
 
-.cards h2,
-.cards h3,
-.cards h4 {
-  font-size: var(--h1-font-size-mobile);
-  font-weight: var(--font-weight-medium);
-  line-height: 1.3em;
-  margin: 0 auto 1rem;
+.cards.hide-body .cards-card-body h2, 
+.cards.hide-body .cards-card-body h3, 
+.cards.hide-body .cards-card-body h4, 
+.cards.hide-body .cards-card-body h5 {
+  margin-bottom: 1rem!important;
 }
 
 .cards .cards-card-body .title {
@@ -140,7 +138,7 @@ main .cards.info-points > ul > li {
   box-shadow: none;
 }
 
-main .block.cards.light-background ul > li{
+main .block.cards.light-background ul > li {
   padding: 1rem;
   background-color: var(--transparent-blue-light-color);
   margin-block: 1.5rem;
