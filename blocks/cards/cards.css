@@ -381,14 +381,6 @@ main .cards-wrapper .light-background .cards-card-body h3 {
 }
 
 @media screen and (min-width: 48rem) {
-  .cards > ul > li {
-    margin: 0 7px;
-  }
-
-  .cards.grid > ul > li {
-    margin: 0 0 1rem;
-  }
-
   .cards > ul {
     flex-flow: row nowrap;
   }
@@ -489,10 +481,6 @@ main .cards-wrapper .light-background .cards-card-body h3 {
     grid-template-columns: repeat(auto-fill, 21.875rem);
     justify-content: space-between;
     grid-gap: 3rem;
-  }
-
-  .cards > ul > li {
-    margin: 0 1rem;
   }
 
   .cards > ul > li:first-of-type {
