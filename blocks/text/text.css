@@ -4,6 +4,8 @@ main .block.text.padded {
 
 main .block.text.max-width {
   max-width: 760px;
+  margin: 0;
+  text-wrap: pretty;
 }
 
 main .block.text.narrow {
