@@ -33,7 +33,7 @@ const embedYoutube = (url, isLite) => {
     const embedSplit = embed.split('/');
     embedHTML = `
       <lite-youtube videoid=${vid || embedSplit[embedSplit.length - 1]}>
-        <a href="https://www.youtube.com${vid ? `/embed/${vid}?rel=0&v=${vid}${suffix}` : embed}" class="lty-playbtn" title="Play Video">
+        <a href="https://www.youtube.com${vid ? `/embed/${vid}?rel=0&v=${vid}${suffix}&enablejsapi=1` : embed}" class="lty-playbtn" title="Play Video">
       </a>
       </lite-youtube>`;
     loadCSS(`${window.hlx.codeBasePath}/blocks/embed/lite-yt-embed.css`);
