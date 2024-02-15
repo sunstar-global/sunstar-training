@@ -436,7 +436,6 @@ main .cards-wrapper .light-background .cards-card-body h3 {
   }
 
   .cards > ul > li > a.button {
-    padding: 1rem 6px 0;
     display: block;
   }
 
@@ -514,10 +513,6 @@ main .cards-wrapper .light-background .cards-card-body h3 {
 
   .cards > ul > li:last-of-type {
     margin-right: 0;
-  }
-
-  .cards > ul > li > a.button {
-    padding: 20px 0 0;
   }
 
   .cards.large-text .cards-card-body .date {

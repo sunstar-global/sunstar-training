@@ -73,7 +73,6 @@ main .hero-horiz-tabs-text > h6 {
   color: var(--hero-strong-color);
   font-size: var(--heading-font-size-xxxs);
   letter-spacing: 0.7px;
-  margin-bottom: 0.75rem;
 }
 
 main .hero-horiz-tabs-text > p {
