@@ -13,6 +13,12 @@ main .block.cards {
   flex-flow: column nowrap;
   padding: 0;
   padding-inline-start: 0;
+  gap: 1.5rem;
+}
+
+.cards.grid-3-cols > ul, .cards.grid-4-cols > ul {
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
 .cards > ul > li {
@@ -21,7 +27,7 @@ main .block.cards {
   box-shadow: 0 2px 12px 0 rgb(60 70 80 / 20%);
   border: none;
   transition: all 0.15s ease-in-out;
-  margin: 0 0 1.5rem;
+  margin: 0;
   align-items: center;
   text-align: left;
   flex: 1;
@@ -75,12 +81,29 @@ main .block.cards {
   box-sizing: border-box;
 }
 
+.cards .cards-card-body p {
+  font-size: var(--body-font-size-s);
+  text-wrap: balance;
+}
+
+.cards .cards-card-body:last-of-type {
+  margin-bottom: 0;
+}
+
 .cards.hide-body .cards-card-body {
   display: none;
 }
 
 .cards.info-points .cards-card-body {
   text-align: center;
+}
+
+.cards .cards-card-body h2, 
+.cards .cards-card-body h3, 
+.cards .cards-card-body h4, 
+.cards .cards-card-body h5 {
+  margin-bottom: 1rem!important;
+  margin-top: 0!important;
 }
 
 .cards .cards-card-body .title {
@@ -127,7 +150,7 @@ main .cards.info-points > ul > li {
   box-shadow: none;
 }
 
-main .block.cards.light-background ul > li{
+main .block.cards.light-background ul > li {
   padding: 1rem;
   background-color: var(--transparent-blue-light-color);
   margin-block: 1.5rem;
@@ -140,9 +163,14 @@ main .block.cards.light-background ul > li{
 }
 
 .cards .cards-card-image {
-  height: 12.5rem;
+  aspect-ratio: 4/3;
   margin: 0;
   padding: 0;
+}
+
+.cards.aspect-ratio-16-9 .cards-card-image {
+  aspect-ratio: 16/9;
+  height: unset;
 }
 
 .cards .cards-card-body div {
@@ -326,7 +354,7 @@ main .nolink .cards.info-points > ul > li .cards-card-image {
   border: none;
 }
 
-main .cards-wrapper .machine-parts .cards-card-body h3{
+main .cards-wrapper .machine-parts .cards-card-body h3 {
   margin-block: 0;
   color: var(--light-black);
   font-size: var(--heading-font-size-m);
@@ -363,14 +391,6 @@ main .cards-wrapper .light-background .cards-card-body h3 {
 }
 
 @media screen and (min-width: 48rem) {
-  .cards > ul > li {
-    margin: 0 7px;
-  }
-
-  .cards.grid > ul > li {
-    margin: 0 0 1rem;
-  }
-
   .cards > ul {
     flex-flow: row nowrap;
   }
@@ -405,13 +425,17 @@ main .cards-wrapper .light-background .cards-card-body h3 {
     grid-gap: 2rem;
   }
 
+  .cards.grid-4-cols > ul, .cards.grid-3-cols > ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
   .cards > ul > li {
     padding: 0;
     text-align: center;
   }
 
   .cards > ul > li > a.button {
-    padding: 1rem 6px 0;
     display: block;
   }
 
@@ -439,9 +463,10 @@ main .cards-wrapper .light-background .cards-card-body h3 {
 }
 
 @media screen and (max-width: 77rem) {
-  main .block.cards.machine-parts > ul > li{
+  main .block.cards.machine-parts > ul > li {
      flex-direction: column;
      text-align: center;
+     gap: 1.5rem;
   }
 
   main .cards.machine-parts .cards-card-image {
@@ -472,8 +497,14 @@ main .cards-wrapper .light-background .cards-card-body h3 {
     grid-gap: 3rem;
   }
 
-  .cards > ul > li {
-    margin: 0 1rem;
+  .cards.grid-4-cols > ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  .cards.grid-3-cols > ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 
   .cards > ul > li:first-of-type {
@@ -482,10 +513,6 @@ main .cards-wrapper .light-background .cards-card-body h3 {
 
   .cards > ul > li:last-of-type {
     margin-right: 0;
-  }
-
-  .cards > ul > li > a.button {
-    padding: 20px 0 0;
   }
 
   .cards.large-text .cards-card-body .date {
@@ -556,4 +583,7 @@ main .cards-wrapper .light-background .cards-card-body h3 {
     line-height: 1.5;
     align-self: flex-start;
   }
+
+  
+
 }

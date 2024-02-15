@@ -2,6 +2,12 @@ main .block.text.padded {
   padding: 0 1rem;
 }
 
+main .block.text.max-width {
+  max-width: 760px;
+  margin: 0;
+  text-wrap: pretty;
+}
+
 main .block.text.narrow {
   width: 100%;
   padding-right: 0;
@@ -105,7 +111,7 @@ main .block.text.rounded-border p {
   font-size: var(--body-font-size-xl);
 }
 
-main .block.text.rounded-border  h4 {
+main .block.text.rounded-border h4 {
   text-align: center;
   border-bottom: 1px solid var(--light-black);
   padding-bottom: 1.5rem;

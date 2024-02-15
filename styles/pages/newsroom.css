@@ -1,7 +1,7 @@
 /* For the newsroom featured block title */
 
 main .section.newsroom h4 {
-    color: #89d1e1;
+    color: var(--hero-strong-color);
     padding-top: 0;
   }
   
@@ -18,12 +18,5 @@ main .newsroom.section .cards-card-body .title {
   }
 
   main .newsroom.section .cards > ul {
-    gap: 1rem;
-  }
-
-  @media (min-width: 62rem) {
-    main .newsroom.section .cards > ul {
-        gap: 0;
-      }
-
+    gap: 1.5rem;
   }
