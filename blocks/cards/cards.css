@@ -16,6 +16,16 @@ main .block.cards {
   gap: 1.5rem;
 }
 
+.cards.grid-3-col > ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.cards.grid-4-col > ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
 .cards > ul > li {
   padding: 0;
   box-sizing: border-box;
@@ -74,6 +84,11 @@ main .block.cards {
   padding: 20px;
   height: calc(100% - 12.5rem);
   box-sizing: border-box;
+}
+
+.cards .cards-card-body p {
+  font-size: var(--body-font-size-s);
+  text-wrap: balance;
 }
 
 .cards .cards-card-body:last-of-type {
@@ -158,7 +173,7 @@ main .block.cards.light-background ul > li {
   padding: 0;
 }
 
-.cards.sixteen-nine .cards-card-image {
+.cards.aspect-ratio-16-9 .cards-card-image {
   aspect-ratio: 16/9;
   height: unset;
 }
@@ -344,7 +359,7 @@ main .nolink .cards.info-points > ul > li .cards-card-image {
   border: none;
 }
 
-main .cards-wrapper .machine-parts .cards-card-body h3{
+main .cards-wrapper .machine-parts .cards-card-body h3 {
   margin-block: 0;
   color: var(--light-black);
   font-size: var(--heading-font-size-m);
@@ -415,6 +430,11 @@ main .cards-wrapper .light-background .cards-card-body h3 {
     grid-gap: 2rem;
   }
 
+  .cards.grid-4-col > ul, .cards.grid-3-col > ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
   .cards > ul > li {
     padding: 0;
     text-align: center;
@@ -449,7 +469,7 @@ main .cards-wrapper .light-background .cards-card-body h3 {
 }
 
 @media screen and (max-width: 77rem) {
-  main .block.cards.machine-parts > ul > li{
+  main .block.cards.machine-parts > ul > li {
      flex-direction: column;
      text-align: center;
      gap: 1.5rem;
