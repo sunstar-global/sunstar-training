@@ -16,14 +16,9 @@ main .block.cards {
   gap: 1.5rem;
 }
 
-.cards.grid-3-col > ul {
+.cards.grid-3-cols > ul, .cards.grid-4-cols > ul {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-}
-
-.cards.grid-4-col > ul {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
 }
 
 .cards > ul > li {
@@ -430,7 +425,7 @@ main .cards-wrapper .light-background .cards-card-body h3 {
     grid-gap: 2rem;
   }
 
-  .cards.grid-4-col > ul, .cards.grid-3-col > ul {
+  .cards.grid-4-cols > ul, .cards.grid-3-cols > ul {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
@@ -501,6 +496,16 @@ main .cards-wrapper .light-background .cards-card-body h3 {
     grid-template-columns: repeat(auto-fill, 21.875rem);
     justify-content: space-between;
     grid-gap: 3rem;
+  }
+
+  .cards.grid-4-cols > ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  .cards.grid-3-cols > ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 
   .cards > ul > li:first-of-type {
@@ -583,4 +588,7 @@ main .cards-wrapper .light-background .cards-card-body h3 {
     line-height: 1.5;
     align-self: flex-start;
   }
+
+  
+
 }
