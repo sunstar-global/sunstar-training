@@ -73,6 +73,7 @@ main .hero-horiz-tabs-text > h6 {
   color: var(--hero-strong-color);
   font-size: var(--heading-font-size-xxxs);
   letter-spacing: 0.7px;
+  margin-bottom: 0.75rem;
 }
 
 main .hero-horiz-tabs-text > p {
@@ -289,10 +290,6 @@ main .hero-horizontal-tabs a.button.primary.video-link::after {
   main .hero-horiz-tabs-text > h2 {
     font-size: 2.25rem;
     margin-bottom: 1.25rem;
-  }
-
-  main .hero-horiz-tabs-text > h6 {
-    margin-bottom: 1.5rem;
   }
 
   main .hero-horiz-tabs-text > p {
