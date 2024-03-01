@@ -23,10 +23,19 @@ function fetchPosterURL(poster) {
   return `${srcURL.pathname}?${srcUSP.toString()}`;
 }
 
+/* eslint-disable no-console */
 function getImage(block) {
   const div = getNamedValueFromTable(block, 'Image');
   if (!div) return null;
   div.classList.add('hero-horiz-tabs-img');
+  return div;
+}
+
+function getMedia(block) {
+  const div = getNamedValueFromTable(block, 'Media');
+  if (!div) return null;
+  div.classList.add('hero-horiz-tabs-img');
+  div.classList.add('hero-horiz-tabs-video');
   return div;
 }
 
@@ -103,6 +112,10 @@ export default function decorate(block) {
   const image = getImage(block);
   const text = getText(block);
   const tabs = createTabs(block, text);
+  const media = getMedia(block);
+  if (media) {
+    decorateVideo(media, block);
+  }
   const rows = [...block.children];
   console.log(block);
   const mediaRow = rows.at(0);
