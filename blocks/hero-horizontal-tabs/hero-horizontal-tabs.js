@@ -31,7 +31,7 @@ function getImage(block) {
 }
 
 function getMedia(block) {
-  const div = getNamedValueFromTable(block, 'Media');
+  const div = getNamedValueFromTable(block, 'Video');
   console.log(block);
   if (!div) return null;
   div.classList.add('hero-horiz-tabs-img');
