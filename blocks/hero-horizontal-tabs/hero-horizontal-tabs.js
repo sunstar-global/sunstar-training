@@ -128,10 +128,7 @@ export default function decorate(block) {
       }
     });
   }
-  console.log(image);
   if (image) {
     block.append(image);
-  } else {
-    block.classList.add('no-image');
   }
 }
