@@ -119,6 +119,7 @@ export default function decorate(block) {
             video.setAttribute('muted', '');
             video.setAttribute('loop', '');
             video.setAttribute('autoplay', '');
+            video.setAttribute('playsinline', '');
             videoWrapper.replaceChild(video, videoAnchor[0]);
             video.muted = true;
             video.play();
