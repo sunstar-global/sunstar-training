@@ -107,12 +107,10 @@ main div.no-image .hero-horiz-tabs-text > p {
 }
 
 main .hero-horiz-tabs-img picture,
-main .hero-horiz-tabs-img video  {
+main .hero-horiz-tabs-img video {
   display: block;
   height: 15rem;
 }
-
-
 
 main .hero-horiz-tabs-img picture > img,
 main .hero-horiz-tabs-img video {
@@ -254,7 +252,8 @@ main .hero-horizontal-tabs a.button.primary.video-link::after {
     margin-bottom: 2.2rem;
   }
 
-  main .hero-horiz-tabs-with-button .hero-horiz-tabs-img picture {
+  main .hero-horiz-tabs-with-button .hero-horiz-tabs-img picture,
+  main .hero-horiz-tabs-with-button .hero-horiz-tabs-img video {
     height: 34.75rem;
     width: calc(41vw);
   }
