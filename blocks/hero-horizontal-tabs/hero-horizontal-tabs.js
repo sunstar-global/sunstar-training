@@ -13,11 +13,59 @@
 import { getNamedValueFromTable } from '../../scripts/scripts.js';
 import { createTabs, addTabs } from '../../scripts/blocks-utils.js';
 
+/* eslint-disable no-console */
+
+function fetchPosterURL(poster) {
+  const srcURL = new URL(poster.src);
+  const srcUSP = new URLSearchParams(srcURL.search);
+  srcUSP.set('format', 'webply');
+  srcUSP.set('width', 750);
+  return `${srcURL.pathname}?${srcUSP.toString()}`;
+}
+
 function getImage(block) {
   const div = getNamedValueFromTable(block, 'Image');
   if (!div) return null;
   div.classList.add('hero-horiz-tabs-img');
   return div;
+}
+
+function decorateVideo(mediaRow, target) {
+  const mediaDiv = document.createElement('div');
+  mediaDiv.classList.add('hero-horiz-tabs-img');
+  mediaDiv.classList.add('hero-horiz-tabs-video');
+  const videoTag = document.createElement('video');
+  const poster = mediaRow.querySelector('img');
+  const a = mediaRow.querySelector('a');
+  const videoURL = a.href;
+  videoTag.toggleAttribute('autoplay', true);
+  videoTag.toggleAttribute('muted', true);
+  videoTag.toggleAttribute('playsinline', true);
+  videoTag.toggleAttribute('loop', true);
+  if (poster) {
+    videoTag.setAttribute('poster', fetchPosterURL(poster));
+  }
+  const source = document.createElement('source');
+  source.setAttribute('src', `${videoURL}`);
+  source.setAttribute('type', 'video/mp4');
+  videoTag.append(source);
+  target.innerHTML = '';
+  if (videoURL == null) {
+    target.innerHTML = '';
+    console.error('Video Source URL is not valid, Check hero-banner block');
+  }
+  mediaDiv.appendChild(videoTag);
+  target.appendChild(mediaDiv);
+  videoTag.muted = true;
+}
+
+function decorateBackGroundImage(mediaRow, target) {
+  const mediaDiv = document.createElement('div');
+  mediaDiv.classList.add('hero-horiz-tabs-img');
+  const pictureTag = mediaRow.querySelector('picture');
+  target.innerHTML = '';
+  mediaDiv.appendChild(pictureTag);
+  target.appendChild(mediaDiv);
 }
 
 function getbutton(block) {
@@ -58,7 +106,8 @@ export default function decorate(block) {
   const image = getImage(block);
   const text = getText(block);
   const tabs = createTabs(block, text);
-
+  const rows = [...block.children];
+  const mediaRow = rows.at(0);
   if (tabs) {
   // move the tab riders in front
     const wrapper = block.parentElement;
@@ -79,5 +128,12 @@ export default function decorate(block) {
     block.append(image);
   } else {
     block.classList.add('no-image');
+  }
+  if (mediaRow) {
+    if (mediaRow.querySelector('a') !== null) {
+      decorateVideo(mediaRow, block);
+    } else {
+      decorateBackGroundImage(mediaRow, block);
+    }
   }
 }
