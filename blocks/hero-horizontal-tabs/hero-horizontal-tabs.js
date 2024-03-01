@@ -32,7 +32,6 @@ function getImage(block) {
 
 function getMedia(block) {
   const div = getNamedValueFromTable(block, 'Video');
-  console.log(block);
   if (!div) return null;
   div.classList.add('hero-horiz-tabs-img');
   div.classList.add('hero-horiz-tabs-video');
@@ -103,7 +102,6 @@ function getText(block) {
 export default function decorate(block) {
   const image = getImage(block);
   const media = getMedia(block);
-  console.log(media);
   const text = getText(block);
   const tabs = createTabs(block, text);
   if (tabs) {
