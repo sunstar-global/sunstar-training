@@ -108,7 +108,6 @@ main div.no-image .hero-horiz-tabs-text > p {
 main .hero-horiz-tabs-img picture,
 main .hero-horiz-tabs-img video {
   display: block;
-  max-height: 15rem;
 }
 
 main .hero-horiz-tabs-img picture > img,
