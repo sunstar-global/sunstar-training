@@ -43,6 +43,7 @@ main .block.cards {
   align-items: center;
   text-align: left;
   flex: 1;
+  background-color: unset!important;
 }
 
 .cards > ul > li .date {
