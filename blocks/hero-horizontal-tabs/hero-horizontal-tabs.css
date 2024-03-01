@@ -106,7 +106,8 @@ main div.no-image .hero-horiz-tabs-text > p {
   line-height: 1.5em;
 }
 
-main .hero-horiz-tabs-img picture {
+main .hero-horiz-tabs-img picture,
+main .hero-horiz-tabs-img video  {
   display: block;
   height: 15rem;
 }
@@ -218,7 +219,8 @@ main .hero-horizontal-tabs a.button.primary.video-link::after {
     order: 0;
   }
 
-  main .hero-horiz-tabs-img picture {
+  main .hero-horiz-tabs-img picture,
+  main .hero-horiz-tabs-img video {
     width: calc(50vw - 1rem);
     height: 26rem;
   }
