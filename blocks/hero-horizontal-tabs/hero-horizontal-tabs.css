@@ -114,7 +114,8 @@ main .hero-horiz-tabs-img video  {
 
 
 
-main .hero-horiz-tabs-img picture > img {
+main .hero-horiz-tabs-img picture > img,
+main .hero-horiz-tabs-img video {
   object-fit: cover;
   object-position: center;
   max-height: 100%;
@@ -298,7 +299,8 @@ main .hero-horizontal-tabs a.button.primary.video-link::after {
     font-size: 1rem;
   }
 
-  main .hero-horiz-tabs-img picture {
+  main .hero-horiz-tabs-img picture, 
+  main .hero-horiz-tabs-img video {
     height: 32.5rem;
   }
 
@@ -306,7 +308,8 @@ main .hero-horizontal-tabs a.button.primary.video-link::after {
     padding-top: 3.5rem;
   }
 
-  main .hero-horiz-tabs-with-button .hero-horiz-tabs-img picture {
+  main .hero-horiz-tabs-with-button .hero-horiz-tabs-img picture, 
+  main .hero-horiz-tabs-with-button .hero-horiz-tabs-img video {
     height: 33.75rem;
   }
 }
