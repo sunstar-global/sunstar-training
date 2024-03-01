@@ -12,6 +12,7 @@
 
 main .hero-horizontal-tabs-wrapper {
   background-color: var(--primary);
+  overflow: hidden;
 }
 
 main .hero-horiz-tabs-panel {
@@ -47,8 +48,14 @@ main .hero-horiz-tabs-text {
   margin-right: 2rem;
 }
   
-main .hero-horiz-tabs-img {
+main .hero-horiz-tabs-img, 
+main .hero-horiz-tabs-video {
   order: -1;
+}
+
+main .hero-horiz-tabs-video {
+  aspect-ratio: 16/9;
+  max-width: 100%;
 }
 
 main .hero-horiz-tabs-text > h1,
@@ -101,7 +108,7 @@ main div.no-image .hero-horiz-tabs-text > p {
 main .hero-horiz-tabs-img picture,
 main .hero-horiz-tabs-img video {
   display: block;
-  height: 15rem;
+  max-height: 15rem;
 }
 
 main .hero-horiz-tabs-img picture > img,
