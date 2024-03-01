@@ -23,7 +23,6 @@ function fetchPosterURL(poster) {
   return `${srcURL.pathname}?${srcUSP.toString()}`;
 }
 
-/* eslint-disable no-console */
 function getImage(block) {
   const div = getNamedValueFromTable(block, 'Image');
   if (!div) return null;
@@ -64,14 +63,6 @@ function decorateVideo(mediaRow, target) {
   mediaDiv.appendChild(videoTag);
   target.appendChild(mediaDiv);
   videoTag.muted = true;
-}
-
-function decorateBackGroundImage(mediaRow, target) {
-  const mediaDiv = document.createElement('div');
-  mediaDiv.classList.add('hero-horiz-tabs-img');
-  const pictureTag = mediaRow.querySelector('picture');
-  mediaDiv.appendChild(pictureTag);
-  target.appendChild(mediaDiv);
 }
 
 function getbutton(block) {
@@ -115,16 +106,6 @@ export default function decorate(block) {
   const media = getMedia(block);
   if (media) {
     decorateVideo(media, block);
-  }
-  const rows = [...block.children];
-  console.log(block);
-  const mediaRow = rows.at(0);
-  if (mediaRow) {
-    if (mediaRow.querySelector('a') !== null) {
-      decorateVideo(mediaRow, block);
-    } else {
-      decorateBackGroundImage(mediaRow, block);
-    }
   }
   if (tabs) {
   // move the tab riders in front
