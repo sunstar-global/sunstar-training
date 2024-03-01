@@ -38,7 +38,7 @@ function getMedia(block) {
   return div;
 }
 
-function decorateVideo(mediaRow, target) {
+function decorateVideo(mediaRow, block) {
   const mediaDiv = document.createElement('div');
   mediaDiv.classList.add('hero-horiz-tabs-img');
   mediaDiv.classList.add('hero-horiz-tabs-video');
@@ -61,7 +61,7 @@ function decorateVideo(mediaRow, target) {
     console.error('Video Source URL is not valid, Check hero-banner block');
   }
   mediaDiv.appendChild(videoTag);
-  target.appendChild(mediaDiv);
+  block.appendChild(mediaDiv);
   videoTag.muted = true;
 }
 
@@ -101,12 +101,9 @@ function getText(block) {
 
 export default function decorate(block) {
   const image = getImage(block);
+  const media = getMedia(block);
   const text = getText(block);
   const tabs = createTabs(block, text);
-  const media = getMedia(block);
-  if (media) {
-    decorateVideo(media, block);
-  }
   if (tabs) {
   // move the tab riders in front
     const wrapper = block.parentElement;
@@ -123,7 +120,11 @@ export default function decorate(block) {
       }
     });
   }
-  if (image) {
+  if (media) {
+    decorateVideo(media, block);
+  } else if (image) {
     block.append(image);
+  } else {
+    block.classList.add('no-image');
   }
 }
