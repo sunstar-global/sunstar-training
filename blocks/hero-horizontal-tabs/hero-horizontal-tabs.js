@@ -104,6 +104,7 @@ export default function decorate(block) {
   const text = getText(block);
   const tabs = createTabs(block, text);
   const rows = [...block.children];
+  console.log(rows);
   const mediaRow = rows.at(0);
   if (mediaRow) {
     if (mediaRow.querySelector('a') !== null) {
