@@ -108,6 +108,13 @@ export default function decorate(block) {
   const tabs = createTabs(block, text);
   const rows = [...block.children];
   const mediaRow = rows.at(0);
+  if (mediaRow) {
+    if (mediaRow.querySelector('a') !== null) {
+      decorateVideo(mediaRow, block);
+    } else {
+      decorateBackGroundImage(mediaRow, block);
+    }
+  }
   if (tabs) {
   // move the tab riders in front
     const wrapper = block.parentElement;
@@ -128,12 +135,5 @@ export default function decorate(block) {
     block.append(image);
   } else {
     block.classList.add('no-image');
-  }
-  if (mediaRow) {
-    if (mediaRow.querySelector('a') !== null) {
-      decorateVideo(mediaRow, block);
-    } else {
-      decorateBackGroundImage(mediaRow, block);
-    }
   }
 }
