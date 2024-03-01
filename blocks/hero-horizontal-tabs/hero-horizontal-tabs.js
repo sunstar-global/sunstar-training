@@ -61,7 +61,6 @@ function decorateBackGroundImage(mediaRow, target) {
   const mediaDiv = document.createElement('div');
   mediaDiv.classList.add('hero-horiz-tabs-img');
   const pictureTag = mediaRow.querySelector('picture');
-  target.innerHTML = '';
   mediaDiv.appendChild(pictureTag);
   target.appendChild(mediaDiv);
 }
