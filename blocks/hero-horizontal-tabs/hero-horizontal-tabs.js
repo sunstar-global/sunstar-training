@@ -102,6 +102,7 @@ function getText(block) {
 export default function decorate(block) {
   const image = getImage(block);
   const media = getMedia(block);
+  console.log(media);
   const text = getText(block);
   const tabs = createTabs(block, text);
   if (tabs) {
