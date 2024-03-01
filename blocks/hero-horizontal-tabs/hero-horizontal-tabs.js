@@ -32,6 +32,7 @@ function getImage(block) {
 
 function getMedia(block) {
   const div = getNamedValueFromTable(block, 'Media');
+  console.log(div);
   if (!div) return null;
   div.classList.add('hero-horiz-tabs-img');
   div.classList.add('hero-horiz-tabs-video');
