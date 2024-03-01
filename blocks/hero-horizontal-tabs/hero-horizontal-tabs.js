@@ -49,9 +49,7 @@ function decorateVideo(mediaRow, target) {
   source.setAttribute('src', `${videoURL}`);
   source.setAttribute('type', 'video/mp4');
   videoTag.append(source);
-  target.innerHTML = '';
   if (videoURL == null) {
-    target.innerHTML = '';
     console.error('Video Source URL is not valid, Check hero-banner block');
   }
   mediaDiv.appendChild(videoTag);
