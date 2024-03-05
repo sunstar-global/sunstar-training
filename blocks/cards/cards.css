@@ -34,8 +34,16 @@ main .block.cards {
   background-color: var(--white);
 }
 
-.cards > ul > li:hover {
-  box-shadow: 0 4px 1rem 0 rgb(60 70 80 / 40%);
+.cards.no-shadow > ul > li {
+  padding: 0;
+  box-sizing: border-box;
+  box-shadow: none!important;
+  border: none;
+  margin: 0;
+  align-items: center;
+  text-align: left;
+  flex: 1;
+  background-color: unset!important;
 }
 
 .cards > ul > li .date {
@@ -81,12 +89,26 @@ main .block.cards {
   box-sizing: border-box;
 }
 
+.cards.no-shadow .cards-card-body {
+  margin: 0 auto;
+  text-align: left;
+  color: var(--light-black);
+  padding: 20px 0;
+  height: calc(100% - 12.5rem);
+  box-sizing: border-box;
+}
+
 .cards .cards-card-body p {
   font-size: var(--body-font-size-s);
   text-wrap: balance;
 }
 
-.cards .cards-card-body:last-of-type {
+.cards.large-text .cards-card-body p {
+  font-size: var(--body-font-size-m);
+  text-wrap: balance;
+}
+
+.cards .cards-card-body >:last-of-type {
   margin-bottom: 0;
 }
 
@@ -150,6 +172,10 @@ main .cards.info-points > ul > li {
   box-shadow: none;
 }
 
+.cards:not(.no-shadow) > ul > li:hover {
+  box-shadow: 0 4px 1rem 0 rgb(60 70 80 / 40%);
+}
+
 main .block.cards.light-background ul > li {
   padding: 1rem;
   background-color: var(--transparent-blue-light-color);
@@ -175,6 +201,7 @@ main .block.cards.light-background ul > li {
 
 .cards .cards-card-body div {
   margin: 0;
+  text-wrap: balance;
 }
 
 .cards .cards-card-body div:last-child {
