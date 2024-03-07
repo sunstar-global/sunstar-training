@@ -50,6 +50,8 @@ function formatSearchResultCount(num, placeholders, term, lang) {
 }
 
 async function searchPages(placeholders, term, page) {
+  // Remove characters that could be a tag to avoid injection.
+  const saniterm = term.replace('<', '').replace('>', '');
   const sheet = `${getLanguage()}-search`;
 
   const json = await fetchIndex('query-index', sheet);
@@ -60,13 +62,13 @@ async function searchPages(placeholders, term, page) {
 
   const result = json.data
     .filter((entry) => `${entry.description} ${entry.pagename} ${entry.breadcrumbtitle} ${entry.title}`.toLowerCase()
-      .includes(term.toLowerCase()));
+      .includes(saniterm.toLowerCase()));
 
   const div = document.createElement('div');
 
   const summary = document.createElement('h3');
   summary.classList.add('search-summary');
-  summary.innerHTML = formatSearchResultCount(result.length, placeholders, term, getLanguage());
+  summary.innerHTML = formatSearchResultCount(result.length, placeholders, saniterm, getLanguage());
   div.appendChild(summary);
 
   const curPage = result.slice(startResult, startResult + resultsPerPage);
@@ -79,7 +81,7 @@ async function searchPages(placeholders, term, page) {
     const link = document.createElement('a');
     if (line.type === 'Newsroom') searchTitle = line.breadcrumbtitle || line.title || line.type;
     else searchTitle = line.title || line.breadcrumbtitle || line.type;
-    setResultValue(link, searchTitle, term);
+    setResultValue(link, searchTitle, saniterm);
     link.href = line.path;
     const path = line.path || '';
     const parentPath = path && path.lastIndexOf('/') > -1 ? path.slice(0, path.lastIndexOf('/')) : '';
@@ -133,8 +135,8 @@ async function searchPages(placeholders, term, page) {
     res.appendChild(header);
     const para = document.createElement('p');
     if (getLanguage() === 'jp') {
-      setResultValue(para, line?.description?.split('。')[0], term);
-    } else setResultValue(para, line.description, term);
+      setResultValue(para, line?.description?.split('。')[0], saniterm);
+    } else setResultValue(para, line.description, saniterm);
 
     res.appendChild(para);
     div.appendChild(res);
