@@ -212,6 +212,7 @@ h6 {
   scroll-margin: calc(var(--nav-height) + 1em);
   margin: 0;
   font-weight: var(--font-weight-medium);
+  text-wrap: balance;
 }
 
 h1 {
@@ -288,13 +289,12 @@ p {
   font-size: var(--body-font-size-m);
   line-height: 1.7em;
   text-size-adjust: 100%;
+  text-wrap: pretty;
 }
 
 p.lead {
   font-size: var(--body-font-size-xl);
 }
-
-
 
 hr {
   margin-top: 1.5em;
