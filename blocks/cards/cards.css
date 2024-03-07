@@ -85,7 +85,6 @@ main .block.cards {
   text-align: left;
   color: var(--light-black);
   padding: 20px;
-  height: calc(100% - 12.5rem);
   box-sizing: border-box;
 }
 
@@ -94,7 +93,6 @@ main .block.cards {
   text-align: left;
   color: var(--light-black);
   padding: 20px 0;
-  height: calc(100% - 12.5rem);
   box-sizing: border-box;
 }
 
