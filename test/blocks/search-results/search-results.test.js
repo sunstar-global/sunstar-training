@@ -67,7 +67,7 @@ describe('Search Results', () => {
 
     const block = document.querySelector('.search-results');
     const loc = {
-      search: '?s=<t>ex',
+      search: '?s=<t>e<x>',
       pathname: '/search',
     };
 
