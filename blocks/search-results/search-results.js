@@ -51,7 +51,7 @@ function formatSearchResultCount(num, placeholders, term, lang) {
 
 async function searchPages(placeholders, term, page) {
   // Remove characters that could be a tag to avoid injection.
-  const saniterm = term.replace('<', '').replace('>', '');
+  const saniterm = term.replaceAll('<', '').replaceAll('>', '');
   const sheet = `${getLanguage()}-search`;
 
   const json = await fetchIndex('query-index', sheet);
