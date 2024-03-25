@@ -291,9 +291,12 @@ main .hero-horizontal-tabs a.button.primary.video-link::after {
     font-size: 1rem;
   }
 
-  main .hero-horiz-tabs-img picture, 
-  main .hero-horiz-tabs-img video {
+  main .hero-horiz-tabs-img picture {
     height: 32.5rem;
+  }
+
+  main .hero-horiz-tabs-img video {
+    max-height: 35.5rem;
   }
 
   main .hero-horiz-tabs-with-button .hero-horiz-tabs-text {
