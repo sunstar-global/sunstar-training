@@ -69,7 +69,7 @@ main .form select:disabled {
 }
 
 main .form textarea {
-  min-height: 240px;
+  min-height: 100px;
 }
 
 main .form .invalid>input,
