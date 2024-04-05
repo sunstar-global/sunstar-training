@@ -552,7 +552,6 @@ function setMetaTags(main) {
       setMetaTag('meta', 'name', 'twitter:image', imageUrl);
     }
     setMetaTag('meta', 'property', 'og:url', `${window.location.href}`);
-    setMetaTag('link', 'rel', 'canonical', `${window.location.href}`);
   }
 }
 
