@@ -536,7 +536,6 @@ export function setMetaTag(tagType, propertyKey, propertyValue, url) {
  *  og:image:secure_url
  *  twitter:image
  *  og:url
- *  canonical
  */
 function setMetaTags(main) {
   const pageType = getMetadata('pagetype');
