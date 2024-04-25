@@ -132,9 +132,24 @@ function formatAutoblockedImageCaptionsForColumns(block, enclosingDiv) {
   }
 }
 
+function findEMElement(element) {
+  if (element.localName === 'em') {
+    return element;
+  }
+  if (element.localName === 'p' || element.localName === 'div') {
+    // If the element is a <p> or <div>, look for <em> within it
+    return element.querySelector('em');
+  }
+  // Search for <em> in nearest ancestor or child nodes that might contain line breaks
+  const ancestorOrSelf = element.closest('p, div');
+  if (ancestorOrSelf) {
+    return ancestorOrSelf.querySelector('em');
+  }
+  return null;
+}
+
 function buildImageWithCaptionForPicture(parentP, picture, buildBlockFunction) {
   const enclosingDiv = parentP.parentElement;
-  console.log(enclosingDiv);
   if (enclosingDiv) {
     // The caption could either be right next to, or right before the picture (if on the same line)
     // or it could be in an adjacent sibling element (if 'enter' was pressed between)
@@ -144,8 +159,6 @@ function buildImageWithCaptionForPicture(parentP, picture, buildBlockFunction) {
       parentP.nextElementSibling,
     ];
 
-    console.log(captionP);
-
     // eslint-disable-next-line no-restricted-syntax
     for (const cp of captionP) {
       if (!cp) {
@@ -153,35 +166,15 @@ function buildImageWithCaptionForPicture(parentP, picture, buildBlockFunction) {
         continue;
       }
 
-      console.log(cp);
-
-      if (cp.localName === 'em') {
-        // It's on the same line
-        const newBlock = buildImageCollageForPicture(picture, cp, buildBlockFunction);
+      const emElement = findEMElement(cp);
+      if (emElement) {
+        const newBlock = buildImageCollageForPicture(picture, emElement, buildBlockFunction);
         newBlock.classList.add('autoblocked');
-        // caption before picture
-        if (cp === captionP[0]) {
+        // Caption before picture
+        if (emElement === captionP[0]) {
           newBlock.classList.add('caption-above');
         }
-        // insert the new block at the position the old image was at
-        enclosingDiv.replaceChild(newBlock, parentP);
-        formatAutoblockedImageCaptionsForColumns(newBlock, enclosingDiv);
-        return;
-      }
-
-      // Maybe the 'em' is on the next line, which means its in a separate <p> element
-      let hasEMChild = false;
-      // eslint-disable-next-line no-restricted-syntax
-      for (const c of cp.children) {
-        if (c.localName === 'em') {
-          hasEMChild = true;
-          break;
-        }
-      }
-
-      if (hasEMChild) {
-        const newBlock = buildImageCollageForPicture(picture, cp, buildBlockFunction);
-        newBlock.classList.add('autoblocked');
+        // Insert the new block at the position the old image was at
         enclosingDiv.replaceChild(newBlock, parentP);
         formatAutoblockedImageCaptionsForColumns(newBlock, enclosingDiv);
         return;
