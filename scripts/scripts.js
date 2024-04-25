@@ -188,8 +188,8 @@ export function buildImageWithCaptionBlocks(main, buildBlockFunction) {
   const pictures = main.querySelectorAll('picture');
 
   pictures.forEach((p) => {
-    console.log(p);
     const parentP = p.parentElement;
+    console.log(parentP);
     if (parentP) {
       buildImageWithCaptionForPicture(parentP, p, buildBlockFunction);
     }
