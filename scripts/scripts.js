@@ -144,6 +144,8 @@ function buildImageWithCaptionForPicture(parentP, picture, buildBlockFunction) {
       parentP.nextElementSibling,
     ];
 
+    console.log(captionP);
+
     // eslint-disable-next-line no-restricted-syntax
     for (const cp of captionP) {
       if (!cp) {
