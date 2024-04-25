@@ -133,19 +133,18 @@ function formatAutoblockedImageCaptionsForColumns(block, enclosingDiv) {
 }
 
 function findEMElement(element) {
+  // Check if the element itself is an <em> element
   if (element.localName === 'em') {
     return element;
   }
-  if (element.localName === 'p' || element.localName === 'div') {
-    // If the element is a <p> or <div>, look for <em> within it
-    return element.querySelector('em');
+  // Check for an <em> element within the element if it's a <p> or <div>
+  const emElement = element.querySelector('em');
+  if (emElement) {
+    return emElement;
   }
   // Search for <em> in nearest ancestor or child nodes that might contain line breaks
   const ancestorOrSelf = element.closest('p, div');
-  if (ancestorOrSelf) {
-    return ancestorOrSelf.querySelector('em');
-  }
-  return null;
+  return ancestorOrSelf ? ancestorOrSelf.querySelector('em') : null;
 }
 
 function buildImageWithCaptionForPicture(parentP, picture, buildBlockFunction) {
@@ -189,6 +188,7 @@ export function buildImageWithCaptionBlocks(main, buildBlockFunction) {
   const pictures = main.querySelectorAll('picture');
 
   pictures.forEach((p) => {
+    console.log(p);
     const parentP = p.parentElement;
     if (parentP) {
       buildImageWithCaptionForPicture(parentP, p, buildBlockFunction);
