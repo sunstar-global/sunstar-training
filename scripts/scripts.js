@@ -134,7 +134,7 @@ function formatAutoblockedImageCaptionsForColumns(block, enclosingDiv) {
 
 function buildImageWithCaptionForPicture(parentP, picture, buildBlockFunction) {
   const enclosingDiv = parentP.parentElement;
-
+  console.log(enclosingDiv);
   if (enclosingDiv) {
     // The caption could either be right next to, or right before the picture (if on the same line)
     // or it could be in an adjacent sibling element (if 'enter' was pressed between)
