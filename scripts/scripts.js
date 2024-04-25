@@ -151,6 +151,8 @@ function buildImageWithCaptionForPicture(parentP, picture, buildBlockFunction) {
         continue;
       }
 
+      console.log(cp);
+
       if (cp.localName === 'em') {
         // It's on the same line
         const newBlock = buildImageCollageForPicture(picture, cp, buildBlockFunction);
