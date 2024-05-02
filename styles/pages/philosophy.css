@@ -41,6 +41,20 @@ body.philosophy main .section.narrower.section.with-background-image .section-co
   body.philosophy main .section.narrower.section.with-background-image .link.block > div:first-child a {
     background: #00587c;
     width: 72%;
+    display: flex;
+    margin: 0 auto;
+  }
+
+  .icon.icon-angle-white-70 {
+    background-image: url("/icons/angle-white-70.svg");
+    margin-left: 6px;
+    height: 23px !important;
+    width: 15px !important;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: auto;
+    flex-shrink: 0;
+    scale: 1;
   }
   
   body.philosophy main .section.narrower.section.with-background-image .link.block > div:nth-child(2) a {
