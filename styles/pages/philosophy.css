@@ -27,13 +27,14 @@ body.philosophy main .section.narrower.section.with-background-image .section-co
   body.philosophy main .section.narrower.section.with-background-image a {
     text-align: center;
     font-size: 0.8rem;
-    padding: 2em;
+    padding: 6px 24px;
     font-weight: normal;
-    line-height: 1.2em;
+    line-height: 1.5em;
     border: 1px solid #fff;
     border-radius: 5px;
     min-height: 48px!important;
     height: unset!important;
+    text-wrap: balance;
   }
   
   body.philosophy main .section.narrower.section.with-background-image .link.block > div a {
