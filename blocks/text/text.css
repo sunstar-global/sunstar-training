@@ -184,8 +184,8 @@ main .block.text.p-h4 p {
 }
 
 main .block.text.p-h1 p, 
-main .block.text.p-h2 p
-main .block.text.p-h3 p
+main .block.text.p-h2 p,
+main .block.text.p-h3 p,
 main .block.text.p-h4 p {
   color: var(--primary);
   font-family: var(--heading-font-family);
