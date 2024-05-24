@@ -448,8 +448,6 @@ main .block.lead p {
   max-width: 30rem;
 }
 
-
-
 main pre {
   background-color: var(--overlay-background-color);
   padding: 1em;
