@@ -146,12 +146,6 @@ main .block.text.text-small p {
   font-size: var(--body-font-size-xs);
 }
 
-main .block.text.heading-small-margin h1, 
-main .block.text.heading-small-margin h2,
-main .block.text.heading-small-margin h3, 
-main .block.text.heading-small-margin h4 {
-  margin-bottom: 0.5rem;
-}
 
 main .block.text.emphasis > div > div > :first-child,
 main .block.text.light-background  > div > div > :first-child {
@@ -209,6 +203,18 @@ main .block.text.heading-p h6 {
   font-style: normal;
   margin: unset;
 }  
+
+main .block.text.heading-small-margin h1, 
+main .block.text.heading-small-margin h2,
+main .block.text.heading-small-margin h3, 
+main .block.text.heading-small-margin h4,
+main .block.text.heading-small-margin.p-h1 p,
+main .block.text.heading-small-margin.p-h2 p,
+main .block.text.heading-small-margin.p-h3 p,
+main .block.text.heading-small-margin.p-h4 p
+{
+  margin-bottom: 0.5rem;
+}
 
 main .block.text.red-circle > div > div::before {
   content: '';
