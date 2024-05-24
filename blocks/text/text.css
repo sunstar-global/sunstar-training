@@ -163,6 +163,22 @@ main .block.text.light-background  > div > div > :last-child {
   margin-bottom: 0;
 }
 
+main .block.text.p-h1 {
+  font-size: var(--h1-font-size-desktop);
+}
+
+main .block.text.p-h2 {
+  font-size: var(--h2-font-size-desktop);
+}
+
+main .block.text.p-h3 {
+  font-size: var(--h3-font-size-desktop);
+}
+
+main .block.text.p-h4 {
+  font-size: var(--h4-font-size-desktop);
+}
+
 main .block.text.red-circle > div > div::before {
   content: '';
   width: 10px;
