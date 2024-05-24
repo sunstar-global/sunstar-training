@@ -164,22 +164,22 @@ main .block.text.light-background  > div > div > :last-child {
 }
 
 main .block.text.p-h1 p {
-  font-size: var(--h1-font-size-desktop);
+  font-size: var(--h1-font-size-mobile);
   margin: 3.5rem 0 2rem;
 }
 
 main .block.text.p-h2 p {
-  font-size: var(--h2-font-size-desktop);
+  font-size: var(--h2-font-size-mobile);
   margin: 3rem 0 1.5rem;
 }
 
 main .block.text.p-h3 p {
-  font-size: var(--h3-font-size-desktop);
+  font-size: var(--h3-font-size-mobile);
   margin: 2rem 0 0.75rem;
 }
 
 main .block.text.p-h4 p {
-  font-size: var(--h4-font-size-desktop);
+  font-size: var(--h4-font-size-mobile);
   margin: 1.5em 0 0.5rem;
 }
 
@@ -191,7 +191,6 @@ main .block.text.p-h4 p {
   font-family: var(--heading-font-family);
   line-height: 1.25;
   scroll-margin: calc(var(--nav-height) + 1em);
-  margin: 0;
   font-weight: var(--font-weight-medium);
   text-wrap: balance;
 }
@@ -231,4 +230,25 @@ main .block.text.red-circle > div > div * {
     margin-block: 1.5rem;
     padding: 2rem;
   }
+
+  main .block.text.p-h1 p {
+    font-size: var(--h1-font-size-desktop);
+    margin: 4.375rem 0 2.5rem;
+  }
+  
+  main .block.text.p-h2 p {
+    font-size: var(--h2-font-size-desktop);
+    margin: 3.5rem 0 2rem;
+  }
+  
+  main .block.text.p-h3 p {
+    font-size: var(--h3-font-size-desktop);
+    margin: 2.5rem 0 1rem;
+  }
+  
+  main .block.text.p-h4 p {
+    font-size: var(--h4-font-size-desktop);
+    margin: 2rem 0 0.5rem;
+  }
+
 }
