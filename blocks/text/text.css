@@ -195,6 +195,21 @@ main .block.text.p-h4 p {
   text-wrap: balance;
 }
 
+main .block.text.heading-p h1, 
+main .block.text.heading-p h2, 
+main .block.text.heading-p h3, 
+main .block.text.heading-p h4, 
+main .block.text.heading-p h5,
+main .block.text.heading-p h6 {
+  line-height: 1.6;
+  color: var(--text-color);
+  font-size: var(--body-font-size-m);
+  font-family: var(--body-font-family);
+  font-variant-ligatures: common-ligatures;
+  font-style: normal;
+  margin: unset;
+}  
+
 main .block.text.red-circle > div > div::before {
   content: '';
   width: 10px;
