@@ -84,7 +84,6 @@ main .block.cards {
   margin: 0 auto;
   text-align: left;
   color: var(--light-black);
-  padding: 20px;
   box-sizing: border-box;
 }
 
