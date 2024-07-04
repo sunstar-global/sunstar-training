@@ -88,6 +88,10 @@ main .block.cards {
   box-sizing: border-box;
 }
 
+.cards.row .cards-card-body {
+  padding: 0;
+}
+
 .cards.no-shadow .cards-card-body {
   margin: 0 auto;
   text-align: left;
@@ -142,7 +146,7 @@ main .block.cards {
   margin-bottom: 3rem;
 }
 
-.cards .cards-card-image img {
+.cards:not(.row) .cards-card-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -338,8 +342,7 @@ main .cards.machine-parts .cards-card-body a > strong {
 
 /* Style for Row Cards */
 main .cards.row .cards-card-image {
-  width: auto;
-  height: 6rem;
+  width: 20%;
   flex-shrink: 0;
   margin: 0;
 }
@@ -352,8 +355,8 @@ main .block.cards.row > ul > li {
   display: flex;
   align-items: flex-start;
   margin: 0;
-  padding-bottom: 1rem;
   box-shadow: none;
+  gap: 1rem;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
