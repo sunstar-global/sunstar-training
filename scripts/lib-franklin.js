@@ -320,6 +320,7 @@ export function readBlockConfig(block) {
  * @param {Element} main The container element
  */
 export function decorateSections(main) {
+  
   main.querySelectorAll(':scope > div').forEach((section) => {
     const wrappers = [];
     let defaultContent = false;
@@ -338,6 +339,7 @@ export function decorateSections(main) {
     section.style.display = 'none';
 
     /* process section metadata */
+    /* logic for anchor links has been added by Dejan Eric 12.07.2024 */
     const sectionMeta = section.querySelector('div.section-metadata');
     if (sectionMeta) {
       const meta = readBlockConfig(sectionMeta);
@@ -345,6 +347,8 @@ export function decorateSections(main) {
         if (key === 'style') {
           const styles = meta.style.split(',').map((style) => toClassName(style.trim()));
           styles.forEach((style) => section.classList.add(style));
+        } else if (key === 'id') {
+          section.id = meta[key];
         } else {
           section.dataset[toCamelCase(key)] = meta[key];
         }
