@@ -118,6 +118,10 @@
   vertical-align: middle;
 }
 
+.link.large-button div div a.button.primary {
+  height: unset;
+}
+
 @media (min-width: 62rem) {
   .block.link {
     margin-bottom: 1.5rem;
