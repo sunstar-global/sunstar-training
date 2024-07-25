@@ -320,7 +320,6 @@ export function readBlockConfig(block) {
  * @param {Element} main The container element
  */
 export function decorateSections(main) {
-  
   main.querySelectorAll(':scope > div').forEach((section) => {
     const wrappers = [];
     let defaultContent = false;
