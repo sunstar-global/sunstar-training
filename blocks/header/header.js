@@ -231,6 +231,18 @@ function decorateBottomNav(nav, placeholders, navTreeJson) {
 }
 
 const navDecorators = { 'nav-top': decorateTopNav, 'nav-middle': decorateMiddleNav, 'nav-bottom': decorateBottomNav };
+
+const addRemoveFixedClass = (navBottom) => {
+  const scroll = document.querySelector('nav.nav-top').offsetHeight
+    + document.querySelector('nav.nav-middle').offsetHeight;
+
+  if (document.documentElement.scrollTop > scroll) {
+    navBottom.classList.add('fixed');
+  } else {
+    navBottom.classList.remove('fixed');
+  }
+};
+
 /**
  * decorates the header, mainly the nav
  * @param {Element} block The header block element
@@ -262,11 +274,8 @@ export default async function decorate(block) {
     block.appendChild(nav);
 
     window.addEventListener('scroll', () => {
-      if (document.documentElement.scrollTop > document.querySelector('nav.nav-top').offsetHeight + document.querySelector('nav.nav-middle').offsetHeight) {
-        document.querySelector('header').classList.add('fixed');
-      } else {
-        document.querySelector('header').classList.remove('fixed');
-      }
+      const navBottom = document.querySelector('.nav-bottom');
+      addRemoveFixedClass(navBottom);
     });
 
     const backdrop = document.createElement('div');
