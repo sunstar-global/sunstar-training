@@ -235,11 +235,18 @@ const navDecorators = { 'nav-top': decorateTopNav, 'nav-middle': decorateMiddleN
 const addRemoveFixedClass = (navBottom) => {
   const scroll = document.querySelector('nav.nav-top').offsetHeight
     + document.querySelector('nav.nav-middle').offsetHeight;
+  const megaDropdowns = document.querySelectorAll('.mega-dropdown');
 
   if (document.documentElement.scrollTop > scroll) {
     navBottom.classList.add('fixed');
+    megaDropdowns?.forEach((megaDropdown) => {
+      megaDropdown.classList.add('fixed');
+    });
   } else {
     navBottom.classList.remove('fixed');
+    megaDropdowns?.forEach((megaDropdown) => {
+      megaDropdown.classList.remove('fixed');
+    });
   }
 };
 

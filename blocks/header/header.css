@@ -721,6 +721,11 @@ header .mega-container .left-content-container .mega-sub-menu .mobile-menu-heade
   color: var(--white);
 }
 
+header .mega-dropdown.fixed {
+  left: calc((100vw - 75rem) / -2);
+  width: 100vw;
+}
+
 @media (min-width: 77rem) {
   header {
     border-bottom: 1px solid var(--transparent-grey-light-color);
