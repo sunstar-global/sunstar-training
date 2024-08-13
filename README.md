@@ -34,7 +34,7 @@ Visual testing is integrated as a [Github workflow](https://github.com/sunstar-g
       ```
       env:
       TEST_PATHS: "/ /career/yuya-yoshisue /brands"
-      ```     
+      ```
 
 ⚠️  While proposing a PR with visual changes, please ensure that it has adequate visual testing coverage by adding impacted places at one or both places mentioned above.
 
@@ -76,3 +76,4 @@ Here are the steps to follow:
     ```
     await loadScript('/ext-libs/jslinq/jslinq.min.js');
     ```
+
