@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.sunstar.com/sitemap.xml
+Sitemap: https://www.sunstar.com/sitemap-index.xml
