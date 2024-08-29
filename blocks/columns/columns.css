@@ -28,6 +28,10 @@
   margin-bottom: 4rem;
 }
 
+.columns > div > div > div {
+  margin: 0 0;
+}
+
 .columns > div > div {
   order: 1;
   width: 100%;

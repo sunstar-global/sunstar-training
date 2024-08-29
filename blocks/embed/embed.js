@@ -8,7 +8,6 @@ import { loadScript } from "../../scripts/scripts.js";
 import { loadCSS } from "../../scripts/lib-franklin.js";
 
 export const embedYoutube = (url, isLite) => {
-  console.log("embedYoutube");
   const usp = new URLSearchParams(url.search);
   let suffix = "";
   let vid = usp.get("v");
@@ -47,10 +46,10 @@ export const embedYoutube = (url, isLite) => {
       // Special handling to support urls like "https://www.youtube.com/embed/videoseries?list=PL5uLvIsyvVSkGAGW3nW4pe3nfwQQRlMvD"
       embed += url.search;
     }
-    embedHTML = `<div style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.25%;">
+    embedHTML = `<div style="width: 100%; aspect-ratio: 16 / 10; padding: 0;">
         <iframe src="https://www.youtube.com${
           vid ? `/embed/${vid}?rel=0&v=${vid}${suffix}&enablejsapi=1` : embed
-        }" style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;" 
+        }" style="border: 0; width: 100%; height: 100%;" 
         allow="autoplay; fullscreen; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" scrolling="no" title="Content from Youtube" loading="lazy"></iframe>
       </div>`;
   }
