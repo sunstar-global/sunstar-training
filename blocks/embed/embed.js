@@ -4,15 +4,15 @@
  * https://www.hlx.live/developer/block-collection/embed
  */
 
-import { loadScript } from '../../scripts/scripts.js';
-import { loadCSS } from '../../scripts/lib-franklin.js';
+import { loadScript } from "../../scripts/scripts.js";
+import { loadCSS } from "../../scripts/lib-franklin.js";
 
-const embedYoutube = (url, isLite) => {
+export const embedYoutube = (url, isLite) => {
   const usp = new URLSearchParams(url.search);
-  let suffix = '';
-  let vid = usp.get('v');
-  const autoplayParam = usp.get('autoplay');
-  const mutedParam = usp.get('muted');
+  let suffix = "";
+  let vid = usp.get("v");
+  const autoplayParam = usp.get("autoplay");
+  const mutedParam = usp.get("muted");
 
   if (autoplayParam && mutedParam) {
     suffix += `&autoplay=${autoplayParam}&muted=${mutedParam}`;
@@ -24,28 +24,32 @@ const embedYoutube = (url, isLite) => {
 
   let embed = url.pathname;
   console.log(embed);
-  if (url.origin.includes('youtu.be')) {
-    [, vid] = url.pathname.split('/');
+  if (url.origin.includes("youtu.be")) {
+    [, vid] = url.pathname.split("/");
   }
 
   let embedHTML;
 
   if (isLite) {
-    const embedSplit = embed.split('/');
+    const embedSplit = embed.split("/");
     embedHTML = `
       <lite-youtube videoid=${vid || embedSplit[embedSplit.length - 1]}>
-        <a href="https://www.youtube.com${vid ? `/embed/${vid}?rel=0&v=${vid}${suffix}&enablejsapi=1` : embed}" class="lty-playbtn" title="Play Video">
+        <a href="https://www.youtube.com${
+          vid ? `/embed/${vid}?rel=0&v=${vid}${suffix}&enablejsapi=1` : embed
+        }" class="lty-playbtn" title="Play Video">
       </a>
       </lite-youtube>`;
     loadCSS(`${window.hlx.codeBasePath}/blocks/embed/lite-yt-embed.css`);
     loadScript(`${window.hlx.codeBasePath}/blocks/embed/lite-yt-embed.js`);
   } else {
-    if (usp.get('list')) {
+    if (usp.get("list")) {
       // Special handling to support urls like "https://www.youtube.com/embed/videoseries?list=PL5uLvIsyvVSkGAGW3nW4pe3nfwQQRlMvD"
       embed += url.search;
     }
-    embedHTML = `<div style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.25%;">
-        <iframe src="https://www.youtube.com${vid ? `/embed/${vid}?rel=0&v=${vid}${suffix}&enablejsapi=1` : embed}" style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;" 
+    embedHTML = `<div style="width: 100%; aspect-ratio: 16 / 10; padding: 0;">
+        <iframe src="https://www.youtube.com${
+          vid ? `/embed/${vid}?rel=0&v=${vid}${suffix}&enablejsapi=1` : embed
+        }" style="border: 0; width: 100%; height: 100%;" 
         allow="autoplay; fullscreen; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" scrolling="no" title="Content from Youtube" loading="lazy"></iframe>
       </div>`;
   }
@@ -54,22 +58,22 @@ const embedYoutube = (url, isLite) => {
 };
 
 /**
-* Facebook, twitter social plugins embedding
-* @param {*} urlParam
-* @param {*} type
-* @returns
-*/
+ * Facebook, twitter social plugins embedding
+ * @param {*} urlParam
+ * @param {*} type
+ * @returns
+ */
 const embedSocialPlugins = (urlParam, isLite, type) => {
   const url = urlParam;
   const usp = new URLSearchParams(decodeURI(urlParam));
-  let width = usp.get('container_width') || usp.get('width') || '360px';
-  let height = usp.get('height') || usp.get('maxHeight') || '598px';
+  let width = usp.get("container_width") || usp.get("width") || "360px";
+  let height = usp.get("height") || usp.get("maxHeight") || "598px";
 
-  if (width.indexOf('px') === -1) {
-    width += 'px';
+  if (width.indexOf("px") === -1) {
+    width += "px";
   }
-  if (height.indexOf('px') === -1) {
-    height += 'px';
+  if (height.indexOf("px") === -1) {
+    height += "px";
   }
 
   const embedHTML = `<div class='social-plugin ${type}' style="width:${width};">
@@ -80,59 +84,63 @@ const embedSocialPlugins = (urlParam, isLite, type) => {
   return embedHTML;
 };
 
-const loadEmbed = (block, grandChilds, link) => {
-  if (block.classList.contains('embed-is-loaded')) {
+export const loadEmbed = (block, grandChilds, link) => {
+  if (block.classList.contains("embed-is-loaded")) {
     return;
   }
 
   const EMBEDS_CONFIG = [
     {
-      match: ['youtube', 'youtu.be'],
+      match: ["youtube", "youtu.be"],
       embed: embedYoutube,
     },
     {
-      match: ['facebook', 'fb'],
+      match: ["facebook", "fb"],
       embed: embedSocialPlugins,
-      type: 'facebook',
+      type: "facebook",
     },
     {
-      match: ['twitter'],
+      match: ["twitter"],
       embed: embedSocialPlugins,
-      type: 'twitter',
+      type: "twitter",
     },
     {
-      match: ['instagram'],
+      match: ["instagram"],
       embed: embedSocialPlugins,
-      type: 'instagram',
+      type: "instagram",
     },
   ];
 
-  const config = EMBEDS_CONFIG.find((e) => e.match.some((match) => link.includes(match)));
+  const config = EMBEDS_CONFIG.find((e) =>
+    e.match.some((match) => link.includes(match))
+  );
   const url = new URL(link);
-  const isLite = block.classList.contains('lite');
+  const isLite = block.classList.contains("lite");
 
   if (config) {
-    const shareVariant = block.classList.contains('share');
+    const shareVariant = block.classList.contains("share");
     block.innerHTML = config.embed(url, isLite, config.type);
-    block.classList = `block embed embed-${config.match[0]} ${shareVariant ? 'share' : ''}`;
+    block.classList = `block embed embed-${config.match[0]} ${
+      shareVariant ? "share" : ""
+    }`;
   }
-  block.classList.add('embed-is-loaded');
+  block.classList.add("embed-is-loaded");
 
   if (grandChilds.length === 2) {
     // This handles video with caption
     const captionDiv = grandChilds[1];
-    captionDiv.classList.add('caption');
+    captionDiv.classList.add("caption");
     block.appendChild(captionDiv);
   }
 };
 
 export default function decorate(block) {
-  const link = block.querySelector('a').href;
-  const childDiv = block.querySelector('div');
-  const grandChilds = childDiv ? childDiv.querySelectorAll('div') : [];
-  block.textContent = '';
+  const link = block.querySelector("a").href;
+  const childDiv = block.querySelector("div");
+  const grandChilds = childDiv ? childDiv.querySelectorAll("div") : [];
+  block.textContent = "";
 
-  if (block.closest('body')) {
+  if (block.closest("body")) {
     const observer = new IntersectionObserver((entries) => {
       if (entries.some((e) => e.isIntersecting)) {
         observer.disconnect();
